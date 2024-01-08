@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 8 ene 2024 17:43:18 by Hibernate Tools 6.3.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="ad_goodgaming" name="model.Coleccion" optimistic-lock="none" table="coleccion">
+        <composite-id class="model.ColeccionId" name="id">
+            <key-property name="idJuego" type="int">
+                <column name="id_juego"/>
+            </key-property>
+            <key-property name="idUsuario" type="int">
+                <column name="id_usuario"/>
+            </key-property>
+        </composite-id>
+        <many-to-one class="model.Videojuegos" fetch="select" insert="false" name="videojuegos" update="false">
+            <column name="id_juego" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="model.Usuarios" fetch="select" insert="false" name="usuarios" update="false">
+            <column name="id_usuario" not-null="true"/>
+        </many-to-one>
+        <property name="poseido" type="java.lang.Boolean">
+            <column name="poseido"/>
+        </property>
+        <property name="deseado" type="java.lang.Boolean">
+            <column name="deseado"/>
+        </property>
+    </class>
+</hibernate-mapping>

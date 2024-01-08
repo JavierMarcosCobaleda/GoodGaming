@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 8 ene 2024 17:43:18 by Hibernate Tools 6.3.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="ad_goodgaming" name="model.Videojuegos" optimistic-lock="none" table="videojuegos">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="titulo" type="string">
+            <column length="100" name="titulo" not-null="true"/>
+        </property>
+        <property name="genero" type="string">
+            <column length="50" name="genero" not-null="true"/>
+        </property>
+        <property name="plataforma" type="string">
+            <column length="50" name="plataforma" not-null="true"/>
+        </property>
+        <property name="consola" type="string">
+            <column length="50" name="consola" not-null="true"/>
+        </property>
+        <property name="fechaSalida" type="date">
+            <column length="10" name="fecha_salida" not-null="true"/>
+        </property>
+        <property name="edicion" type="string">
+            <column length="50" name="edicion" not-null="true"/>
+        </property>
+        <property name="valoracion" type="int">
+            <column name="valoracion" not-null="true"/>
+        </property>
+        <set fetch="select" inverse="true" lazy="true" name="coleccions" table="coleccion">
+            <key>
+                <column name="id_juego" not-null="true"/>
+            </key>
+            <one-to-many class="model.Coleccion"/>
+        </set>
+    </class>
+</hibernate-mapping>
