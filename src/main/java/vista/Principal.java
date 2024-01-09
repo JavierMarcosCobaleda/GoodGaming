@@ -4,6 +4,7 @@
 
 package vista;
 
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialDarkerIJTheme;
 import controlador.HibernateUtil;
 import model.Usuarios;
 import org.hibernate.Session;
@@ -21,7 +22,8 @@ import org.hibernate.cfg.Configuration;
 public class Principal {
 
     public static void main(String[] args) {
-        SessionFactory sessionFactory= HibernateUtil.getSessionFactory();
+        //PRUEBA CONEXION BASE DE DATOS
+        /*SessionFactory sessionFactory= HibernateUtil.getSessionFactory();
 		
         Session sesion=sessionFactory.openSession();
 		
@@ -38,6 +40,12 @@ public class Principal {
         //ejecutamos la transacción
 	tx.commit();
 
-        sesion.close();
-	}
+        sesion.close();*/
+        
+        VentanaLogin login=new VentanaLogin();
+        //iniciar flatlaf
+        FlatMaterialDarkerIJTheme.setup();
+        
+        
     }
+}
