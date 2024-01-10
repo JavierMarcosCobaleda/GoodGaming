@@ -5,6 +5,7 @@
 package vista;
 
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialDarkerIJTheme;
+import java.awt.Color;
 
 /**
  *
@@ -12,9 +13,9 @@ import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialDarker
  */
 public class VentanaLogin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VentanaLogin
-     */
+    //Variables para mover la ventana
+    int xMouse,yMouse;
+    
     public VentanaLogin() {
         initComponents();
     }
@@ -30,24 +31,71 @@ public class VentanaLogin extends javax.swing.JFrame {
 
         panelFondo = new javax.swing.JPanel();
         panelFondoGris = new javax.swing.JPanel();
+        tfusuario = new javax.swing.JTextField();
+        tfpassword = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         xCerrar = new javax.swing.JLabel();
+        logoGGpeque = new javax.swing.JLabel();
+        imagenLogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         panelFondo.setBackground(new java.awt.Color(0, 0, 0));
+        panelFondo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                panelFondoMouseDragged(evt);
+            }
+        });
+        panelFondo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                panelFondoMousePressed(evt);
+            }
+        });
 
         panelFondoGris.setBackground(new java.awt.Color(37, 34, 28));
+
+        tfusuario.setForeground(new java.awt.Color(153, 153, 153));
+        tfusuario.setText("Usuario");
+        tfusuario.setPreferredSize(new java.awt.Dimension(257, 54));
+
+        tfpassword.setText("********");
+        tfpassword.setPreferredSize(new java.awt.Dimension(257, 54));
+        tfpassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tfpasswordMousePressed(evt);
+            }
+        });
+
+        jButton1.setBackground(new java.awt.Color(244, 150, 40));
+        jButton1.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jButton1.setText("Iniciar Sesión");
+        jButton1.setPreferredSize(new java.awt.Dimension(192, 40));
 
         javax.swing.GroupLayout panelFondoGrisLayout = new javax.swing.GroupLayout(panelFondoGris);
         panelFondoGris.setLayout(panelFondoGrisLayout);
         panelFondoGrisLayout.setHorizontalGroup(
             panelFondoGrisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(panelFondoGrisLayout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addGroup(panelFondoGrisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tfusuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tfpassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelFondoGrisLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelFondoGrisLayout.setVerticalGroup(
             panelFondoGrisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 441, Short.MAX_VALUE)
+            .addGroup(panelFondoGrisLayout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addComponent(tfusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(tfpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(179, Short.MAX_VALUE))
         );
 
         xCerrar.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 24)); // NOI18N
@@ -60,7 +108,17 @@ public class VentanaLogin extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 xCerrarMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                xCerrarMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                xCerrarMousePressed(evt);
+            }
         });
+
+        logoGGpeque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logoGGpeque.png"))); // NOI18N
+
+        imagenLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/LOGGIN.png"))); // NOI18N
 
         javax.swing.GroupLayout panelFondoLayout = new javax.swing.GroupLayout(panelFondo);
         panelFondo.setLayout(panelFondoLayout);
@@ -68,16 +126,27 @@ public class VentanaLogin extends javax.swing.JFrame {
             panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelFondoGris, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
-                .addContainerGap(354, Short.MAX_VALUE)
-                .addComponent(xCerrar)
-                .addGap(14, 14, 14))
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
+                        .addComponent(xCerrar)
+                        .addGap(14, 14, 14))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
+                        .addComponent(imagenLogin)
+                        .addGap(18, 18, 18)
+                        .addComponent(logoGGpeque)
+                        .addGap(26, 26, 26))))
         );
         panelFondoLayout.setVerticalGroup(
             panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(xCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(logoGGpeque, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(imagenLogin, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(34, 34, 34)
                 .addComponent(panelFondoGris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -102,7 +171,43 @@ public class VentanaLogin extends javax.swing.JFrame {
 
     private void xCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xCerrarMouseEntered
         //Cambiar color al entrar
+        xCerrar.setForeground(new Color(244,150,40));
     }//GEN-LAST:event_xCerrarMouseEntered
+
+    private void xCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xCerrarMouseExited
+        //Cambiar a blanco al salir
+        xCerrar.setForeground(Color.white);
+    }//GEN-LAST:event_xCerrarMouseExited
+
+    private void xCerrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xCerrarMousePressed
+        //Cambiar color al pulsar
+        xCerrar.setForeground(Color.red);
+    }//GEN-LAST:event_xCerrarMousePressed
+
+    private void panelFondoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelFondoMousePressed
+        // Obtener x e y para mover la ventana
+        xMouse=evt.getX();
+        yMouse=evt.getY();
+    }//GEN-LAST:event_panelFondoMousePressed
+
+    private void panelFondoMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelFondoMouseDragged
+        // Mover la ventana
+       int x=evt.getXOnScreen();
+       int y=evt.getYOnScreen();
+       this.setLocation(x-xMouse,y-yMouse);
+    }//GEN-LAST:event_panelFondoMouseDragged
+
+    private void tfpasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfpasswordMousePressed
+        /*if(String.valueOf(tfpassword.getPassword()).equals("********")){
+            tfpassword.setText("");
+            tfpassword.setForeground(Color.black);
+        }*/
+
+        if(tfusuario.getText().isEmpty()){
+            tfusuario.setText("mail@gmail.com");
+            tfusuario.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_tfpasswordMousePressed
 
     /**
      * @param args the command line arguments
@@ -120,8 +225,13 @@ public class VentanaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel imagenLogin;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel logoGGpeque;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JPanel panelFondoGris;
+    private javax.swing.JTextField tfpassword;
+    private javax.swing.JTextField tfusuario;
     private javax.swing.JLabel xCerrar;
     // End of variables declaration//GEN-END:variables
 }
