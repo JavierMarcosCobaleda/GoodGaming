@@ -18,6 +18,12 @@ public class VentanaLogin extends javax.swing.JFrame {
     
     public VentanaLogin() {
         initComponents();
+        //Redonder componentes
+        btnIniciarSesion.putClientProperty("FlatLaf.style","arc: 20");
+        tfusuario.putClientProperty("FlatLaf.style","arc: 20");
+        jPFPassword.putClientProperty("FlatLaf.style","arc: 20");
+        //jPFPassword.putClientProperty("FlatLaf.colorClass",Color.white);
+        btnIniciarSesion.setForeground(Color.BLACK);
     }
 
     /**
@@ -32,8 +38,13 @@ public class VentanaLogin extends javax.swing.JFrame {
         panelFondo = new javax.swing.JPanel();
         panelFondoGris = new javax.swing.JPanel();
         tfusuario = new javax.swing.JTextField();
-        tfpassword = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnIniciarSesion = new javax.swing.JButton();
+        jPFPassword = new javax.swing.JPasswordField();
+        lbRecuperar = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        lbRegistrarse = new javax.swing.JLabel();
         xCerrar = new javax.swing.JLabel();
         logoGGpeque = new javax.swing.JLabel();
         imagenLogin = new javax.swing.JLabel();
@@ -52,51 +63,70 @@ public class VentanaLogin extends javax.swing.JFrame {
                 panelFondoMousePressed(evt);
             }
         });
+        panelFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelFondoGris.setBackground(new java.awt.Color(37, 34, 28));
+        panelFondoGris.setMinimumSize(new java.awt.Dimension(350, 519));
+        panelFondoGris.setPreferredSize(new java.awt.Dimension(358, 519));
+        panelFondoGris.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfusuario.setForeground(new java.awt.Color(153, 153, 153));
         tfusuario.setText("Usuario");
         tfusuario.setPreferredSize(new java.awt.Dimension(257, 54));
-
-        tfpassword.setText("********");
-        tfpassword.setPreferredSize(new java.awt.Dimension(257, 54));
-        tfpassword.addMouseListener(new java.awt.event.MouseAdapter() {
+        tfusuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                tfpasswordMousePressed(evt);
+                tfusuarioMousePressed(evt);
             }
         });
+        panelFondoGris.add(tfusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(244, 150, 40));
-        jButton1.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jButton1.setText("Iniciar Sesión");
-        jButton1.setPreferredSize(new java.awt.Dimension(192, 40));
+        btnIniciarSesion.setBackground(new java.awt.Color(244, 150, 40));
+        btnIniciarSesion.setFont(new java.awt.Font("Eras Medium ITC", 1, 14)); // NOI18N
+        btnIniciarSesion.setText("Iniciar Sesión");
+        btnIniciarSesion.setPreferredSize(new java.awt.Dimension(192, 40));
+        btnIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarSesionActionPerformed(evt);
+            }
+        });
+        panelFondoGris.add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 259, -1, 41));
 
-        javax.swing.GroupLayout panelFondoGrisLayout = new javax.swing.GroupLayout(panelFondoGris);
-        panelFondoGris.setLayout(panelFondoGrisLayout);
-        panelFondoGrisLayout.setHorizontalGroup(
-            panelFondoGrisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelFondoGrisLayout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(panelFondoGrisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tfusuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tfpassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelFondoGrisLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelFondoGrisLayout.setVerticalGroup(
-            panelFondoGrisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelFondoGrisLayout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addComponent(tfusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(tfpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(179, Short.MAX_VALUE))
-        );
+        jPFPassword.setText("jPasswordField1");
+        jPFPassword.setPreferredSize(new java.awt.Dimension(257, 54));
+        jPFPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPFPasswordMousePressed(evt);
+            }
+        });
+        panelFondoGris.add(jPFPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
+
+        lbRecuperar.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
+        lbRecuperar.setForeground(new java.awt.Color(244, 150, 40));
+        lbRecuperar.setText("Recuperar contraseña");
+        lbRecuperar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbRecuperarMouseEntered(evt);
+            }
+        });
+        panelFondoGris.add(lbRecuperar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, -1, -1));
+
+        jSeparator1.setForeground(new java.awt.Color(244, 150, 40));
+        panelFondoGris.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 364, 127, 10));
+
+        jLabel2.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("O");
+        panelFondoGris.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 358, -1, -1));
+
+        jSeparator2.setForeground(new java.awt.Color(244, 150, 40));
+        panelFondoGris.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 364, 127, 10));
+
+        lbRegistrarse.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
+        lbRegistrarse.setForeground(new java.awt.Color(244, 150, 40));
+        lbRegistrarse.setText("Registrarse");
+        panelFondoGris.add(lbRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, -1, -1));
+
+        panelFondo.add(panelFondoGris, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 377, 480));
 
         xCerrar.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 24)); // NOI18N
         xCerrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -115,40 +145,13 @@ public class VentanaLogin extends javax.swing.JFrame {
                 xCerrarMousePressed(evt);
             }
         });
+        panelFondo.add(xCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 6, -1, 22));
 
         logoGGpeque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logoGGpeque.png"))); // NOI18N
+        panelFondo.add(logoGGpeque, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, -1, -1));
 
         imagenLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/LOGGIN.png"))); // NOI18N
-
-        javax.swing.GroupLayout panelFondoLayout = new javax.swing.GroupLayout(panelFondo);
-        panelFondo.setLayout(panelFondoLayout);
-        panelFondoLayout.setHorizontalGroup(
-            panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelFondoGris, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
-                        .addComponent(xCerrar)
-                        .addGap(14, 14, 14))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
-                        .addComponent(imagenLogin)
-                        .addGap(18, 18, 18)
-                        .addComponent(logoGGpeque)
-                        .addGap(26, 26, 26))))
-        );
-        panelFondoLayout.setVerticalGroup(
-            panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(xCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(logoGGpeque, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(imagenLogin, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(34, 34, 34)
-                .addComponent(panelFondoGris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        panelFondo.add(imagenLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -197,17 +200,41 @@ public class VentanaLogin extends javax.swing.JFrame {
        this.setLocation(x-xMouse,y-yMouse);
     }//GEN-LAST:event_panelFondoMouseDragged
 
-    private void tfpasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfpasswordMousePressed
-        /*if(String.valueOf(tfpassword.getPassword()).equals("********")){
-            tfpassword.setText("");
-            tfpassword.setForeground(Color.black);
-        }*/
+    private void tfusuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfusuarioMousePressed
+        // TODO add your handling code here:
+        if(tfusuario.getText().equals("Usuario")){
+            tfusuario.setText("");
+            tfusuario.setForeground(Color.white);
+        }
+        
+        if(String.valueOf(jPFPassword.getPassword()).isEmpty()){
+            jPFPassword.setText("********");
+            jPFPassword.setForeground(Color.gray);
+        }
+                               
+    }//GEN-LAST:event_tfusuarioMousePressed
 
+    private void jPFPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPFPasswordMousePressed
+        // TODO add your handling code here:
+        if(String.valueOf(jPFPassword.getPassword()).equals("********")){
+            jPFPassword.setText("");
+            jPFPassword.setForeground(Color.white);
+        }
+        
         if(tfusuario.getText().isEmpty()){
-            tfusuario.setText("mail@gmail.com");
+            tfusuario.setText("Usuario");
             tfusuario.setForeground(Color.gray);
         }
-    }//GEN-LAST:event_tfpasswordMousePressed
+    }//GEN-LAST:event_jPFPasswordMousePressed
+
+    private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIniciarSesionActionPerformed
+
+    private void lbRecuperarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRecuperarMouseEntered
+         // TODO add your handling code here:
+         lbRecuperar.setForeground(Color.white);
+    }//GEN-LAST:event_lbRecuperarMouseEntered
 
     /**
      * @param args the command line arguments
@@ -225,12 +252,17 @@ public class VentanaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnIniciarSesion;
     private javax.swing.JLabel imagenLogin;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPasswordField jPFPassword;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lbRecuperar;
+    private javax.swing.JLabel lbRegistrarse;
     private javax.swing.JLabel logoGGpeque;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JPanel panelFondoGris;
-    private javax.swing.JTextField tfpassword;
     private javax.swing.JTextField tfusuario;
     private javax.swing.JLabel xCerrar;
     // End of variables declaration//GEN-END:variables
