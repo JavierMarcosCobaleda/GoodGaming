@@ -107,6 +107,9 @@ public class VentanaLogin extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lbRecuperarMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbRecuperarMouseExited(evt);
+            }
         });
         panelFondoGris.add(lbRecuperar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, -1, -1));
 
@@ -124,6 +127,17 @@ public class VentanaLogin extends javax.swing.JFrame {
         lbRegistrarse.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
         lbRegistrarse.setForeground(new java.awt.Color(244, 150, 40));
         lbRegistrarse.setText("Registrarse");
+        lbRegistrarse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbRegistrarseMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbRegistrarseMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbRegistrarseMouseExited(evt);
+            }
+        });
         panelFondoGris.add(lbRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, -1, -1));
 
         panelFondo.add(panelFondoGris, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 377, 480));
@@ -235,6 +249,28 @@ public class VentanaLogin extends javax.swing.JFrame {
          // TODO add your handling code here:
          lbRecuperar.setForeground(Color.white);
     }//GEN-LAST:event_lbRecuperarMouseEntered
+
+    private void lbRecuperarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRecuperarMouseExited
+        // TODO add your handling code here:
+        lbRecuperar.setForeground(new Color(244,150,40));
+    }//GEN-LAST:event_lbRecuperarMouseExited
+
+    private void lbRegistrarseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarseMouseEntered
+        // TODO add your handling code here:
+        lbRegistrarse.setForeground(Color.white);
+    }//GEN-LAST:event_lbRegistrarseMouseEntered
+
+    private void lbRegistrarseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarseMouseExited
+        // TODO add your handling code here:
+        lbRegistrarse.setForeground(new Color(244,150,40));
+    }//GEN-LAST:event_lbRegistrarseMouseExited
+
+    private void lbRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarseMouseClicked
+        // TODO add your handling code here:
+        VentanaRegistro ventanaRegistro=new VentanaRegistro();
+        ventanaRegistro.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_lbRegistrarseMouseClicked
 
     /**
      * @param args the command line arguments

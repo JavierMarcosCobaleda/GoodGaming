@@ -4,19 +4,29 @@
  */
 package vista;
 
+import controlador.HibernateUtil;
 import java.awt.Color;
+import model.Usuarios;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 /**
  *
- * @author lonch
+ * @author Javier Marcos Cobaleda
  */
 public class VentanaRegistro extends javax.swing.JFrame {
 
     //Variables para mover la ventana
     int xMouse,yMouse;
+    HibernateUtil hibernate;
     
     public VentanaRegistro() {
         initComponents();
+        //Conectamos con la base de datos
+        hibernate=new HibernateUtil();
+        hibernate.conectar();
+        /*SessionFactory sessionFactory= HibernateUtil.getSessionFactory();		
+        Session sesion=sessionFactory.openSession();*/
         
         btnRegistro.setForeground(Color.BLACK);
     }
@@ -258,7 +268,23 @@ public class VentanaRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_tfCorreoElectronicoMousePressed
 
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
-        // TODO add your handling code here:
+        //Registrar nuevo usuario
+        
+        
+        //si coincide la contraseña
+        if(String.valueOf(jPFRegPassword.getPassword()).equals(String.valueOf(jPFRepetirPassword.getPassword()))){
+            //Encriptar contraseña
+            Usuarios usuario=new Usuarios();
+            usuario.setUsername(tfRegUsuario.getText());
+            usuario.setPassword(String.valueOf(jPFRegPassword.getPassword()));
+            usuario.setEmail(tfCorreoElectronico.getText());
+            
+            hibernate.agregarUsuario(usuario);
+        }else{
+            
+        }
+        
+        //Usuarios usuario=new Usuarios(tfRegUsuario.getText(),String.valueOf(jPFRegPassword.getPassword()),tfCorreoElectronico.getText());
     }//GEN-LAST:event_btnRegistroActionPerformed
 
     private void jPFRepetirPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPFRepetirPasswordMousePressed
