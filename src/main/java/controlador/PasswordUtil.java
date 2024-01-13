@@ -28,4 +28,10 @@ public class PasswordUtil {
         
         user.setPassword(hash.getResult());
     }
+    
+    /**Método desencriptar contraseña**/
+    //usuario sin hashear, usuario hasheado
+    public boolean desencriptar(Usuarios usuario,Usuarios user){
+        return Password.check(usuario.getPassword(), user.getPassword()).withArgon2();
+    }
 }

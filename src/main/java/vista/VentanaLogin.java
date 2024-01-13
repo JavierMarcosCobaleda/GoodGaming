@@ -5,7 +5,11 @@
 package vista;
 
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialDarkerIJTheme;
+import controlador.HibernateUtil;
+import controlador.PasswordUtil;
 import java.awt.Color;
+import javax.swing.JOptionPane;
+import model.Usuarios;
 
 /**
  *
@@ -15,6 +19,9 @@ public class VentanaLogin extends javax.swing.JFrame {
 
     //Variables para mover la ventana
     int xMouse,yMouse;
+    //Variables de los controladores
+    HibernateUtil hibernate;
+    PasswordUtil pwdUtil;
     
     public VentanaLogin() {
         initComponents();
@@ -24,6 +31,10 @@ public class VentanaLogin extends javax.swing.JFrame {
         jPFPassword.putClientProperty("FlatLaf.style","arc: 20");
         //jPFPassword.putClientProperty("FlatLaf.colorClass",Color.white);
         btnIniciarSesion.setForeground(Color.BLACK);
+        
+        //Conecta a la base de datos
+        hibernate=new HibernateUtil();
+        hibernate.conectar();
     }
 
     /**
@@ -242,7 +253,28 @@ public class VentanaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jPFPasswordMousePressed
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
-        // TODO add your handling code here:
+        //comprobar que están rellenos todos los campos
+        if (tfusuario.getText().isEmpty() || tfusuario.getText().equals("Usuario") || jPFPassword.getPassword().equals("********") ||jPFPassword.getPassword().equals("")){
+            JOptionPane.showMessageDialog(null, "ERROR, Deber rellenar todos los campos","Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+            //Hacemos la consulta de usuarios
+            Usuarios usuario=new Usuarios();
+            usuario.setUsername(tfusuario.getText());
+            usuario.setPassword(String.valueOf(jPFPassword.getPassword()));
+            
+            Usuarios usrEncriptado=hibernate.comprobarLogin(usuario).get(0);
+            //Comprobamos la contraseña encriptada
+            pwdUtil=new PasswordUtil();
+            if(pwdUtil.desencriptar(usuario, usrEncriptado) && usrEncriptado.getUsername().equals(tfusuario.getText())){
+                //JOptionPane.showMessageDialog(null, "Sesión iniciada correctamente");
+                VentanaPrincipal principal=new VentanaPrincipal();
+                principal.setVisible(true);
+                this.setVisible(false);
+            }else{
+                JOptionPane.showMessageDialog(null, "ERROR, Usuario o contraseña no válidas");
+            }
+
+        }
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
     private void lbRecuperarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRecuperarMouseEntered

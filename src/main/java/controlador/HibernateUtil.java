@@ -4,6 +4,9 @@
  */
 package controlador;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Query;
 import model.Usuarios;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -67,5 +70,16 @@ public class HibernateUtil {
             return false;
         }
         return true;       
+    }
+    
+    /**Método select de usuario y contraseña**/
+    public static List<Usuarios> comprobarLogin(Usuarios usuario){
+
+        Query q=sesion.createQuery("FROM Usuarios WHERE username = :username");
+        q.setParameter("username",usuario.getUsername());
+        //q.setParameter("password",usuario.getPassword());
+        List <Usuarios> listaUsuarios=q.getResultList();
+        
+        return listaUsuarios;
     }
 }

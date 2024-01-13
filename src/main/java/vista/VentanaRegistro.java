@@ -282,12 +282,11 @@ public class VentanaRegistro extends javax.swing.JFrame {
             usuario.setUsername(tfRegUsuario.getText());
             usuario.setPassword(String.valueOf(jPFRegPassword.getPassword()));
             usuario.setEmail(tfCorreoElectronico.getText());
-            
+            //Cambiamos la contraseña del usuario por la encriptada
             PasswordUtil pwdUtil=new PasswordUtil();
             pwdUtil.encriptar(usuario);
             
             //tfRegUsuario.setText(usuario.getPassword());
-
             
             if (hibernate.agregarUsuario(usuario)){
                 JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
