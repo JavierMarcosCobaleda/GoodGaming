@@ -91,7 +91,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         });
         panelFondoGris.add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 259, -1, 41));
 
-        jPFPassword.setText("jPasswordField1");
+        jPFPassword.setText("********");
         jPFPassword.setPreferredSize(new java.awt.Dimension(257, 54));
         jPFPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {

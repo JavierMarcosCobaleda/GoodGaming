@@ -5,7 +5,9 @@
 package vista;
 
 import controlador.HibernateUtil;
+import controlador.PasswordUtil;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import model.Usuarios;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -25,6 +27,8 @@ public class VentanaRegistro extends javax.swing.JFrame {
         //Conectamos con la base de datos
         hibernate=new HibernateUtil();
         hibernate.conectar();
+        
+        
         /*SessionFactory sessionFactory= HibernateUtil.getSessionFactory();		
         Session sesion=sessionFactory.openSession();*/
         
@@ -279,7 +283,17 @@ public class VentanaRegistro extends javax.swing.JFrame {
             usuario.setPassword(String.valueOf(jPFRegPassword.getPassword()));
             usuario.setEmail(tfCorreoElectronico.getText());
             
-            hibernate.agregarUsuario(usuario);
+            PasswordUtil pwdUtil=new PasswordUtil();
+            pwdUtil.encriptar(usuario);
+            
+            //tfRegUsuario.setText(usuario.getPassword());
+
+            
+            if (hibernate.agregarUsuario(usuario)){
+                JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
+            }else{
+                JOptionPane.showMessageDialog(null, "ERROR, no se ha podido registrar al usuario","Error", JOptionPane.ERROR_MESSAGE);
+            }
         }else{
             
         }
@@ -366,7 +380,10 @@ public class VentanaRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_tfCorreoElectronicoActionPerformed
 
     private void jPFRegPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPFRegPasswordMousePressed
-        // TODO add your handling code here:
+        if(String.valueOf(jPFRegPassword.getPassword()).equals("********")){
+            jPFRegPassword.setText("");
+            jPFRegPassword.setForeground(Color.white);
+        }
     }//GEN-LAST:event_jPFRegPasswordMousePressed
 
     private void tfRegUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfRegUsuarioMousePressed

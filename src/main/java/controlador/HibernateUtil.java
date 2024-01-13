@@ -49,7 +49,7 @@ public class HibernateUtil {
     }
         
     /**Método para agregar un usuario a la base de datos**/    
-    public static void agregarUsuario(Usuarios usuario){
+    public static boolean agregarUsuario(Usuarios usuario){
         //transacciones
 	Transaction tx=sesion.beginTransaction();
 		
@@ -62,5 +62,10 @@ public class HibernateUtil {
 		
         //ejecutamos la transacción
 	tx.commit();
+        
+        if (tx==null){
+            return false;
+        }
+        return true;       
     }
 }

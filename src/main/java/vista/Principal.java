@@ -42,9 +42,9 @@ public class Principal {
 
         sesion.close();*/
         
-        VentanaLogin login=new VentanaLogin();
+        /*VentanaLogin login=new VentanaLogin();
         //iniciar flatlaf
-        FlatMaterialDarkerIJTheme.setup();
+        FlatMaterialDarkerIJTheme.setup();*/
         
         
     }
