@@ -24,13 +24,17 @@ public class VentanaRegistro extends javax.swing.JFrame {
     
     public VentanaRegistro() {
         initComponents();
+        
+        //Establecer el botón por defecto
+        getRootPane().setDefaultButton(btnRegistro);
+        
+        //alt+r para presionar el boton de registrarse
+        btnRegistro.setMnemonic('r');
+        
         //Conectamos con la base de datos
         hibernate=new HibernateUtil();
         hibernate.conectar();
-        
-        
-        /*SessionFactory sessionFactory= HibernateUtil.getSessionFactory();		
-        Session sesion=sessionFactory.openSession();*/
+
         
         btnRegistro.setForeground(Color.BLACK);
     }
@@ -49,11 +53,6 @@ public class VentanaRegistro extends javax.swing.JFrame {
         tfCorreoElectronico = new javax.swing.JTextField();
         btnRegistro = new javax.swing.JButton();
         jPFRepetirPassword = new javax.swing.JPasswordField();
-        lbRecuperar = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        lbCerrarSesion = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -83,7 +82,6 @@ public class VentanaRegistro extends javax.swing.JFrame {
         panelFondoGris.setBackground(new java.awt.Color(37, 34, 28));
         panelFondoGris.setMinimumSize(new java.awt.Dimension(350, 519));
         panelFondoGris.setPreferredSize(new java.awt.Dimension(358, 519));
-        panelFondoGris.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfCorreoElectronico.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
         tfCorreoElectronico.setForeground(new java.awt.Color(153, 153, 153));
@@ -101,7 +99,6 @@ public class VentanaRegistro extends javax.swing.JFrame {
                 tfCorreoElectronicoActionPerformed(evt);
             }
         });
-        panelFondoGris.add(tfCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, 20));
 
         btnRegistro.setBackground(new java.awt.Color(244, 150, 40));
         btnRegistro.setFont(new java.awt.Font("Eras Medium ITC", 1, 14)); // NOI18N
@@ -112,7 +109,6 @@ public class VentanaRegistro extends javax.swing.JFrame {
                 btnRegistroActionPerformed(evt);
             }
         });
-        panelFondoGris.add(btnRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 259, -1, 41));
 
         jPFRepetirPassword.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jPFRepetirPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -123,62 +119,18 @@ public class VentanaRegistro extends javax.swing.JFrame {
                 jPFRepetirPasswordMousePressed(evt);
             }
         });
-        panelFondoGris.add(jPFRepetirPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, 20));
-
-        lbRecuperar.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
-        lbRecuperar.setForeground(new java.awt.Color(244, 150, 40));
-        lbRecuperar.setText("Cambiar contraseña");
-        lbRecuperar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lbRecuperarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lbRecuperarMouseExited(evt);
-            }
-        });
-        panelFondoGris.add(lbRecuperar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, -1, 20));
-
-        jSeparator1.setForeground(new java.awt.Color(244, 150, 40));
-        panelFondoGris.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 364, 127, 10));
-
-        jLabel2.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("O");
-        panelFondoGris.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 358, -1, -1));
-
-        jSeparator2.setForeground(new java.awt.Color(244, 150, 40));
-        panelFondoGris.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 364, 127, 10));
-
-        lbCerrarSesion.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
-        lbCerrarSesion.setForeground(new java.awt.Color(244, 150, 40));
-        lbCerrarSesion.setText("Cerrar sesión");
-        lbCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbCerrarSesionMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lbCerrarSesionMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lbCerrarSesionMouseExited(evt);
-            }
-        });
-        panelFondoGris.add(lbCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, -1, 20));
 
         jLabel3.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Correo electrónico");
-        panelFondoGris.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nombre de usuario");
-        panelFondoGris.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Contraseña");
-        panelFondoGris.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
 
         jPFRegPassword.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jPFRegPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -189,12 +141,10 @@ public class VentanaRegistro extends javax.swing.JFrame {
                 jPFRegPasswordMousePressed(evt);
             }
         });
-        panelFondoGris.add(jPFRegPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, 20));
 
         jLabel6.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Repetir contraseña");
-        panelFondoGris.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
 
         tfRegUsuario.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
         tfRegUsuario.setForeground(new java.awt.Color(153, 153, 153));
@@ -212,7 +162,52 @@ public class VentanaRegistro extends javax.swing.JFrame {
                 tfRegUsuarioActionPerformed(evt);
             }
         });
-        panelFondoGris.add(tfRegUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, 20));
+
+        javax.swing.GroupLayout panelFondoGrisLayout = new javax.swing.GroupLayout(panelFondoGris);
+        panelFondoGris.setLayout(panelFondoGrisLayout);
+        panelFondoGrisLayout.setHorizontalGroup(
+            panelFondoGrisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFondoGrisLayout.createSequentialGroup()
+                .addGroup(panelFondoGrisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFondoGrisLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addGroup(panelFondoGrisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(tfRegUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(jPFRegPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)
+                            .addComponent(jPFRepetirPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(tfCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelFondoGrisLayout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(btnRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(60, 60, 60))
+        );
+        panelFondoGrisLayout.setVerticalGroup(
+            panelFondoGrisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFondoGrisLayout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(jLabel4)
+                .addGap(5, 5, 5)
+                .addComponent(tfRegUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addGap(5, 5, 5)
+                .addComponent(jPFRegPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addGap(5, 5, 5)
+                .addComponent(jPFRepetirPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addGap(5, 5, 5)
+                .addComponent(tfCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(btnRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         panelFondo.add(panelFondoGris, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 377, 480));
 
@@ -275,29 +270,42 @@ public class VentanaRegistro extends javax.swing.JFrame {
         //Registrar nuevo usuario
         
         
+        
         //si coincide la contraseña
         if(String.valueOf(jPFRegPassword.getPassword()).equals(String.valueOf(jPFRepetirPassword.getPassword()))){
             //Encriptar contraseña
             Usuarios usuario=new Usuarios();
             usuario.setUsername(tfRegUsuario.getText());
-            usuario.setPassword(String.valueOf(jPFRegPassword.getPassword()));
             usuario.setEmail(tfCorreoElectronico.getText());
-            //Cambiamos la contraseña del usuario por la encriptada
-            PasswordUtil pwdUtil=new PasswordUtil();
-            pwdUtil.encriptar(usuario);
             
-            //tfRegUsuario.setText(usuario.getPassword());
-            
-            if (hibernate.agregarUsuario(usuario)){
-                JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
+           
+            //Comprobamos que no existe el nombre de usuario en la base de datos          
+            if(hibernate.comprobarLogin(usuario).size()>0){
+                JOptionPane.showMessageDialog(null, "ERROR, Ya existe un usuario con ese nombre","Error", JOptionPane.ERROR_MESSAGE);
+            //Comprobamos que no existe un correo igual en la base de datos
+            }else if (hibernate.comprobarCorreo(usuario).size()>0){
+                JOptionPane.showMessageDialog(null, "ERROR, Ya existe un usuario con ese correo electrónico","Error", JOptionPane.ERROR_MESSAGE);
             }else{
-                JOptionPane.showMessageDialog(null, "ERROR, no se ha podido registrar al usuario","Error", JOptionPane.ERROR_MESSAGE);
+                       
+                usuario.setPassword(String.valueOf(jPFRegPassword.getPassword()));
+
+                //Cambiamos la contraseña del usuario por la encriptada
+                PasswordUtil pwdUtil=new PasswordUtil();
+                pwdUtil.encriptar(usuario);
+
+
+                //Insertamos el usuario en la base de datos
+                if (hibernate.agregarUsuario(usuario)){
+                    JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
+                }else{
+                    JOptionPane.showMessageDialog(null, "ERROR, no se ha podido registrar al usuario","Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         }else{
-            
+            JOptionPane.showMessageDialog(null, "ERROR, La contraseña no coincide","Error", JOptionPane.ERROR_MESSAGE);
         }
         
-        //Usuarios usuario=new Usuarios(tfRegUsuario.getText(),String.valueOf(jPFRegPassword.getPassword()),tfCorreoElectronico.getText());
+
     }//GEN-LAST:event_btnRegistroActionPerformed
 
     private void jPFRepetirPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPFRepetirPasswordMousePressed
@@ -313,30 +321,6 @@ public class VentanaRegistro extends javax.swing.JFrame {
             tfCorreoElectronico.setForeground(Color.gray);
         }
     }//GEN-LAST:event_jPFRepetirPasswordMousePressed
-
-    private void lbRecuperarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRecuperarMouseEntered
-        //Cambiar color al entrar en recuperar contraseña
-        lbRecuperar.setForeground(Color.white);
-    }//GEN-LAST:event_lbRecuperarMouseEntered
-
-    private void lbRecuperarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRecuperarMouseExited
-        //Cambiar color al salir de recuperar contraseña
-        lbRecuperar.setForeground(new Color(244,150,40));
-    }//GEN-LAST:event_lbRecuperarMouseExited
-
-    private void lbCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbCerrarSesionMouseClicked
-        //Abrimos la ventana de registro de usuario
-    }//GEN-LAST:event_lbCerrarSesionMouseClicked
-
-    private void lbCerrarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbCerrarSesionMouseEntered
-        //Cambiar color al entrar en registrarse
-        lbCerrarSesion.setForeground(Color.white);
-    }//GEN-LAST:event_lbCerrarSesionMouseEntered
-
-    private void lbCerrarSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbCerrarSesionMouseExited
-        //Cambiar color al salir de registrarse
-        lbCerrarSesion.setForeground(new Color(244,150,40));
-    }//GEN-LAST:event_lbCerrarSesionMouseExited
 
     private void xCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xCerrarMouseClicked
         VentanaLogin ventanaLogin=new VentanaLogin();
@@ -431,17 +415,12 @@ public class VentanaRegistro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistro;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPasswordField jPFRegPassword;
     private javax.swing.JPasswordField jPFRepetirPassword;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel lbCerrarSesion;
-    private javax.swing.JLabel lbRecuperar;
     private javax.swing.JLabel logoGGpeque;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JPanel panelFondoGris;

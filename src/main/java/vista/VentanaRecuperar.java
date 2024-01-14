@@ -17,7 +17,7 @@ import model.Usuarios;
 
 /**
  *
- * @author lonch
+ * @author Javier Marcos Cobaleda
  */
 public class VentanaRecuperar extends javax.swing.JFrame {
 
@@ -34,10 +34,23 @@ public class VentanaRecuperar extends javax.swing.JFrame {
     public VentanaRecuperar() {
         initComponents();
         btnEnvio.setForeground(Color.BLACK);
+        btnActualizar.setForeground(Color.BLACK);
+        
+        //Establecer el botón por defecto
+        getRootPane().setDefaultButton(btnEnvio);
+        
+        //alt+e para presionar el boton de enviar
+        btnEnvio.setMnemonic('e');
+        //alt+a para presionar el boton de actualizar contraseña
+        btnActualizar.setMnemonic('a');
         
         //Conecta a la base de datos
-        hibernate=new HibernateUtil();
-        hibernate.conectar();
+        try{
+            hibernate=new HibernateUtil();
+            hibernate.conectar();
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "ERROR, No se ha podido conectar con la base de datos","Error", JOptionPane.ERROR_MESSAGE);
+        }
         pwdUtil=new PasswordUtil();
         emailUtil=new EmailUtil();
     }
@@ -62,7 +75,7 @@ public class VentanaRecuperar extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPFActualizarPassword = new javax.swing.JPasswordField();
-        btnModificar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
         xCerrar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         logoGGpeque = new javax.swing.JLabel();
@@ -164,14 +177,19 @@ public class VentanaRecuperar extends javax.swing.JFrame {
         jPFActualizarPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPFActualizarPassword.setText("********");
         jPFActualizarPassword.setMinimumSize(new java.awt.Dimension(257, 22));
+        jPFActualizarPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPFActualizarPasswordMousePressed(evt);
+            }
+        });
 
-        btnModificar.setBackground(new java.awt.Color(244, 150, 40));
-        btnModificar.setFont(new java.awt.Font("Eras Medium ITC", 1, 14)); // NOI18N
-        btnModificar.setText("Actualizar Contraseña");
-        btnModificar.setPreferredSize(new java.awt.Dimension(192, 40));
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizar.setBackground(new java.awt.Color(244, 150, 40));
+        btnActualizar.setFont(new java.awt.Font("Eras Medium ITC", 1, 14)); // NOI18N
+        btnActualizar.setText("Actualizar Contraseña");
+        btnActualizar.setPreferredSize(new java.awt.Dimension(192, 40));
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
+                btnActualizarActionPerformed(evt);
             }
         });
 
@@ -205,7 +223,7 @@ public class VentanaRecuperar extends javax.swing.JFrame {
                         .addComponent(btnEnvio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelFondoGrisLayout.createSequentialGroup()
                         .addGap(90, 90, 90)
-                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(60, 60, 60))
         );
         panelFondoGrisLayout.setVerticalGroup(
@@ -230,7 +248,7 @@ public class VentanaRecuperar extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPFActualizarPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -295,50 +313,59 @@ public class VentanaRecuperar extends javax.swing.JFrame {
     }//GEN-LAST:event_tfCorreoElectronicoActionPerformed
 
     private void btnEnvioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnvioActionPerformed
-        //Comprobar email en la base de datos
-        usuario=new Usuarios();
-        usuario.setUsername(tfRecUsuario.getText());
-        usuario.setEmail(tfCorreoElectronico.getText());
-
-        if(hibernate.comprobarMail(usuario).get(0).getUsername().equals(tfRecUsuario.getText()) && hibernate.comprobarMail(usuario).get(0).getEmail().equals(tfCorreoElectronico.getText()) ){
-            //Generar código de recuperación
-            codigo=pwdUtil.generarCodigo();                 
-            
-            //Enviar mail al usuario
-            //DESDE GMAIL
-            final String fromemail="jamacoaudiovisual@gmail.com";
-            final String password="dcccqdlewojbefei";
-            final String toemail=tfCorreoElectronico.getText();
-
-            System.out.println("SSLMail Start");
-            Properties props=new Properties();
-            props.put("mail.smtp.host", "smtp.gmail.com");
-            props.put("mail.smtp.starttls.enable", "true");
-            props.put("mail.smtp.port", "587");
-            props.put("mail.smtp.user", fromemail);
-            props.put("mail.smtp.auth", "true");
-            props.put("mail.smtp.ssl.protocols","TLSv1.2");
-
-            Authenticator auth = new Authenticator() {
-                //@Override
-                protected PasswordAuthentication getPasswordAuthentication() {
-
-                    return new PasswordAuthentication(fromemail, password);
-                }
-            };
-
-            Session session = Session.getDefaultInstance(props, auth);
-            System.out.println("Session created");
-            EmailUtil.sendEmail(session, toemail, "Good Gaming password recovery", "Código de recuperación de contraseña:\n"+codigo);
-            
-            JOptionPane.showMessageDialog(null, "Código enviado, revise su correo electrónico e introduzca el código para generar una nueva contraseña");
-            
-            
-            
+        
+        if(tfRecUsuario.getText().isEmpty() || tfCorreoElectronico.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "ERROR, Debe rellenar los campos Usuario y Correo Electrónico","Error", JOptionPane.ERROR_MESSAGE);
         }else{
-            JOptionPane.showMessageDialog(null, "ERROR, No se ha encontrado ningún usuario con ese correro electrónico","Error", JOptionPane.ERROR_MESSAGE);
-        }
+            //Comprobar email en la base de datos
+            usuario=new Usuarios();
+            usuario.setUsername(tfRecUsuario.getText());
+            usuario.setEmail(tfCorreoElectronico.getText());
 
+            try{
+
+                if(hibernate.comprobarMail(usuario).get(0).getUsername().equals(tfRecUsuario.getText()) && hibernate.comprobarMail(usuario).get(0).getEmail().equals(tfCorreoElectronico.getText()) ){
+                    //Generar código de recuperación
+                    codigo=pwdUtil.generarCodigo();                 
+
+                    //Enviar mail al usuario
+                    //DESDE GMAIL
+                    final String fromemail="jamacoaudiovisual@gmail.com";
+                    final String password="dcccqdlewojbefei";
+                    final String toemail=tfCorreoElectronico.getText();
+
+                    System.out.println("SSLMail Start");
+                    Properties props=new Properties();
+                    props.put("mail.smtp.host", "smtp.gmail.com");
+                    props.put("mail.smtp.starttls.enable", "true");
+                    props.put("mail.smtp.port", "587");
+                    props.put("mail.smtp.user", fromemail);
+                    props.put("mail.smtp.auth", "true");
+                    props.put("mail.smtp.ssl.protocols","TLSv1.2");
+
+                    Authenticator auth = new Authenticator() {
+                        //@Override
+                        protected PasswordAuthentication getPasswordAuthentication() {
+
+                            return new PasswordAuthentication(fromemail, password);
+                        }
+                    };
+
+                    Session session = Session.getDefaultInstance(props, auth);
+                    System.out.println("Session created");
+                    EmailUtil.sendEmail(session, toemail, "Good Gaming password recovery", "Código de recuperación de contraseña:\n"+codigo);
+
+                    JOptionPane.showMessageDialog(null, "Código enviado, revise su correo electrónico e introduzca el código para generar una nueva contraseña");
+
+
+
+                }else{
+                    JOptionPane.showMessageDialog(null, "ERROR, No se ha encontrado ningún usuario con ese correro electrónico","Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }catch(NullPointerException e){
+                JOptionPane.showMessageDialog(null, "ERROR, No se ha podido conectar con la base de datos","Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_btnEnvioActionPerformed
 
     private void tfRecUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfRecUsuarioMousePressed
@@ -394,7 +421,7 @@ public class VentanaRecuperar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfCodigoActionPerformed
 
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         //Comprobamos que el codigo insertado es igual al generado
         if(tfCodigo.getText().equals(codigo)){
             
@@ -410,7 +437,15 @@ public class VentanaRecuperar extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "ERROR, Código incorrecto","Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_btnModificarActionPerformed
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void jPFActualizarPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPFActualizarPasswordMousePressed
+        //vaciar el texto del password
+        if(String.valueOf(jPFActualizarPassword.getPassword()).equals("********")){
+            jPFActualizarPassword.setText("");
+            jPFActualizarPassword.setForeground(Color.white);
+        }
+    }//GEN-LAST:event_jPFActualizarPasswordMousePressed
 
     /**
      * @param args the command line arguments
@@ -448,8 +483,8 @@ public class VentanaRecuperar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnEnvio;
-    private javax.swing.JButton btnModificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -32,9 +32,19 @@ public class VentanaLogin extends javax.swing.JFrame {
         //jPFPassword.putClientProperty("FlatLaf.colorClass",Color.white);
         btnIniciarSesion.setForeground(Color.BLACK);
         
+        //Establecer el botón por defecto
+        getRootPane().setDefaultButton(btnIniciarSesion);
+        
+        //alt+s para presionar el botón
+        btnIniciarSesion.setMnemonic('s');
+        
         //Conecta a la base de datos
-        hibernate=new HibernateUtil();
-        hibernate.conectar();
+        try{
+            hibernate=new HibernateUtil();
+            hibernate.conectar();
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "ERROR, No se ha podido conectar con la base de datos","Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -81,7 +91,9 @@ public class VentanaLogin extends javax.swing.JFrame {
         panelFondoGris.setPreferredSize(new java.awt.Dimension(358, 519));
         panelFondoGris.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tfusuario.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
         tfusuario.setForeground(new java.awt.Color(153, 153, 153));
+        tfusuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tfusuario.setText("Usuario");
         tfusuario.setPreferredSize(new java.awt.Dimension(257, 54));
         tfusuario.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -102,6 +114,8 @@ public class VentanaLogin extends javax.swing.JFrame {
         });
         panelFondoGris.add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 259, -1, 41));
 
+        jPFPassword.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
+        jPFPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPFPassword.setText("********");
         jPFPassword.setPreferredSize(new java.awt.Dimension(257, 54));
         jPFPassword.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -229,7 +243,7 @@ public class VentanaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_panelFondoMouseDragged
 
     private void tfusuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfusuarioMousePressed
-        // TODO add your handling code here:
+        // Vaciar el texto Usuario
         if(tfusuario.getText().equals("Usuario")){
             tfusuario.setText("");
             tfusuario.setForeground(Color.white);
@@ -243,12 +257,13 @@ public class VentanaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_tfusuarioMousePressed
 
     private void jPFPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPFPasswordMousePressed
-        // TODO add your handling code here:
+        //vaciar el texto del password
         if(String.valueOf(jPFPassword.getPassword()).equals("********")){
             jPFPassword.setText("");
             jPFPassword.setForeground(Color.white);
         }
         
+        //Rellenar el texto usuario
         if(tfusuario.getText().isEmpty()){
             tfusuario.setText("Usuario");
             tfusuario.setForeground(Color.gray);
@@ -257,26 +272,30 @@ public class VentanaLogin extends javax.swing.JFrame {
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
         //comprobar que están rellenos todos los campos
-        if (tfusuario.getText().isEmpty() || tfusuario.getText().equals("Usuario") || jPFPassword.getPassword().equals("********") ||jPFPassword.getPassword().equals("")){
-            JOptionPane.showMessageDialog(null, "ERROR, Deber rellenar todos los campos","Error", JOptionPane.ERROR_MESSAGE);
-        }else{
-            //Hacemos la consulta de usuarios
-            Usuarios usuario=new Usuarios();
-            usuario.setUsername(tfusuario.getText());
-            usuario.setPassword(String.valueOf(jPFPassword.getPassword()));
-            
-            Usuarios usrEncriptado=hibernate.comprobarLogin(usuario).get(0);
-            //Comprobamos la contraseña encriptada
-            pwdUtil=new PasswordUtil();
-            if(pwdUtil.desencriptar(usuario, usrEncriptado) && usrEncriptado.getUsername().equals(tfusuario.getText())){
-                //JOptionPane.showMessageDialog(null, "Sesión iniciada correctamente");
-                VentanaPrincipal principal=new VentanaPrincipal();
-                principal.setVisible(true);
-                this.setVisible(false);
+        try{
+            if (tfusuario.getText().isEmpty() || tfusuario.getText().equals("Usuario") || jPFPassword.getPassword().equals("********") ||jPFPassword.getPassword().equals("")){
+                JOptionPane.showMessageDialog(null, "ERROR, Deber rellenar todos los campos","Error", JOptionPane.ERROR_MESSAGE);
             }else{
-                JOptionPane.showMessageDialog(null, "ERROR, Usuario o contraseña no válidas");
-            }
+                //Hacemos la consulta de usuarios
+                Usuarios usuario=new Usuarios();
+                usuario.setUsername(tfusuario.getText());
+                usuario.setPassword(String.valueOf(jPFPassword.getPassword()));
 
+                Usuarios usrEncriptado=hibernate.comprobarLogin(usuario).get(0);
+                //Comprobamos la contraseña encriptada
+                pwdUtil=new PasswordUtil();
+                if(pwdUtil.desencriptar(usuario, usrEncriptado) && usrEncriptado.getUsername().equals(tfusuario.getText())){
+                    //JOptionPane.showMessageDialog(null, "Sesión iniciada correctamente");
+                    VentanaPrincipal principal=new VentanaPrincipal();
+                    principal.setVisible(true);
+                    this.setVisible(false);
+                }else{
+                    JOptionPane.showMessageDialog(null, "ERROR, Usuario o contraseña no válidas");
+                }
+
+            }
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "ERROR, No se ha podido conectar con la base de datos","Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 

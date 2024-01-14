@@ -83,6 +83,17 @@ public class HibernateUtil {
         return listaUsuarios;
     }
     
+    /**Método select de email**/
+    public static List<Usuarios> comprobarCorreo(Usuarios usuario){
+
+        Query q=sesion.createQuery("FROM Usuarios WHERE email = :email");
+        q.setParameter("email",usuario.getEmail());
+        
+        List <Usuarios> listaUsuarios=q.getResultList();
+        
+        return listaUsuarios;
+    }
+    
     /**Método select de usuario y contraseña**/
     public static List<Usuarios> comprobarMail(Usuarios usuario){
 
