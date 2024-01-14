@@ -115,6 +115,9 @@ public class VentanaLogin extends javax.swing.JFrame {
         lbRecuperar.setForeground(new java.awt.Color(244, 150, 40));
         lbRecuperar.setText("Recuperar contraseña");
         lbRecuperar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbRecuperarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lbRecuperarMouseEntered(evt);
             }
@@ -303,6 +306,13 @@ public class VentanaLogin extends javax.swing.JFrame {
         ventanaRegistro.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_lbRegistrarseMouseClicked
+
+    private void lbRecuperarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRecuperarMouseClicked
+        //Abrimos la ventana de recuperar contraseña
+        VentanaRecuperar vRecuperar=new VentanaRecuperar();
+        vRecuperar.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_lbRecuperarMouseClicked
 
     /**
      * @param args the command line arguments

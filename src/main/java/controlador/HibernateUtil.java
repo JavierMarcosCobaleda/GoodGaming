@@ -72,12 +72,24 @@ public class HibernateUtil {
         return true;       
     }
     
-    /**Método select de usuario y contraseña**/
+    /**Método select de usuario**/
     public static List<Usuarios> comprobarLogin(Usuarios usuario){
 
         Query q=sesion.createQuery("FROM Usuarios WHERE username = :username");
         q.setParameter("username",usuario.getUsername());
-        //q.setParameter("password",usuario.getPassword());
+        
+        List <Usuarios> listaUsuarios=q.getResultList();
+        
+        return listaUsuarios;
+    }
+    
+    /**Método select de usuario y contraseña**/
+    public static List<Usuarios> comprobarMail(Usuarios usuario){
+
+        Query q=sesion.createQuery("FROM Usuarios WHERE username = :username AND email = :email");
+        q.setParameter("username",usuario.getUsername());
+        q.setParameter("email",usuario.getEmail());
+        
         List <Usuarios> listaUsuarios=q.getResultList();
         
         return listaUsuarios;
