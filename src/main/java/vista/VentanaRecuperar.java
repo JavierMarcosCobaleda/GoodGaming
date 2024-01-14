@@ -4,9 +4,14 @@
  */
 package vista;
 
+import controlador.EmailUtil;
 import controlador.HibernateUtil;
 import controlador.PasswordUtil;
 import java.awt.Color;
+import java.util.Properties;
+import javax.mail.Authenticator;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
 import javax.swing.JOptionPane;
 import model.Usuarios;
 
@@ -21,6 +26,10 @@ public class VentanaRecuperar extends javax.swing.JFrame {
     //Variables de los controladores
     HibernateUtil hibernate;
     PasswordUtil pwdUtil;
+    EmailUtil emailUtil;
+    String codigo;
+    Usuarios usuario;
+   
     
     public VentanaRecuperar() {
         initComponents();
@@ -29,6 +38,8 @@ public class VentanaRecuperar extends javax.swing.JFrame {
         //Conecta a la base de datos
         hibernate=new HibernateUtil();
         hibernate.conectar();
+        pwdUtil=new PasswordUtil();
+        emailUtil=new EmailUtil();
     }
 
     /**
@@ -44,14 +55,14 @@ public class VentanaRecuperar extends javax.swing.JFrame {
         panelFondoGris = new javax.swing.JPanel();
         tfCorreoElectronico = new javax.swing.JTextField();
         btnEnvio = new javax.swing.JButton();
-        lbRecuperar = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        lbCerrarSesion = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         tfRecUsuario = new javax.swing.JTextField();
+        tfCodigo = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jPFActualizarPassword = new javax.swing.JPasswordField();
+        btnModificar = new javax.swing.JButton();
         xCerrar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         logoGGpeque = new javax.swing.JLabel();
@@ -75,7 +86,6 @@ public class VentanaRecuperar extends javax.swing.JFrame {
         panelFondoGris.setBackground(new java.awt.Color(37, 34, 28));
         panelFondoGris.setMinimumSize(new java.awt.Dimension(350, 519));
         panelFondoGris.setPreferredSize(new java.awt.Dimension(358, 519));
-        panelFondoGris.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfCorreoElectronico.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
         tfCorreoElectronico.setForeground(new java.awt.Color(153, 153, 153));
@@ -92,68 +102,24 @@ public class VentanaRecuperar extends javax.swing.JFrame {
                 tfCorreoElectronicoActionPerformed(evt);
             }
         });
-        panelFondoGris.add(tfCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, 30));
 
         btnEnvio.setBackground(new java.awt.Color(244, 150, 40));
         btnEnvio.setFont(new java.awt.Font("Eras Medium ITC", 1, 14)); // NOI18N
-        btnEnvio.setText("Enviar");
+        btnEnvio.setText("Enviar Código");
         btnEnvio.setPreferredSize(new java.awt.Dimension(192, 40));
         btnEnvio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnvioActionPerformed(evt);
             }
         });
-        panelFondoGris.add(btnEnvio, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 259, -1, 41));
-
-        lbRecuperar.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
-        lbRecuperar.setForeground(new java.awt.Color(244, 150, 40));
-        lbRecuperar.setText("Cambiar contraseña");
-        lbRecuperar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lbRecuperarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lbRecuperarMouseExited(evt);
-            }
-        });
-        panelFondoGris.add(lbRecuperar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, -1, 20));
-
-        jSeparator1.setForeground(new java.awt.Color(244, 150, 40));
-        panelFondoGris.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 364, 127, 10));
-
-        jLabel2.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("O");
-        panelFondoGris.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 358, -1, -1));
-
-        jSeparator2.setForeground(new java.awt.Color(244, 150, 40));
-        panelFondoGris.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 364, 127, 10));
-
-        lbCerrarSesion.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
-        lbCerrarSesion.setForeground(new java.awt.Color(244, 150, 40));
-        lbCerrarSesion.setText("Cerrar sesión");
-        lbCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbCerrarSesionMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lbCerrarSesionMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lbCerrarSesionMouseExited(evt);
-            }
-        });
-        panelFondoGris.add(lbCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, -1, 20));
 
         jLabel3.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Correo electrónico");
-        panelFondoGris.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nombre de usuario");
-        panelFondoGris.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
 
         tfRecUsuario.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
         tfRecUsuario.setForeground(new java.awt.Color(153, 153, 153));
@@ -170,7 +136,103 @@ public class VentanaRecuperar extends javax.swing.JFrame {
                 tfRecUsuarioActionPerformed(evt);
             }
         });
-        panelFondoGris.add(tfRecUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, 30));
+
+        tfCodigo.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
+        tfCodigo.setForeground(new java.awt.Color(153, 153, 153));
+        tfCodigo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tfCodigo.setMinimumSize(new java.awt.Dimension(64, 22));
+        tfCodigo.setPreferredSize(new java.awt.Dimension(257, 22));
+        tfCodigo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tfCodigoMousePressed(evt);
+            }
+        });
+        tfCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfCodigoActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Código de activación");
+
+        jLabel6.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Nueva contraseña");
+
+        jPFActualizarPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPFActualizarPassword.setText("********");
+        jPFActualizarPassword.setMinimumSize(new java.awt.Dimension(257, 22));
+
+        btnModificar.setBackground(new java.awt.Color(244, 150, 40));
+        btnModificar.setFont(new java.awt.Font("Eras Medium ITC", 1, 14)); // NOI18N
+        btnModificar.setText("Actualizar Contraseña");
+        btnModificar.setPreferredSize(new java.awt.Dimension(192, 40));
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelFondoGrisLayout = new javax.swing.GroupLayout(panelFondoGris);
+        panelFondoGris.setLayout(panelFondoGrisLayout);
+        panelFondoGrisLayout.setHorizontalGroup(
+            panelFondoGrisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFondoGrisLayout.createSequentialGroup()
+                .addGroup(panelFondoGrisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFondoGrisLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jLabel4))
+                    .addGroup(panelFondoGrisLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(tfRecUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelFondoGrisLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jLabel3))
+                    .addGroup(panelFondoGrisLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(tfCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelFondoGrisLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addGroup(panelFondoGrisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPFActualizarPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5)
+                            .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelFondoGrisLayout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(btnEnvio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelFondoGrisLayout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(60, 60, 60))
+        );
+        panelFondoGrisLayout.setVerticalGroup(
+            panelFondoGrisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFondoGrisLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfRecUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(btnEnvio, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPFActualizarPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         panelFondo.add(panelFondoGris, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 377, 480));
 
@@ -234,45 +296,50 @@ public class VentanaRecuperar extends javax.swing.JFrame {
 
     private void btnEnvioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnvioActionPerformed
         //Comprobar email en la base de datos
-        Usuarios usuario=new Usuarios();
+        usuario=new Usuarios();
         usuario.setUsername(tfRecUsuario.getText());
         usuario.setEmail(tfCorreoElectronico.getText());
 
         if(hibernate.comprobarMail(usuario).get(0).getUsername().equals(tfRecUsuario.getText()) && hibernate.comprobarMail(usuario).get(0).getEmail().equals(tfCorreoElectronico.getText()) ){
-            //Generar contraseña nueva
-            
+            //Generar código de recuperación
+            codigo=pwdUtil.generarCodigo();                 
             
             //Enviar mail al usuario
+            //DESDE GMAIL
+            final String fromemail="jamacoaudiovisual@gmail.com";
+            final String password="dcccqdlewojbefei";
+            final String toemail=tfCorreoElectronico.getText();
+
+            System.out.println("SSLMail Start");
+            Properties props=new Properties();
+            props.put("mail.smtp.host", "smtp.gmail.com");
+            props.put("mail.smtp.starttls.enable", "true");
+            props.put("mail.smtp.port", "587");
+            props.put("mail.smtp.user", fromemail);
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.ssl.protocols","TLSv1.2");
+
+            Authenticator auth = new Authenticator() {
+                //@Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+
+                    return new PasswordAuthentication(fromemail, password);
+                }
+            };
+
+            Session session = Session.getDefaultInstance(props, auth);
+            System.out.println("Session created");
+            EmailUtil.sendEmail(session, toemail, "Good Gaming password recovery", "Código de recuperación de contraseña:\n"+codigo);
+            
+            JOptionPane.showMessageDialog(null, "Código enviado, revise su correo electrónico e introduzca el código para generar una nueva contraseña");
+            
+            
             
         }else{
             JOptionPane.showMessageDialog(null, "ERROR, No se ha encontrado ningún usuario con ese correro electrónico","Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_btnEnvioActionPerformed
-
-    private void lbRecuperarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRecuperarMouseEntered
-        //Cambiar color al entrar en recuperar contraseña
-        lbRecuperar.setForeground(Color.white);
-    }//GEN-LAST:event_lbRecuperarMouseEntered
-
-    private void lbRecuperarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRecuperarMouseExited
-        //Cambiar color al salir de recuperar contraseña
-        lbRecuperar.setForeground(new Color(244,150,40));
-    }//GEN-LAST:event_lbRecuperarMouseExited
-
-    private void lbCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbCerrarSesionMouseClicked
-        //Abrimos la ventana de registro de usuario
-    }//GEN-LAST:event_lbCerrarSesionMouseClicked
-
-    private void lbCerrarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbCerrarSesionMouseEntered
-        //Cambiar color al entrar en registrarse
-        lbCerrarSesion.setForeground(Color.white);
-    }//GEN-LAST:event_lbCerrarSesionMouseEntered
-
-    private void lbCerrarSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbCerrarSesionMouseExited
-        //Cambiar color al salir de registrarse
-        lbCerrarSesion.setForeground(new Color(244,150,40));
-    }//GEN-LAST:event_lbCerrarSesionMouseExited
 
     private void tfRecUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfRecUsuarioMousePressed
         // TODO add your handling code here:
@@ -319,6 +386,32 @@ public class VentanaRecuperar extends javax.swing.JFrame {
         yMouse=evt.getY();
     }//GEN-LAST:event_panelFondoMousePressed
 
+    private void tfCodigoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfCodigoMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfCodigoMousePressed
+
+    private void tfCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfCodigoActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        //Comprobamos que el codigo insertado es igual al generado
+        if(tfCodigo.getText().equals(codigo)){
+            
+            usuario.setPassword(String.valueOf(jPFActualizarPassword.getPassword()));
+            pwdUtil.encriptar(usuario);
+            
+            if(hibernate.modificarPassword(usuario)==1){
+                JOptionPane.showMessageDialog(null, "Contraseña cambiada con éxito");
+            }else{
+                JOptionPane.showMessageDialog(null, "ERROR, No se ha podido cambiar la contraseña","Error", JOptionPane.ERROR_MESSAGE);
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "ERROR, Código incorrecto","Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -356,17 +449,17 @@ public class VentanaRecuperar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEnvio;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel lbCerrarSesion;
-    private javax.swing.JLabel lbRecuperar;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPasswordField jPFActualizarPassword;
     private javax.swing.JLabel logoGGpeque;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JPanel panelFondoGris;
+    private javax.swing.JTextField tfCodigo;
     private javax.swing.JTextField tfCorreoElectronico;
     private javax.swing.JTextField tfRecUsuario;
     private javax.swing.JLabel xCerrar;

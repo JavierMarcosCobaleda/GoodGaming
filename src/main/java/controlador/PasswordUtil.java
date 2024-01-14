@@ -6,6 +6,7 @@ package controlador;
 
 import com.password4j.Hash;
 import com.password4j.Password;
+import java.util.Random;
 import model.Usuarios;
 
 /**
@@ -33,5 +34,26 @@ public class PasswordUtil {
     //usuario sin hashear, usuario hasheado
     public boolean desencriptar(Usuarios usuario,Usuarios user){
         return Password.check(usuario.getPassword(), user.getPassword()).withArgon2();
+    }
+    
+    /**Método para generar un código de recuperación**/
+    public String generarCodigo() {
+        //array de caracteres con letras mayúsculas, minúsculas y símbolos
+        char[] caracteres = new char[93];
+
+        for (int i=0; i<caracteres.length; i++) {
+            caracteres[i] = (char)(33+i);
+        }
+        
+        //Crear la cadena aleatoria
+        Random rand = new Random();
+        StringBuffer codigo = new StringBuffer();
+
+        for (int i=0; i < 8; i++) {
+            int caracter = rand.nextInt(caracteres.length);
+            codigo.append(caracteres[caracter]);
+        }
+
+        return codigo.toString();
     }
 }

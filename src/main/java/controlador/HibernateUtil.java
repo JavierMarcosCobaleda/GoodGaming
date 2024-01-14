@@ -94,4 +94,22 @@ public class HibernateUtil {
         
         return listaUsuarios;
     }
+    
+    /**Método para modificar Contraseña**/
+    public int modificarPassword (Usuarios usuario){
+        Transaction tx=sesion.beginTransaction();
+			
+	String sentencia= "update Usuarios set password= :pwd where username= :username";
+			
+	Query q=sesion.createQuery(sentencia);
+	q.setParameter("pwd", usuario.getPassword());
+	q.setParameter("username", usuario.getUsername());
+        
+        int filasAfectadas=q.executeUpdate();
+        
+        tx.commit();
+        
+        return filasAfectadas;
+        
+    }
 }
