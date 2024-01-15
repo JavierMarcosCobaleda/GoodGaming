@@ -364,6 +364,8 @@ public class VentanaRecuperar extends javax.swing.JFrame {
                 }
             }catch(NullPointerException e){
                 JOptionPane.showMessageDialog(null, "ERROR, No se ha podido conectar con la base de datos","Error", JOptionPane.ERROR_MESSAGE);
+            }catch(IndexOutOfBoundsException e){
+                JOptionPane.showMessageDialog(null, "ERROR,El usuario no tiene registrado ese correo electrónico","Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnEnvioActionPerformed
