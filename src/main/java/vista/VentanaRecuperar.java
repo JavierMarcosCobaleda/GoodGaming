@@ -422,21 +422,26 @@ public class VentanaRecuperar extends javax.swing.JFrame {
     }//GEN-LAST:event_tfCodigoActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        //Comprobamos que el codigo insertado es igual al generado
-        if(tfCodigo.getText().equals(codigo)){
-            
-            usuario.setPassword(String.valueOf(jPFActualizarPassword.getPassword()));
-            pwdUtil.encriptar(usuario);
-            
-            if(hibernate.modificarPassword(usuario)==1){
-                JOptionPane.showMessageDialog(null, "Contraseña cambiada con éxito");
-            }else{
-                JOptionPane.showMessageDialog(null, "ERROR, No se ha podido cambiar la contraseña","Error", JOptionPane.ERROR_MESSAGE);
-            }
-            
+        if(String.valueOf(jPFActualizarPassword.getPassword()).equals("********") || String.valueOf(jPFActualizarPassword.getPassword()).equals("")){
+            JOptionPane.showMessageDialog(null, "ERROR, Intruduzca una contraseña","Error", JOptionPane.ERROR_MESSAGE);
         }else{
-            JOptionPane.showMessageDialog(null, "ERROR, Código incorrecto","Error", JOptionPane.ERROR_MESSAGE);
-        }
+
+            //Comprobamos que el codigo insertado es igual al generado       
+            if(tfCodigo.getText().equals(codigo)){
+
+                usuario.setPassword(String.valueOf(jPFActualizarPassword.getPassword()));
+                pwdUtil.encriptar(usuario);
+
+                if(hibernate.modificarPassword(usuario)==1){
+                    JOptionPane.showMessageDialog(null, "Contraseña cambiada con éxito");
+                }else{
+                    JOptionPane.showMessageDialog(null, "ERROR, No se ha podido cambiar la contraseña","Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }else{
+                JOptionPane.showMessageDialog(null, "ERROR, Código incorrecto","Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }    
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void jPFActualizarPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPFActualizarPasswordMousePressed

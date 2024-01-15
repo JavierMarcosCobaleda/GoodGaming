@@ -32,9 +32,12 @@ public class VentanaRegistro extends javax.swing.JFrame {
         btnRegistro.setMnemonic('r');
         
         //Conectamos con la base de datos
-        hibernate=new HibernateUtil();
-        hibernate.conectar();
-
+        try{
+            hibernate=new HibernateUtil();
+            hibernate.conectar();
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "ERROR, No se ha podido conectar con la base de datos","Error", JOptionPane.ERROR_MESSAGE);
+        }      
         
         btnRegistro.setForeground(Color.BLACK);
     }
@@ -94,11 +97,6 @@ public class VentanaRegistro extends javax.swing.JFrame {
                 tfCorreoElectronicoMousePressed(evt);
             }
         });
-        tfCorreoElectronico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfCorreoElectronicoActionPerformed(evt);
-            }
-        });
 
         btnRegistro.setBackground(new java.awt.Color(244, 150, 40));
         btnRegistro.setFont(new java.awt.Font("Eras Medium ITC", 1, 14)); // NOI18N
@@ -155,11 +153,6 @@ public class VentanaRegistro extends javax.swing.JFrame {
         tfRegUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 tfRegUsuarioMousePressed(evt);
-            }
-        });
-        tfRegUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfRegUsuarioActionPerformed(evt);
             }
         });
 
@@ -254,11 +247,21 @@ public class VentanaRegistro extends javax.swing.JFrame {
 
     private void tfCorreoElectronicoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfCorreoElectronicoMousePressed
         //Quitar el texto Usuario al entrar
-        if(tfCorreoElectronico.getText().equals("Usuario")){
+        if(tfCorreoElectronico.getText().equals("Correo electrónico")){
             tfCorreoElectronico.setText("");
             tfCorreoElectronico.setForeground(Color.white);
         }
-        //Si el password está vacío escribir los asteriscos en él
+        // Rellenar los demás campos
+        if(tfRegUsuario.getText().isEmpty()){
+            tfRegUsuario.setText("Usuario");
+            tfRegUsuario.setForeground(Color.gray);
+        }
+        
+        if(String.valueOf(jPFRegPassword.getPassword()).isEmpty()){
+            jPFRegPassword.setText("********");
+            jPFRegPassword.setForeground(Color.gray);
+        }
+        
         if(String.valueOf(jPFRepetirPassword.getPassword()).isEmpty()){
             jPFRepetirPassword.setText("********");
             jPFRepetirPassword.setForeground(Color.gray);
@@ -268,43 +271,44 @@ public class VentanaRegistro extends javax.swing.JFrame {
 
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
         //Registrar nuevo usuario
-        
-        
-        
-        //si coincide la contraseña
-        if(String.valueOf(jPFRegPassword.getPassword()).equals(String.valueOf(jPFRepetirPassword.getPassword()))){
-            //Encriptar contraseña
-            Usuarios usuario=new Usuarios();
-            usuario.setUsername(tfRegUsuario.getText());
-            usuario.setEmail(tfCorreoElectronico.getText());
-            
-           
-            //Comprobamos que no existe el nombre de usuario en la base de datos          
-            if(hibernate.comprobarLogin(usuario).size()>0){
-                JOptionPane.showMessageDialog(null, "ERROR, Ya existe un usuario con ese nombre","Error", JOptionPane.ERROR_MESSAGE);
-            //Comprobamos que no existe un correo igual en la base de datos
-            }else if (hibernate.comprobarCorreo(usuario).size()>0){
-                JOptionPane.showMessageDialog(null, "ERROR, Ya existe un usuario con ese correo electrónico","Error", JOptionPane.ERROR_MESSAGE);
-            }else{
-                       
-                usuario.setPassword(String.valueOf(jPFRegPassword.getPassword()));
-
-                //Cambiamos la contraseña del usuario por la encriptada
-                PasswordUtil pwdUtil=new PasswordUtil();
-                pwdUtil.encriptar(usuario);
+               
+        try{
+            //si coincide la contraseña
+            if(String.valueOf(jPFRegPassword.getPassword()).equals(String.valueOf(jPFRepetirPassword.getPassword()))){
+                //Encriptar contraseña
+                Usuarios usuario=new Usuarios();
+                usuario.setUsername(tfRegUsuario.getText());
+                usuario.setEmail(tfCorreoElectronico.getText());
 
 
-                //Insertamos el usuario en la base de datos
-                if (hibernate.agregarUsuario(usuario)){
-                    JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
+                //Comprobamos que no existe el nombre de usuario en la base de datos          
+                if(hibernate.comprobarLogin(usuario).size()>0){
+                    JOptionPane.showMessageDialog(null, "ERROR, Ya existe un usuario con ese nombre","Error", JOptionPane.ERROR_MESSAGE);
+                //Comprobamos que no existe un correo igual en la base de datos
+                }else if (hibernate.comprobarCorreo(usuario).size()>0){
+                    JOptionPane.showMessageDialog(null, "ERROR, Ya existe un usuario con ese correo electrónico","Error", JOptionPane.ERROR_MESSAGE);
                 }else{
-                    JOptionPane.showMessageDialog(null, "ERROR, no se ha podido registrar al usuario","Error", JOptionPane.ERROR_MESSAGE);
+
+                    usuario.setPassword(String.valueOf(jPFRegPassword.getPassword()));
+
+                    //Cambiamos la contraseña del usuario por la encriptada
+                    PasswordUtil pwdUtil=new PasswordUtil();
+                    pwdUtil.encriptar(usuario);
+
+
+                    //Insertamos el usuario en la base de datos
+                    if (hibernate.agregarUsuario(usuario)){
+                        JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
+                    }else{
+                        JOptionPane.showMessageDialog(null, "ERROR, no se ha podido registrar al usuario","Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
+            }else{
+                JOptionPane.showMessageDialog(null, "ERROR, La contraseña no coincide","Error", JOptionPane.ERROR_MESSAGE);
             }
-        }else{
-            JOptionPane.showMessageDialog(null, "ERROR, La contraseña no coincide","Error", JOptionPane.ERROR_MESSAGE);
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "ERROR, No se ha podido conectar con la base de datos","Error", JOptionPane.ERROR_MESSAGE);
         }
-        
 
     }//GEN-LAST:event_btnRegistroActionPerformed
 
@@ -315,9 +319,19 @@ public class VentanaRegistro extends javax.swing.JFrame {
             jPFRepetirPassword.setForeground(Color.white);
         }
 
-        //Escribir usuario si el usuario está vacío
-        if(tfCorreoElectronico.getText().isEmpty()){
-            tfCorreoElectronico.setText("Usuario");
+        // Rellenar los demás campos
+        if(tfRegUsuario.getText().isEmpty()){
+            tfRegUsuario.setText("Usuario");
+            tfRegUsuario.setForeground(Color.gray);
+        }
+               
+        if(String.valueOf(jPFRegPassword.getPassword()).isEmpty()){
+            jPFRegPassword.setText("********");
+            jPFRegPassword.setForeground(Color.gray);
+        }
+        
+        if(tfCorreoElectronico.getText().equals("")){
+            tfCorreoElectronico.setText("Correo electrónico");
             tfCorreoElectronico.setForeground(Color.gray);
         }
     }//GEN-LAST:event_jPFRepetirPasswordMousePressed
@@ -358,24 +372,53 @@ public class VentanaRegistro extends javax.swing.JFrame {
         yMouse=evt.getY();
     }//GEN-LAST:event_panelFondoMousePressed
 
-    private void tfCorreoElectronicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCorreoElectronicoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfCorreoElectronicoActionPerformed
-
     private void jPFRegPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPFRegPasswordMousePressed
+        // Vaciar el password por defecto
         if(String.valueOf(jPFRegPassword.getPassword()).equals("********")){
             jPFRegPassword.setText("");
             jPFRegPassword.setForeground(Color.white);
         }
+        
+        // Rellenar los demás campos
+        if(tfRegUsuario.getText().equals("")){
+            tfRegUsuario.setText("Usuario");
+            tfRegUsuario.setForeground(Color.gray);
+        }
+               
+        if(String.valueOf(jPFRepetirPassword.getPassword()).isEmpty()){
+            jPFRepetirPassword.setText("********");
+            jPFRepetirPassword.setForeground(Color.gray);
+        }
+        
+        if(tfCorreoElectronico.getText().equals("")){
+            tfCorreoElectronico.setText("Correo electrónico");
+            tfCorreoElectronico.setForeground(Color.gray);
+        }
     }//GEN-LAST:event_jPFRegPasswordMousePressed
 
     private void tfRegUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfRegUsuarioMousePressed
-        // TODO add your handling code here:
+        // Vaciar el texto Usuario
+        if(tfRegUsuario.getText().equals("Usuario")){
+            tfRegUsuario.setText("");
+            tfRegUsuario.setForeground(Color.white);
+        }
+        
+        // Rellenar los demás campos
+        if(String.valueOf(jPFRegPassword.getPassword()).isEmpty()){
+            jPFRegPassword.setText("********");
+            jPFRegPassword.setForeground(Color.gray);
+        }
+        
+        if(String.valueOf(jPFRepetirPassword.getPassword()).isEmpty()){
+            jPFRepetirPassword.setText("********");
+            jPFRepetirPassword.setForeground(Color.gray);
+        }
+        
+        if(tfCorreoElectronico.getText().equals("")){
+            tfCorreoElectronico.setText("Correo electrónico");
+            tfCorreoElectronico.setForeground(Color.gray);
+        }
     }//GEN-LAST:event_tfRegUsuarioMousePressed
-
-    private void tfRegUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfRegUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfRegUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
