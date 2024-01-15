@@ -10,6 +10,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import model.Usuarios;
 
 /**
  *
@@ -36,5 +37,6 @@ public class EmailUtil {
             }catch(Exception e) {
                 e.printStackTrace();
             }
-    }
+    }    
+    
 }

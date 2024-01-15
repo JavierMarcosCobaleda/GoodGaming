@@ -4,7 +4,9 @@
  */
 package vista;
 
+
 import controlador.HibernateUtil;
+import controlador.OtrosMetodos;
 import controlador.PasswordUtil;
 import java.awt.Color;
 import javax.swing.JOptionPane;
@@ -21,9 +23,11 @@ public class VentanaRegistro extends javax.swing.JFrame {
     //Variables para mover la ventana
     int xMouse,yMouse;
     HibernateUtil hibernate;
+    OtrosMetodos metodos;
     
     public VentanaRegistro() {
         initComponents();
+
         
         //Establecer el botón por defecto
         getRootPane().setDefaultButton(btnRegistro);
@@ -287,20 +291,27 @@ public class VentanaRegistro extends javax.swing.JFrame {
                 //Comprobamos que no existe un correo igual en la base de datos
                 }else if (hibernate.comprobarCorreo(usuario).size()>0){
                     JOptionPane.showMessageDialog(null, "ERROR, Ya existe un usuario con ese correo electrónico","Error", JOptionPane.ERROR_MESSAGE);
-                }else{
-
+                }else if (String.valueOf(jPFRegPassword.getPassword()).length()<8){
+                    JOptionPane.showMessageDialog(null, "ERROR, La contraseña debe tener al menos 8 caracteres","Error", JOptionPane.ERROR_MESSAGE);
+                }else{    
                     usuario.setPassword(String.valueOf(jPFRegPassword.getPassword()));
-
-                    //Cambiamos la contraseña del usuario por la encriptada
-                    PasswordUtil pwdUtil=new PasswordUtil();
-                    pwdUtil.encriptar(usuario);
-
-
-                    //Insertamos el usuario en la base de datos
-                    if (hibernate.agregarUsuario(usuario)){
-                        JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
+                    
+                    metodos=new OtrosMetodos();
+                    if(!metodos.mailSintaxis(usuario)){
+                        JOptionPane.showMessageDialog(null, "ERROR, Correo electrónico mal escrito","Error", JOptionPane.ERROR_MESSAGE);
                     }else{
-                        JOptionPane.showMessageDialog(null, "ERROR, no se ha podido registrar al usuario","Error", JOptionPane.ERROR_MESSAGE);
+
+                        //Cambiamos la contraseña del usuario por la encriptada
+                        PasswordUtil pwdUtil=new PasswordUtil();
+                        pwdUtil.encriptar(usuario);
+
+
+                        //Insertamos el usuario en la base de datos
+                        if (hibernate.agregarUsuario(usuario)){
+                            JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
+                        }else{
+                            JOptionPane.showMessageDialog(null, "ERROR, no se ha podido registrar al usuario","Error", JOptionPane.ERROR_MESSAGE);
+                        }
                     }
                 }
             }else{

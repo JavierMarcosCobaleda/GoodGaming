@@ -45,7 +45,6 @@ public class Principal {
         /*VentanaLogin login=new VentanaLogin();
         //iniciar flatlaf
         FlatMaterialDarkerIJTheme.setup();*/
-        
-        
+      
     }
 }
