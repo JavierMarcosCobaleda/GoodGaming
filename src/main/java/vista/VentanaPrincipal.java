@@ -5,6 +5,7 @@
 package vista;
 
 import java.awt.Color;
+import javax.swing.JPanel;
 
 /**
  *
@@ -12,11 +13,15 @@ import java.awt.Color;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VentanaPrincipal
-     */
+    //Variables para mover la ventana
+    int xMouse,yMouse;
+    
     public VentanaPrincipal() {
         initComponents();
+        btnRegistrar.setForeground(Color.BLACK);
+        btnGestionar.setForeground(Color.BLACK);
+        btnColeccion.setForeground(Color.BLACK);
+        btnDeseos.setForeground(Color.BLACK);
     }
 
     /**
@@ -30,18 +35,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         panelFondo = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        panelLateral = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        btnRegistrar = new javax.swing.JButton();
+        btnGestionar = new javax.swing.JButton();
+        btnColeccion = new javax.swing.JButton();
+        btnDeseos = new javax.swing.JButton();
+        panelSuperior = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         xCerrar = new javax.swing.JLabel();
+        panelVentanas = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -49,81 +55,100 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelFondo.setBackground(new java.awt.Color(30, 30, 30));
         panelFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Eras Medium ITC", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Bienvenido a Good Gaming");
-        panelFondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 484, -1, -1));
-
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel2.setPreferredSize(new java.awt.Dimension(276, 960));
+        panelLateral.setBackground(new java.awt.Color(0, 0, 0));
+        panelLateral.setPreferredSize(new java.awt.Dimension(276, 960));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logoGGpeque.png"))); // NOI18N
         jLabel2.setToolTipText("");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/GOOD GAMING.png"))); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Eras Medium ITC", 1, 18)); // NOI18N
-        jButton1.setText("REGISTRAR JUEGO");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrar.setBackground(new java.awt.Color(113, 111, 108));
+        btnRegistrar.setFont(new java.awt.Font("Eras Medium ITC", 1, 18)); // NOI18N
+        btnRegistrar.setText("REGISTRAR JUEGO");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRegistrarActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Eras Medium ITC", 1, 18)); // NOI18N
-        jButton2.setText("GESTIONAR JUEGOS");
-
-        jButton3.setFont(new java.awt.Font("Eras Medium ITC", 1, 18)); // NOI18N
-        jButton3.setText("MI COLECCIÓN");
-
-        jButton4.setFont(new java.awt.Font("Eras Medium ITC", 1, 18)); // NOI18N
-        jButton4.setText("LISTA DE DESEOS");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnGestionar.setBackground(new java.awt.Color(113, 111, 108));
+        btnGestionar.setFont(new java.awt.Font("Eras Medium ITC", 1, 18)); // NOI18N
+        btnGestionar.setText("GESTIONAR JUEGOS");
+        btnGestionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnGestionarActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        btnColeccion.setBackground(new java.awt.Color(113, 111, 108));
+        btnColeccion.setFont(new java.awt.Font("Eras Medium ITC", 1, 18)); // NOI18N
+        btnColeccion.setText("MI COLECCIÓN");
+        btnColeccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnColeccionActionPerformed(evt);
+            }
+        });
+
+        btnDeseos.setBackground(new java.awt.Color(113, 111, 108));
+        btnDeseos.setFont(new java.awt.Font("Eras Medium ITC", 1, 18)); // NOI18N
+        btnDeseos.setText("LISTA DE DESEOS");
+        btnDeseos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeseosActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelLateralLayout = new javax.swing.GroupLayout(panelLateral);
+        panelLateral.setLayout(panelLateralLayout);
+        panelLateralLayout.setHorizontalGroup(
+            panelLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLateralLayout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLateralLayout.createSequentialGroup()
                 .addContainerGap(28, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(panelLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnGestionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnColeccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDeseos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(36, 36, 36))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        panelLateralLayout.setVerticalGroup(
+            panelLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLateralLayout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(jLabel3)
                 .addGap(40, 40, 40)
                 .addComponent(jLabel2)
                 .addGap(151, 151, 151)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnGestionar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(68, 68, 68)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnColeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDeseos, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(196, Short.MAX_VALUE))
         );
 
-        panelFondo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 276, 960));
+        panelFondo.add(panelLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 276, 960));
 
-        jPanel3.setBackground(new java.awt.Color(113, 111, 108));
-        jPanel3.setPreferredSize(new java.awt.Dimension(1440, 87));
+        panelSuperior.setBackground(new java.awt.Color(113, 111, 108));
+        panelSuperior.setPreferredSize(new java.awt.Dimension(1440, 87));
+        panelSuperior.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                panelSuperiorMouseDragged(evt);
+            }
+        });
+        panelSuperior.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                panelSuperiorMousePressed(evt);
+            }
+        });
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logoUsuario.png"))); // NOI18N
 
@@ -149,30 +174,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelSuperiorLayout = new javax.swing.GroupLayout(panelSuperior);
+        panelSuperior.setLayout(panelSuperiorLayout);
+        panelSuperiorLayout.setHorizontalGroup(
+            panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelSuperiorLayout.createSequentialGroup()
                 .addGap(367, 367, 367)
                 .addComponent(jLabel4)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelSuperiorLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5)
                         .addContainerGap(942, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSuperiorLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(xCerrar)
                         .addGap(14, 14, 14))))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        panelSuperiorLayout.setVerticalGroup(
+            panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSuperiorLayout.createSequentialGroup()
                 .addContainerGap(20, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(19, 19, 19))
-            .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(panelSuperiorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(xCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -180,7 +205,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelFondo.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 87));
+        panelFondo.add(panelSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 87));
+
+        panelVentanas.setBackground(new java.awt.Color(30, 30, 30));
+        panelVentanas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Eras Medium ITC", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Bienvenido a Good Gaming");
+        panelVentanas.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, -1, -1));
+
+        panelFondo.add(panelVentanas, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 1100, 810));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -227,13 +262,60 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         xCerrar.setForeground(Color.red);
     }//GEN-LAST:event_xCerrarMousePressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        //Mostramos el panel de registrar juegos
+        PanelRegistrar preg=new PanelRegistrar();
+        mostrarPanel(preg);
+        
+        //cambiamos los colores de los botones de la barra lateral
+        btnRegistrar.setBackground(new Color(234,164,28));
+        btnGestionar.setBackground(new Color(113,111,108));
+        btnColeccion.setBackground(new Color(113,111,108));
+        btnDeseos.setBackground(new Color(113,111,108));
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnDeseosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeseosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        
+        //cambiamos los colores de los botones de la barra lateral
+        btnRegistrar.setBackground(new Color(113,111,108));
+        btnGestionar.setBackground(new Color(113,111,108));
+        btnColeccion.setBackground(new Color(113,111,108));
+        btnDeseos.setBackground(new Color(234,164,28));
+    }//GEN-LAST:event_btnDeseosActionPerformed
+
+    private void panelSuperiorMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelSuperiorMouseDragged
+        // Mover la ventana
+       int x=evt.getXOnScreen();
+       int y=evt.getYOnScreen();
+       this.setLocation(x-xMouse,y-yMouse);
+    }//GEN-LAST:event_panelSuperiorMouseDragged
+
+    private void panelSuperiorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelSuperiorMousePressed
+        // Obtener x e y para mover la ventana
+        xMouse=evt.getX();
+        yMouse=evt.getY();
+    }//GEN-LAST:event_panelSuperiorMousePressed
+
+    private void btnGestionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarActionPerformed
+        // TODO add your handling code here:
+        
+        //cambiamos los colores de los botones de la barra lateral
+        btnRegistrar.setBackground(new Color(113,111,108));
+        btnGestionar.setBackground(new Color(234,164,28));
+        btnColeccion.setBackground(new Color(113,111,108));
+        btnDeseos.setBackground(new Color(113,111,108));
+    }//GEN-LAST:event_btnGestionarActionPerformed
+
+    private void btnColeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColeccionActionPerformed
+        // TODO add your handling code here:
+        
+        //cambiamos los colores de los botones de la barra lateral
+        btnRegistrar.setBackground(new Color(113,111,108));
+        btnGestionar.setBackground(new Color(113,111,108));
+        btnColeccion.setBackground(new Color(234,164,28));
+        btnDeseos.setBackground(new Color(113,111,108));
+    }//GEN-LAST:event_btnColeccionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,19 +353,31 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnColeccion;
+    private javax.swing.JButton btnDeseos;
+    private javax.swing.JButton btnGestionar;
+    private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel panelFondo;
+    private javax.swing.JPanel panelLateral;
+    private javax.swing.JPanel panelSuperior;
+    private javax.swing.JPanel panelVentanas;
     private javax.swing.JLabel xCerrar;
     // End of variables declaration//GEN-END:variables
+
+    /**Método para mostrar paneles**/
+    public void mostrarPanel(JPanel p){
+        p.setSize(1100,810);
+        p.setLocation(0,0);   
+
+        panelVentanas.removeAll();
+            panelVentanas.add(p, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+            panelVentanas.revalidate();
+            panelVentanas.repaint();
+    }
 }
