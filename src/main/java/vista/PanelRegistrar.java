@@ -5,6 +5,7 @@
 package vista;
 
 import java.awt.Color;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 
 /**
