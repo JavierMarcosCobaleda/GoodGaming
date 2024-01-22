@@ -25,6 +25,8 @@ public class VentanaLogin extends javax.swing.JFrame {
     
     public VentanaLogin() {
         initComponents();
+        //Iniciar en el centro de la pantalla
+        setLocationRelativeTo(null);
         //Redonder componentes
         btnIniciarSesion.putClientProperty("FlatLaf.style","arc: 20");
         tfusuario.putClientProperty("FlatLaf.style","arc: 20");

@@ -33,6 +33,10 @@ public class VentanaRecuperar extends javax.swing.JFrame {
     
     public VentanaRecuperar() {
         initComponents();
+        //Iniciar en el centro de la pantalla
+        setLocationRelativeTo(null);
+        
+        //Cambiar color de textos de botones
         btnEnvio.setForeground(Color.BLACK);
         btnActualizar.setForeground(Color.BLACK);
         

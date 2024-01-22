@@ -5,19 +5,28 @@
 package vista;
 
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author Javier Marcos Cobaleda
  */
 public class PanelRegistrar extends javax.swing.JPanel {
-
+    
     /**
      * Creates new form PanelRegistrar
      */
     public PanelRegistrar() {
         initComponents();
+        
         lblRegistrar.setForeground(Color.BLACK);
+        btnAgregarDeseos.setForeground(Color.BLACK);
+        btnAgregarColeccion.setForeground(Color.BLACK);
+        
+        //Rellenar el Jlist dependiendo del rabioButton seleccionado
+        if(rbNintendo.isSelected()){
+            
+        }
     }
 
     /**
@@ -50,7 +59,12 @@ public class PanelRegistrar extends javax.swing.JPanel {
         tfGenero2 = new javax.swing.JTextField();
         lblgenero5 = new javax.swing.JLabel();
         jsValoracion = new javax.swing.JSlider();
-        jLabel1 = new javax.swing.JLabel();
+        estrellas = new javax.swing.JLabel();
+        btnLimpiar = new javax.swing.JButton();
+        btnAgregarDeseos = new javax.swing.JButton();
+        btnAgregarColeccion = new javax.swing.JButton();
+
+        setPreferredSize(new java.awt.Dimension(950, 810));
 
         panelFondo.setBackground(new java.awt.Color(30, 30, 30));
         panelFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -66,32 +80,32 @@ public class PanelRegistrar extends javax.swing.JPanel {
         lblRegistrar.setText("REGISTRAR JUEGO");
         panelRound1.add(lblRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, -1));
 
-        panelFondo.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 519, 113));
+        panelFondo.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 519, 113));
 
         lbltitulo.setFont(new java.awt.Font("OCR A Extended", 0, 18)); // NOI18N
         lbltitulo.setForeground(new java.awt.Color(255, 255, 255));
         lbltitulo.setText("Título");
-        panelFondo.add(lbltitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, -1, -1));
+        panelFondo.add(lbltitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, -1));
 
         tfTitulo.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         tfTitulo.setForeground(new java.awt.Color(255, 255, 255));
         tfTitulo.setPreferredSize(new java.awt.Dimension(221, 22));
-        panelFondo.add(tfTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, 390, 30));
+        panelFondo.add(tfTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 390, 30));
 
         lblplataforma.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         lblplataforma.setForeground(new java.awt.Color(255, 255, 255));
         lblplataforma.setText("Plataforma");
-        panelFondo.add(lblplataforma, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, -1, -1));
+        panelFondo.add(lblplataforma, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, -1, -1));
 
         tfGenero.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         tfGenero.setForeground(new java.awt.Color(255, 255, 255));
         tfGenero.setPreferredSize(new java.awt.Dimension(221, 22));
-        panelFondo.add(tfGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 390, 30));
+        panelFondo.add(tfGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 390, 30));
 
         lblgenero1.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         lblgenero1.setForeground(new java.awt.Color(255, 255, 255));
         lblgenero1.setText("Género");
-        panelFondo.add(lblgenero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, -1, -1));
+        panelFondo.add(lblgenero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, -1, -1));
 
         buttonGroup1.add(rbPlayStation);
         rbPlayStation.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
@@ -102,7 +116,7 @@ public class PanelRegistrar extends javax.swing.JPanel {
                 rbPlayStationActionPerformed(evt);
             }
         });
-        panelFondo.add(rbPlayStation, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 280, -1, -1));
+        panelFondo.add(rbPlayStation, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 280, -1, -1));
 
         buttonGroup1.add(rbNintendo);
         rbNintendo.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
@@ -113,7 +127,7 @@ public class PanelRegistrar extends javax.swing.JPanel {
                 rbNintendoActionPerformed(evt);
             }
         });
-        panelFondo.add(rbNintendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, -1, -1));
+        panelFondo.add(rbNintendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, -1, -1));
 
         buttonGroup1.add(rbXbox);
         rbXbox.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
@@ -124,7 +138,7 @@ public class PanelRegistrar extends javax.swing.JPanel {
                 rbXboxActionPerformed(evt);
             }
         });
-        panelFondo.add(rbXbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, -1, -1));
+        panelFondo.add(rbXbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, -1, -1));
 
         buttonGroup1.add(rbPc);
         rbPc.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
@@ -135,56 +149,92 @@ public class PanelRegistrar extends javax.swing.JPanel {
                 rbPcActionPerformed(evt);
             }
         });
-        panelFondo.add(rbPc, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 310, -1, -1));
+        panelFondo.add(rbPc, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, -1, -1));
 
         lblconsola.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         lblconsola.setForeground(new java.awt.Color(255, 255, 255));
         lblconsola.setText("Consola");
-        panelFondo.add(lblconsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, -1, -1));
+        panelFondo.add(lblconsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, -1, -1));
 
         jcbConsola.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        panelFondo.add(jcbConsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 350, 390, 30));
+        panelFondo.add(jcbConsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 390, 30));
 
         lblfecha.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         lblfecha.setForeground(new java.awt.Color(255, 255, 255));
         lblfecha.setText("<html><p>Fecha</p><p>de salida</p></html>");
-        panelFondo.add(lblfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 400, -1, -1));
+        panelFondo.add(lblfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, -1, -1));
 
         tfFecha.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         tfFecha.setForeground(new java.awt.Color(255, 255, 255));
         tfFecha.setPreferredSize(new java.awt.Dimension(221, 22));
-        panelFondo.add(tfFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 400, 390, 30));
+        panelFondo.add(tfFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, 390, 30));
 
         lblgenero4.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         lblgenero4.setForeground(new java.awt.Color(255, 255, 255));
         lblgenero4.setText("Valoración");
-        panelFondo.add(lblgenero4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 510, -1, -1));
+        panelFondo.add(lblgenero4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 510, -1, -1));
 
         tfGenero2.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         tfGenero2.setForeground(new java.awt.Color(255, 255, 255));
         tfGenero2.setPreferredSize(new java.awt.Dimension(221, 22));
-        panelFondo.add(tfGenero2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 450, 390, 30));
+        panelFondo.add(tfGenero2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, 390, 30));
 
         lblgenero5.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         lblgenero5.setForeground(new java.awt.Color(255, 255, 255));
         lblgenero5.setText("Edición");
-        panelFondo.add(lblgenero5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, -1, -1));
+        panelFondo.add(lblgenero5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, -1, -1));
 
-        jsValoracion.setMaximum(5);
+        jsValoracion.setMaximum(4);
         jsValoracion.setValue(2);
-        panelFondo.add(jsValoracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 600, 530, -1));
+        jsValoracion.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jsValoracionStateChanged(evt);
+            }
+        });
+        panelFondo.add(jsValoracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 580, 530, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Star1.png"))); // NOI18N
-        panelFondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 550, -1, -1));
+        estrellas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/3estrellas.png"))); // NOI18N
+        panelFondo.add(estrellas, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 540, -1, -1));
+
+        btnLimpiar.setBackground(new java.awt.Color(0, 0, 0));
+        btnLimpiar.setFont(new java.awt.Font("Eras Medium ITC", 1, 12)); // NOI18N
+        btnLimpiar.setForeground(new java.awt.Color(234, 164, 28));
+        btnLimpiar.setText("LIMPIAR");
+        btnLimpiar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+        panelFondo.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 650, 134, 50));
+
+        btnAgregarDeseos.setBackground(new java.awt.Color(234, 164, 28));
+        btnAgregarDeseos.setFont(new java.awt.Font("Eras Medium ITC", 1, 12)); // NOI18N
+        btnAgregarDeseos.setText("<html><p>AGREGAR A</p><center><p>LISTA DE DESEOS</p></center></html>");
+        btnAgregarDeseos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAgregarDeseos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarDeseosActionPerformed(evt);
+            }
+        });
+        panelFondo.add(btnAgregarDeseos, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 650, 134, 50));
+
+        btnAgregarColeccion.setBackground(new java.awt.Color(234, 164, 28));
+        btnAgregarColeccion.setFont(new java.awt.Font("Eras Medium ITC", 1, 12)); // NOI18N
+        btnAgregarColeccion.setText("<html><p>AGREGAR A</p><center><p>MI COLECCION</p></center></html>");
+        btnAgregarColeccion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAgregarColeccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarColeccionActionPerformed(evt);
+            }
+        });
+        panelFondo.add(btnAgregarColeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 650, 134, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 1100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(panelFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 950, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,10 +260,45 @@ public class PanelRegistrar extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_rbPcActionPerformed
 
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnAgregarDeseosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarDeseosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarDeseosActionPerformed
+
+    private void btnAgregarColeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarColeccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarColeccionActionPerformed
+
+    private void jsValoracionStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jsValoracionStateChanged
+        switch(jsValoracion.getValue()){
+            case 0:
+                estrellas.setIcon(new ImageIcon("src/main/java/img/1estrella.png"));
+                break;
+            case 1:
+                estrellas.setIcon(new ImageIcon("src/main/java/img/2estrellas.png"));
+                break;
+            case 2:
+                estrellas.setIcon(new ImageIcon("src/main/java/img/3estrellas.png"));
+                break;
+            case 3:
+                estrellas.setIcon(new ImageIcon("src/main/java/img/4estrellas.png"));
+                break;
+            case 4:
+                estrellas.setIcon(new ImageIcon("src/main/java/img/5estrellas.png"));
+                break;               
+        }
+    }//GEN-LAST:event_jsValoracionStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregarColeccion;
+    private javax.swing.JButton btnAgregarDeseos;
+    private javax.swing.JButton btnLimpiar;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel estrellas;
     private javax.swing.JComboBox<String> jcbConsola;
     private javax.swing.JSlider jsValoracion;
     private javax.swing.JLabel lblRegistrar;

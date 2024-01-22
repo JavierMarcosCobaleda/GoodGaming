@@ -18,6 +18,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     public VentanaPrincipal() {
         initComponents();
+        //Iniciar en el centro de la pantalla
+        setLocationRelativeTo(null);
+        //Cambiar el color de los textos de los botones
         btnRegistrar.setForeground(Color.BLACK);
         btnGestionar.setForeground(Color.BLACK);
         btnColeccion.setForeground(Color.BLACK);
@@ -185,7 +188,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addGroup(panelSuperiorLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5)
-                        .addContainerGap(942, Short.MAX_VALUE))
+                        .addContainerGap(792, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSuperiorLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(xCerrar)
@@ -205,9 +208,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelFondo.add(panelSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 87));
+        panelFondo.add(panelSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 87));
 
         panelVentanas.setBackground(new java.awt.Color(30, 30, 30));
+        panelVentanas.setPreferredSize(new java.awt.Dimension(950, 432));
         panelVentanas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Eras Medium ITC", 1, 36)); // NOI18N
@@ -215,7 +219,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel1.setText("Bienvenido a Good Gaming");
         panelVentanas.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, -1, -1));
 
-        panelFondo.add(panelVentanas, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 1100, 810));
+        panelFondo.add(panelVentanas, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 950, 810));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

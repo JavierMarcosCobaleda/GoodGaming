@@ -27,7 +27,9 @@ public class VentanaRegistro extends javax.swing.JFrame {
     
     public VentanaRegistro() {
         initComponents();
-
+        
+        //Iniciar en el centro de la pantalla
+        setLocationRelativeTo(null);
         
         //Establecer el botón por defecto
         getRootPane().setDefaultButton(btnRegistro);
