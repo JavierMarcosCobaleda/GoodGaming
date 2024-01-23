@@ -13,10 +13,17 @@ import javax.mail.internet.MimeMessage;
 import model.Usuarios;
 
 /**
- *
+ * Clase controladora de envio de emails
  * @author Javier Marcos Cobaleda
  */
 public class EmailUtil {
+    /**
+     * Metodo para enviar emails
+     * @param session sesion
+     * @param toEmail email al que se va a enviar el mensaje, tipo String
+     * @param subject quien envia el mensaje, tipo String
+     * @param body mensaje, tipo String
+     */
     public static void sendEmail(Session session,String toEmail,String subject,String body){
             try{
                 MimeMessage msg=new MimeMessage(session);

@@ -20,7 +20,10 @@ import org.hibernate.SessionFactory;
  */
 public class VentanaRegistro extends javax.swing.JFrame {
 
-    //Variables para mover la ventana
+
+    /**
+     * Variables enteras para mover la ventana
+     */
     int xMouse,yMouse;
     HibernateUtil hibernate;
     OtrosMetodos metodos;

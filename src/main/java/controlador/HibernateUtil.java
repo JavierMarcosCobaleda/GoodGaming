@@ -95,6 +95,11 @@ public class HibernateUtil {
     }
     
     /**Método select de usuario y contraseña**/
+    /**
+     * 
+     * @param usuario Objeto de la clase Usuarios
+     * @return Una lista con los usuarios de la consulta
+     */
     public static List<Usuarios> comprobarMail(Usuarios usuario){
 
         Query q=sesion.createQuery("FROM Usuarios WHERE username = :username AND email = :email");
@@ -106,7 +111,12 @@ public class HibernateUtil {
         return listaUsuarios;
     }
     
-    /**Método para modificar Contraseña**/
+
+    /**
+     * Método para modificar la contraseña de un usuario en la base de datos
+     * @param usuario Objeto de la clase Usuarios
+     * @return un entero con el numero de filas afectadas
+     */
     public int modificarPassword (Usuarios usuario){
         Transaction tx=sesion.beginTransaction();
 			
