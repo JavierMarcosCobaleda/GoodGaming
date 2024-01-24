@@ -217,7 +217,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Eras Medium ITC", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Bienvenido a Good Gaming");
-        panelVentanas.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, -1, -1));
+        panelVentanas.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 380, -1, -1));
 
         panelFondo.add(panelVentanas, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 950, 810));
 
@@ -267,7 +267,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_xCerrarMousePressed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        //Mostramos el panel de registrar juegos
+        /**
+         *  Mostramos el panel de registrar juegos
+         */
         PanelRegistrar preg=new PanelRegistrar();
         mostrarPanel(preg);
         
@@ -302,7 +304,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_panelSuperiorMousePressed
 
     private void btnGestionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarActionPerformed
-        // TODO add your handling code here:
+        /**
+         *  Mostramos el panel de registrar juegos
+         */
+        PanelGestionar pges=new PanelGestionar();
+        mostrarPanel(pges);
         
         //cambiamos los colores de los botones de la barra lateral
         btnRegistrar.setBackground(new Color(113,111,108));
