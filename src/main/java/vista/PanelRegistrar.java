@@ -7,27 +7,30 @@ package vista;
 import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import model.Usuarios;
 
 /**
  *
  * @author Javier Marcos Cobaleda
  */
 public class PanelRegistrar extends javax.swing.JPanel {
-    
+    private Usuarios usuario;
     /**
      * Creates new form PanelRegistrar
      */
-    public PanelRegistrar() {
+    public PanelRegistrar(Usuarios usuario) {
         initComponents();
-        
+        /**
+         * recibir el usuario de la ventanaPrincipal
+         */
+        this.usuario=usuario;
+        /**
+         * Modificaciones esteticas de los elementos graficos
+         */
         lblRegistrar.setForeground(Color.BLACK);
         btnAgregarDeseos.setForeground(Color.BLACK);
         btnAgregarColeccion.setForeground(Color.BLACK);
-        
-        //Rellenar el Jlist dependiendo del rabioButton seleccionado
-        if(rbNintendo.isSelected()){
-            
-        }
+       
     }
 
     /**
@@ -57,7 +60,7 @@ public class PanelRegistrar extends javax.swing.JPanel {
         lblfecha = new javax.swing.JLabel();
         tfFecha = new javax.swing.JTextField();
         lblgenero4 = new javax.swing.JLabel();
-        tfGenero2 = new javax.swing.JTextField();
+        tfEdicion = new javax.swing.JTextField();
         lblgenero5 = new javax.swing.JLabel();
         jsValoracion = new javax.swing.JSlider();
         estrellas = new javax.swing.JLabel();
@@ -157,7 +160,6 @@ public class PanelRegistrar extends javax.swing.JPanel {
         lblconsola.setText("Consola");
         panelFondo.add(lblconsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, -1, -1));
 
-        jcbConsola.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         panelFondo.add(jcbConsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 390, 30));
 
         lblfecha.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
@@ -175,10 +177,10 @@ public class PanelRegistrar extends javax.swing.JPanel {
         lblgenero4.setText("Valoración");
         panelFondo.add(lblgenero4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 510, -1, -1));
 
-        tfGenero2.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
-        tfGenero2.setForeground(new java.awt.Color(255, 255, 255));
-        tfGenero2.setPreferredSize(new java.awt.Dimension(221, 22));
-        panelFondo.add(tfGenero2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, 390, 30));
+        tfEdicion.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
+        tfEdicion.setForeground(new java.awt.Color(255, 255, 255));
+        tfEdicion.setPreferredSize(new java.awt.Dimension(221, 22));
+        panelFondo.add(tfEdicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, 390, 30));
 
         lblgenero5.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         lblgenero5.setForeground(new java.awt.Color(255, 255, 255));
@@ -246,23 +248,84 @@ public class PanelRegistrar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rbPlayStationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPlayStationActionPerformed
-        // TODO add your handling code here:
+        /**
+         * Vaciar la lista del comboBox
+         */
+        jcbConsola.removeAllItems();
+        /**
+         * Rellenar la lista del comboBox
+         */
+        jcbConsola.addItem("PS 5");
+        jcbConsola.addItem("PS 3");
+        jcbConsola.addItem("PS 2");
+        jcbConsola.addItem("PlayStation");
+        jcbConsola.addItem("PS Vita");
+        jcbConsola.addItem("PSP");
     }//GEN-LAST:event_rbPlayStationActionPerformed
 
     private void rbNintendoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNintendoActionPerformed
-        // TODO add your handling code here:
+        /**
+         * Vaciar la lista del comboBox
+         */
+        jcbConsola.removeAllItems();
+        /**
+         * Rellenar la lista del comboBox
+         */
+        jcbConsola.addItem("Switch");
+        jcbConsola.addItem("Wii U");
+        jcbConsola.addItem("Wii");
+        jcbConsola.addItem("GameCube");
+        jcbConsola.addItem("Nintendo 64");
+        jcbConsola.addItem("Supernintendo");
+        jcbConsola.addItem("NES");
+        jcbConsola.addItem("DS/3ds");
+        jcbConsola.addItem("GBA");
+        jcbConsola.addItem("GBColor");
+        jcbConsola.addItem("GameBoy");
     }//GEN-LAST:event_rbNintendoActionPerformed
 
     private void rbXboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbXboxActionPerformed
-        // TODO add your handling code here:
+        /**
+         * Vaciar la lista del comboBox
+         */
+        jcbConsola.removeAllItems();
+        /**
+         * Rellenar la lista del comboBox
+         */
+        jcbConsola.addItem("Xbox series X-S");
+        jcbConsola.addItem("Xbox one");
+        jcbConsola.addItem("Xbox 360");
+        jcbConsola.addItem("Xbox");    
     }//GEN-LAST:event_rbXboxActionPerformed
 
     private void rbPcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPcActionPerformed
-        // TODO add your handling code here:
+        /**
+         * Vaciar la lista del comboBox
+         */
+        jcbConsola.removeAllItems();
+        /**
+         * Rellenar la lista del comboBox
+         */
+        jcbConsola.addItem("Steam");
+        jcbConsola.addItem("Epic Games");
+        jcbConsola.addItem("Origin");
+        jcbConsola.addItem("Ubisoft");
+        jcbConsola.addItem("Otros");
     }//GEN-LAST:event_rbPcActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        // TODO add your handling code here:
+        /**
+         * Vaciar todos los campos
+         */
+        tfTitulo.setText("");
+        tfGenero.setText("");
+        tfFecha.setText("");
+        tfEdicion.setText("");
+        rbNintendo.setSelected(false);
+        rbPlayStation.setSelected(false);
+        rbXbox.setSelected(false);
+        rbPc.setSelected(false);
+        jsValoracion.setValue(2);
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnAgregarDeseosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarDeseosActionPerformed
@@ -274,6 +337,9 @@ public class PanelRegistrar extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAgregarColeccionActionPerformed
 
     private void jsValoracionStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jsValoracionStateChanged
+        /**
+         * Rellenar las estrellas en funcion de la valoracion
+         */
         switch(jsValoracion.getValue()){
             case 0:
                 estrellas.setIcon(new ImageIcon("src/main/java/img/1estrella.png"));
@@ -316,9 +382,9 @@ public class PanelRegistrar extends javax.swing.JPanel {
     private javax.swing.JRadioButton rbPc;
     private javax.swing.JRadioButton rbPlayStation;
     private javax.swing.JRadioButton rbXbox;
+    private javax.swing.JTextField tfEdicion;
     private javax.swing.JTextField tfFecha;
     private javax.swing.JTextField tfGenero;
-    private javax.swing.JTextField tfGenero2;
     private javax.swing.JTextField tfTitulo;
     // End of variables declaration//GEN-END:variables
 }

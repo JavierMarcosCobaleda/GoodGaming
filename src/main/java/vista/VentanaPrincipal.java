@@ -6,6 +6,7 @@ package vista;
 
 import java.awt.Color;
 import javax.swing.JPanel;
+import model.Usuarios;
 
 /**
  *
@@ -16,15 +17,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //Variables para mover la ventana
     int xMouse,yMouse;
     
-    public VentanaPrincipal() {
+    static Usuarios usuario;
+    
+    public VentanaPrincipal(Usuarios usuario) {
         initComponents();
         //Iniciar en el centro de la pantalla
         setLocationRelativeTo(null);
+        
+        /**
+         * Recibir el usuario
+         */
+        this.usuario=usuario;
         //Cambiar el color de los textos de los botones
         btnRegistrar.setForeground(Color.BLACK);
         btnGestionar.setForeground(Color.BLACK);
         btnColeccion.setForeground(Color.BLACK);
         btnDeseos.setForeground(Color.BLACK);
+        
+        lblUsuario.setText(usuario.getUsername());
     }
 
     /**
@@ -49,6 +59,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         xCerrar = new javax.swing.JLabel();
+        lblUsuario = new javax.swing.JLabel();
         panelVentanas = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -177,6 +188,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        lblUsuario.setFont(new java.awt.Font("Eras Medium ITC", 0, 12)); // NOI18N
+        lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        lblUsuario.setText("jLabel6");
+
         javax.swing.GroupLayout panelSuperiorLayout = new javax.swing.GroupLayout(panelSuperior);
         panelSuperior.setLayout(panelSuperiorLayout);
         panelSuperiorLayout.setHorizontalGroup(
@@ -185,14 +200,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(367, 367, 367)
                 .addComponent(jLabel4)
                 .addGroup(panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelSuperiorLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel5)
-                        .addContainerGap(792, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSuperiorLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(xCerrar)
-                        .addGap(14, 14, 14))))
+                        .addGap(14, 14, 14))
+                    .addGroup(panelSuperiorLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblUsuario)
+                            .addComponent(jLabel5))
+                        .addContainerGap(795, Short.MAX_VALUE))))
         );
         panelSuperiorLayout.setVerticalGroup(
             panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,6 +222,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(xCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblUsuario)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -270,7 +289,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         /**
          *  Mostramos el panel de registrar juegos
          */
-        PanelRegistrar preg=new PanelRegistrar();
+        PanelRegistrar preg=new PanelRegistrar(usuario);
         mostrarPanel(preg);
         
         //cambiamos los colores de los botones de la barra lateral
@@ -307,7 +326,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         /**
          *  Mostramos el panel de registrar juegos
          */
-        PanelGestionar pges=new PanelGestionar();
+        PanelGestionar pges=new PanelGestionar(usuario);
         mostrarPanel(pges);
         
         //cambiamos los colores de los botones de la barra lateral
@@ -357,7 +376,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaPrincipal().setVisible(true);
+                new VentanaPrincipal(usuario).setVisible(true);
             }
         });
     }
@@ -373,6 +392,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblUsuario;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JPanel panelLateral;
     private javax.swing.JPanel panelSuperior;
@@ -386,8 +406,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         p.setLocation(0,0);   
 
         panelVentanas.removeAll();
-            panelVentanas.add(p, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-            panelVentanas.revalidate();
-            panelVentanas.repaint();
+        panelVentanas.add(p, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        panelVentanas.revalidate();
+        panelVentanas.repaint();
     }
 }

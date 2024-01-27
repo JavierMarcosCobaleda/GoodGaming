@@ -23,6 +23,9 @@ public class VentanaLogin extends javax.swing.JFrame {
     HibernateUtil hibernate;
     PasswordUtil pwdUtil;
     
+    VentanaPrincipal principal;
+    Usuarios usuario;
+    
     public VentanaLogin() {
         initComponents();
         //Iniciar en el centro de la pantalla
@@ -279,7 +282,8 @@ public class VentanaLogin extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "ERROR, Deber rellenar todos los campos","Error", JOptionPane.ERROR_MESSAGE);
             }else{
                 //Hacemos la consulta de usuarios
-                Usuarios usuario=new Usuarios();
+                //Usuarios usuario=new Usuarios();
+                usuario=new Usuarios();
                 usuario.setUsername(tfusuario.getText());
                 usuario.setPassword(String.valueOf(jPFPassword.getPassword()));
 
@@ -288,7 +292,8 @@ public class VentanaLogin extends javax.swing.JFrame {
                 pwdUtil=new PasswordUtil();
                 if(pwdUtil.desencriptar(usuario, usrEncriptado) && usrEncriptado.getUsername().equals(tfusuario.getText())){
                     //JOptionPane.showMessageDialog(null, "Sesión iniciada correctamente");
-                    VentanaPrincipal principal=new VentanaPrincipal();
+                    //VentanaPrincipal principal=new VentanaPrincipal();
+                    principal=new VentanaPrincipal(usuario);
                     principal.setVisible(true);
                     this.setVisible(false);
                 }else{
