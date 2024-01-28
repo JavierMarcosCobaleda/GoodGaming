@@ -34,7 +34,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnColeccion.setForeground(Color.BLACK);
         btnDeseos.setForeground(Color.BLACK);
         
-        lblUsuario.setText(usuario.getUsername());
+        lblsuario.setText(usuario.getUsername());
     }
 
     /**
@@ -59,7 +59,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         xCerrar = new javax.swing.JLabel();
-        lblUsuario = new javax.swing.JLabel();
+        lblsuario = new javax.swing.JLabel();
         panelVentanas = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -188,9 +188,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        lblUsuario.setFont(new java.awt.Font("Eras Medium ITC", 0, 12)); // NOI18N
-        lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        lblUsuario.setText("jLabel6");
+        lblsuario.setForeground(new java.awt.Color(255, 255, 255));
+        lblsuario.setText("jLabel6");
 
         javax.swing.GroupLayout panelSuperiorLayout = new javax.swing.GroupLayout(panelSuperior);
         panelSuperior.setLayout(panelSuperiorLayout);
@@ -200,31 +199,32 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(367, 367, 367)
                 .addComponent(jLabel4)
                 .addGroup(panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSuperiorLayout.createSequentialGroup()
+                    .addGroup(panelSuperiorLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(xCerrar)
                         .addGap(14, 14, 14))
                     .addGroup(panelSuperiorLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblUsuario)
+                            .addComponent(lblsuario)
                             .addComponent(jLabel5))
                         .addContainerGap(795, Short.MAX_VALUE))))
         );
         panelSuperiorLayout.setVerticalGroup(
             panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSuperiorLayout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(19, 19, 19))
             .addGroup(panelSuperiorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(xCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblUsuario)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSuperiorLayout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addGroup(panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addGroup(panelSuperiorLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblsuario))
+                    .addComponent(jLabel4))
+                .addGap(19, 19, 19))
         );
 
         panelFondo.add(panelSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 87));
@@ -392,7 +392,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblUsuario;
+    private javax.swing.JLabel lblsuario;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JPanel panelLateral;
     private javax.swing.JPanel panelSuperior;

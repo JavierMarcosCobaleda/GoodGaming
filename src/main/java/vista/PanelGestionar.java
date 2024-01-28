@@ -145,7 +145,6 @@ public class PanelGestionar extends javax.swing.JPanel {
         lblconsola.setText("Consola");
         panelFondo.add(lblconsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, -1, -1));
 
-        jcbConsola.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         panelFondo.add(jcbConsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 390, 30));
 
         lblfecha.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N

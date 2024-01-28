@@ -4,10 +4,18 @@
  */
 package vista;
 
+import controlador.HibernateUtil;
 import java.awt.Color;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import model.Usuarios;
+import model.Videojuegos;
 
 /**
  *
@@ -333,7 +341,56 @@ public class PanelRegistrar extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAgregarDeseosActionPerformed
 
     private void btnAgregarColeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarColeccionActionPerformed
-        // TODO add your handling code here:
+        Videojuegos v=new Videojuegos();
+        v.setTitulo(tfTitulo.getText());
+        v.setGenero(tfGenero.getText());
+        
+        /**
+         * Parsear la fecha si el campo no está vacío
+         */
+        if(!tfFecha.getText().isEmpty()){
+            SimpleDateFormat fecha=new SimpleDateFormat("dd/MM/yyyy");
+            try {
+                //v.setFechaSalida((Date) fecha.parse(tfFecha.getText()));
+                java.util.Date utilDate = fecha.parse(tfFecha.getText());
+                java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+                v.setFechaSalida(sqlDate);
+            } catch (ParseException ex) {
+                Logger.getLogger(PanelRegistrar.class.getName()).log(Level.SEVERE, null, ex);
+                System.err.println("Error de formato fecha");
+            }
+        }
+        v.setEdicion(tfEdicion.getText());
+        /**
+         * Obetener la plataforma y la consola
+         */
+        if(rbNintendo.isSelected()){
+            v.setPlataforma("Nintendo");
+            String consola=(String)jcbConsola.getSelectedItem();
+            v.setConsola(consola);
+        }else if(rbPlayStation.isSelected()){
+            v.setPlataforma("PlayStation");
+            String consola=(String)jcbConsola.getSelectedItem();
+            v.setConsola(consola);
+        }else if(rbXbox.isSelected()){
+            v.setPlataforma("XBox");
+            String consola=(String)jcbConsola.getSelectedItem();
+            v.setConsola(consola);
+        }
+        else if(rbPc.isSelected()){
+            v.setPlataforma("PC");
+            String consola=(String)jcbConsola.getSelectedItem();
+            v.setConsola(consola);
+        }
+        
+        v.setValoracion(jsValoracion.getValue());
+        
+        if(HibernateUtil.insertarColeccion(v,usuario)){
+            JOptionPane.showMessageDialog(null, "Videojuego insertado correctamente en la colección");
+        }else{
+            JOptionPane.showMessageDialog(null, "ERROR,no se ha podido añadir el videojuego a su colección","Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_btnAgregarColeccionActionPerformed
 
     private void jsValoracionStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jsValoracionStateChanged

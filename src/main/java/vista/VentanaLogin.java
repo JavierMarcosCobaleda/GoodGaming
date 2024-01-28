@@ -293,7 +293,7 @@ public class VentanaLogin extends javax.swing.JFrame {
                 if(pwdUtil.desencriptar(usuario, usrEncriptado) && usrEncriptado.getUsername().equals(tfusuario.getText())){
                     //JOptionPane.showMessageDialog(null, "Sesión iniciada correctamente");
                     //VentanaPrincipal principal=new VentanaPrincipal();
-                    principal=new VentanaPrincipal(usuario);
+                    principal=new VentanaPrincipal(usrEncriptado);
                     principal.setVisible(true);
                     this.setVisible(false);
                 }else{

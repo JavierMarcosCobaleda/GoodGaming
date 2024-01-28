@@ -6,8 +6,12 @@ package controlador;
 
 import java.util.ArrayList;
 import java.util.List;
+import static javassist.CtMethod.ConstParameter.integer;
 import javax.persistence.Query;
+import model.Coleccion;
+import model.ColeccionId;
 import model.Usuarios;
+import model.Videojuegos;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -112,6 +116,8 @@ public class HibernateUtil {
     }
     
 
+    
+
     /**
      * Método para modificar la contraseña de un usuario en la base de datos
      * @param usuario Objeto de la clase Usuarios
@@ -132,5 +138,52 @@ public class HibernateUtil {
         
         return filasAfectadas;
         
+    }
+    /**
+     * Método para insertar un videojuego en la base de datos
+     * @param v Objeto Videojuegos
+     * @return true si se ha insertado correctamente
+     */
+    public static boolean insertarJuego(Videojuegos v){
+        Transaction tx=sesion.beginTransaction();       
+        sesion.save(v);       
+        tx.commit();
+        if(sesion.save(v)!=null){
+            return true;
+        }else{
+            return false;
+        }       
+    }
+    
+    public static boolean insertarColeccion(Videojuegos v, Usuarios u){
+        
+        /**
+         * LLamamos al método insertar juego, si es true añadir a la coleccion del usuario
+         */
+        if(HibernateUtil.insertarJuego(v)){
+            Transaction tx=sesion.beginTransaction();
+            
+            if (u.getId() == null) {
+                sesion.save(u);
+            }
+            Coleccion c=new Coleccion();
+            //Claves primarias
+            ColeccionId coleccionId = new ColeccionId();
+            coleccionId.setIdJuego(v.getId());
+            coleccionId.setIdUsuario(u.getId());
+            // Asignar la clave primaria compuesta
+            c.setId(coleccionId);
+            
+            c.setUsuarios(u);
+            c.setVideojuegos(v);
+            c.setPoseido(true);
+            sesion.save(c);
+
+            tx.commit();
+            return true;
+        }else{
+            return false;
+        }       
+            
     }
 }
