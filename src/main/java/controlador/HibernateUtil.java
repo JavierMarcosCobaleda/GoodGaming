@@ -171,7 +171,7 @@ public class HibernateUtil {
             ColeccionId coleccionId = new ColeccionId();
             coleccionId.setIdJuego(v.getId());
             coleccionId.setIdUsuario(u.getId());
-            // Asignar la clave primaria compuesta
+            //Asignar la clave primaria compuesta
             c.setId(coleccionId);
             
             c.setUsuarios(u);

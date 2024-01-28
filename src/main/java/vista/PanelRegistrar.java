@@ -264,6 +264,7 @@ public class PanelRegistrar extends javax.swing.JPanel {
          * Rellenar la lista del comboBox
          */
         jcbConsola.addItem("PS 5");
+        jcbConsola.addItem("PS 4");
         jcbConsola.addItem("PS 3");
         jcbConsola.addItem("PS 2");
         jcbConsola.addItem("PlayStation");
