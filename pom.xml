@@ -47,6 +47,12 @@
             <artifactId>password4j</artifactId>
             <version>1.7.3</version>
         </dependency>
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf-extras</artifactId>
+            <version>3.3</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
     <build>
         <resources>

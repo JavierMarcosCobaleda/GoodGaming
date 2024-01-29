@@ -337,7 +337,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestionarActionPerformed
 
     private void btnColeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColeccionActionPerformed
-        // TODO add your handling code here:
+        /**
+         *  Mostramos el panel de registrar juegos
+         */
+        PanelColeccion pcol=new PanelColeccion(usuario);
+        mostrarPanel(pcol);
         
         //cambiamos los colores de los botones de la barra lateral
         btnRegistrar.setBackground(new Color(113,111,108));
