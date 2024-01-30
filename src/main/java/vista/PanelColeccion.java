@@ -12,7 +12,7 @@ import model.Usuarios;
 
 /**
  *
- * @author Alumno
+ * @author Javier Marcos Cobaleda
  */
 public class PanelColeccion extends javax.swing.JPanel {
 
@@ -37,7 +37,7 @@ public class PanelColeccion extends javax.swing.JPanel {
             .addGap(0, 565, Short.MAX_VALUE)
         );
         //jTabbedPane1.addTab("tab1", jPanel1);
-        jTabbedPane1.addTab(null,new FlatSVGIcon( "img/nintendo.svg"),jPanel1 );
+        jTabbedPane1.addTab(null,new FlatSVGIcon( "img/nintendo-1.svg"),jPanel1 );
         jTabbedPane1.putClientProperty("JTabbedPane.tabAreaAlignment", SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -51,8 +51,8 @@ public class PanelColeccion extends javax.swing.JPanel {
             .addGap(0, 565, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("tab2", jPanel2);
-        
+        jTabbedPane1.addTab(null,new FlatSVGIcon( "img/pslogo.svg"), jPanel2);
+        jTabbedPane1.putClientProperty("JTabbedPane.tabAreaAlignment", SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -67,7 +67,7 @@ public class PanelColeccion extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("tab3", jPanel3);
 
-        panelFondo.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 520, 600));
+        
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -81,8 +81,11 @@ public class PanelColeccion extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(panelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+        
+        jTabbedPane1.addTab(null,new FlatSVGIcon( "img/pc.svg"),jPanel4 );
+        jTabbedPane1.putClientProperty("JTabbedPane.tabAreaAlignment", SwingConstants.CENTER);
 
-
+        panelFondo.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 520, 600));
 
 
     }
