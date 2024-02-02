@@ -184,6 +184,27 @@ public class HibernateUtil {
         }else{
             return false;
         }       
-            
+    }
+    
+    public static List<Coleccion> listarJuegosPlataforma(Usuarios u, String plataforma){
+       
+    Query q = sesion.createQuery("SELECT c FROM Coleccion c JOIN c.videojuegos v WHERE c.usuarios.id = :uid AND v.plataforma = :plataforma");
+    q.setParameter("uid", u.getId());
+    q.setParameter("plataforma", plataforma);
+
+    List<Coleccion> listaColeccion = q.getResultList();
+
+    return listaColeccion;
+        
+    }
+    
+    public static List<Coleccion> obtenerColeccion(Usuarios u){
+        Query q=sesion.createQuery("FROM Coleccion where id_usuario=:uid");
+        //q.setParameter("plataforma",plataforma);
+        q.setParameter("uid",u.getId());
+        
+        List <Coleccion> listaColeccion=q.getResultList();
+        
+        return listaColeccion;
     }
 }

@@ -7,30 +7,33 @@ package vista;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.icons.FlatSearchIcon;
+import controlador.HibernateUtil;
 import java.awt.Color;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import model.Usuarios;
 
+
 /**
  *
  * @author Javier Marcos Cobaleda
  */
 public class PanelColeccion extends javax.swing.JPanel {
-
+    private Usuarios usuario;
     /**
      * Creates new form PanelColeccion
      */
     public PanelColeccion(Usuarios usuario) {
         initComponents();
-        
+        this.usuario=usuario;
         lblColeccion.setForeground(Color.BLACK);
         tfbuscarN.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSearchIcon() );
         btnBuscar.setForeground(Color.BLACK);
         tfbuscarN.putClientProperty("FlatLaf.style","arc: 40");
         tfbuscarN.setBackground(Color.WHITE);
         
+        jTabbedPane1.addTab(null,new FlatSVGIcon( "img/nintendo-1.svg"),new PanelNintendo(usuario) );
         //TABS
         
         /*
@@ -179,6 +182,11 @@ public class PanelColeccion extends javax.swing.JPanel {
         tfbuscarN.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         tfbuscarN.setForeground(new java.awt.Color(153, 153, 153));
         tfbuscarN.setText("Buscar por título");
+        tfbuscarN.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tfbuscarNMousePressed(evt);
+            }
+        });
 
         btnBuscar.setBackground(new java.awt.Color(234, 164, 28));
         btnBuscar.setFont(new java.awt.Font("Eras Medium ITC", 1, 12)); // NOI18N
@@ -275,8 +283,30 @@ public class PanelColeccion extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        /**
+         * Si hay algo escrito en textfield que no sea el texto por defecto hacemos la búsqueda por título
+         */
+        /*if(!tfbuscarN.getText().isEmpty() && tfbuscarN.getText().equals("Buscar por título")){
+            HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo");
+            tfbuscarN.setText(HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(0).getTitulo());
+        }*/
+        String juegos="";
+        for(int i=0;i<HibernateUtil.obtenerColeccion(usuario).size();i++){
+            juegos+=HibernateUtil.obtenerColeccion(usuario).get(i).getVideojuegos().getTitulo()+"-";
+        }
+        //tfbuscarN.setText(HibernateUtil.obtenerColeccion(usuario).get(0).getVideojuegos().getTitulo());
+        tfbuscarN.setText(juegos);
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void tfbuscarNMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfbuscarNMousePressed
+        /**
+         * Limpiar el texto al clickar
+         */
+        if(!tfbuscarN.getText().isEmpty()){
+            tfbuscarN.setText("");
+            tfbuscarN.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_tfbuscarNMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
