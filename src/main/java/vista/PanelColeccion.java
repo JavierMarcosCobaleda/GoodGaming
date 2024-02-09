@@ -34,10 +34,11 @@ public class PanelColeccion extends javax.swing.JPanel {
         tfbuscarN.setBackground(Color.WHITE);
         
         jTabbedPane1.addTab(null,new FlatSVGIcon( "img/nintendo-1.svg"),new PanelNintendo(usuario) );
+        jTabbedPane1.addTab(null,new FlatSVGIcon( "img/pslogo.svg"),new PanelPlayStation(usuario) );
         //TABS
         
-        /*
-        ImageIcon nintendo=new ImageIcon( "img/nintendo.png");
+        
+        /*ImageIcon nintendo=new ImageIcon( "img/nintendo.png");
         
         jTabbedPane1.putClientProperty("JTabbedPane.minimumTabWidth", 130);
         
@@ -102,8 +103,7 @@ public class PanelColeccion extends javax.swing.JPanel {
         jTabbedPane1.putClientProperty("JTabbedPane.tabAreaAlignment", SwingConstants.CENTER);
 
         panelFondo.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 520, 600));
-        */
-
+       */
     }
 
     /**

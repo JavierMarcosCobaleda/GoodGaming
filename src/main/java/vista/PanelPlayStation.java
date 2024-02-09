@@ -18,13 +18,13 @@ import model.Videojuegos;
  *
  * @author Javier Marcos Cobaleda
  */
-public class PanelNintendo extends javax.swing.JPanel {
+public class PanelPlayStation extends javax.swing.JPanel {
     private Usuarios usuario;
     DefaultTableModel model;
     /**
-     * Creates new form PanelNintendo
+     * Creates new form PanelPlayStation
      */
-    public PanelNintendo(Usuarios usuario) {
+    public PanelPlayStation(Usuarios usuario) {
         initComponents();
         this.usuario=usuario;
         
@@ -35,18 +35,18 @@ public class PanelNintendo extends javax.swing.JPanel {
         tfbuscarN.putClientProperty("FlatLaf.style","arc: 40");
         tfbuscarN.setBackground(Color.WHITE);
         
-        //Cargamos la lista de Videjuegos de Nintendo
+        //Cargamos la lista de Videjuegos de PlayStation
         model = (DefaultTableModel) tablaNintendo.getModel();
         
-        for(int i=0;i<HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").size();i++){
+        for(int i=0;i<HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").size();i++){
             model.addRow(new Object[]{
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getId(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getTitulo(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getGenero(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getFechaSalida(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getConsola(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getEdicion(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getValoracion()+1} 
+                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getId(),
+                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getTitulo(),
+                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getGenero(),
+                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getFechaSalida(),
+                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getConsola(),
+                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getEdicion(),
+                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getValoracion()+1} 
             );
         }
     }
@@ -181,17 +181,17 @@ public class PanelNintendo extends javax.swing.JPanel {
             //Vaciamos la tabla
             model.setRowCount(0);
             //Recorremos la lista de juegos nintendo           
-            for (int i=0; i<HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").size();i++){
+            for (int i=0; i<HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").size();i++){
                 //si el título coincide con el introducido lo añadimos a la tabla
-                if(HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getTitulo().equals(tfbuscarN.getText())){
+                if(HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getTitulo().equals(tfbuscarN.getText())){
                     model.addRow(new Object[]{
-                        HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getId(),
-                        HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getTitulo(),
-                        HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getGenero(),
-                        HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getFechaSalida(),
-                        HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getConsola(),
-                        HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getEdicion(),
-                        HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getValoracion()+1} 
+                        HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getId(),
+                        HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getTitulo(),
+                        HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getGenero(),
+                        HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getFechaSalida(),
+                        HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getConsola(),
+                        HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getEdicion(),
+                        HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getValoracion()+1} 
                     );
                     
                 }
@@ -215,7 +215,7 @@ public class PanelNintendo extends javax.swing.JPanel {
         /**
          * Mostramos todos los videojuegos de nintendo
          */
-        for(int i=0;i<HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").size();i++){
+        for(int i=0;i<HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").size();i++){
             model.addRow(new Object[]{
                 HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getId(),
                 HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getTitulo(),

@@ -111,6 +111,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         btnIniciarSesion.setBackground(new java.awt.Color(244, 150, 40));
         btnIniciarSesion.setFont(new java.awt.Font("Eras Medium ITC", 1, 14)); // NOI18N
         btnIniciarSesion.setText("Iniciar Sesión");
+        btnIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnIniciarSesion.setPreferredSize(new java.awt.Dimension(192, 40));
         btnIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,6 +134,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         lbRecuperar.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
         lbRecuperar.setForeground(new java.awt.Color(244, 150, 40));
         lbRecuperar.setText("Recuperar contraseña");
+        lbRecuperar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbRecuperar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbRecuperarMouseClicked(evt);
@@ -160,6 +162,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         lbRegistrarse.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
         lbRegistrarse.setForeground(new java.awt.Color(244, 150, 40));
         lbRegistrarse.setText("Registrarse");
+        lbRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbRegistrarse.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbRegistrarseMouseClicked(evt);
@@ -178,6 +181,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         xCerrar.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 24)); // NOI18N
         xCerrar.setForeground(new java.awt.Color(255, 255, 255));
         xCerrar.setText("x");
+        xCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         xCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 xCerrarMouseClicked(evt);
