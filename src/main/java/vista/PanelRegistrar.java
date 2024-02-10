@@ -102,6 +102,8 @@ public class PanelRegistrar extends javax.swing.JPanel {
 
         tfTitulo.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         tfTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        tfTitulo.setToolTipText("Introduce el título del juego a registrar");
+        tfTitulo.setMargin(new java.awt.Insets(2, 12, 2, 6));
         tfTitulo.setPreferredSize(new java.awt.Dimension(221, 22));
         panelFondo.add(tfTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 390, 30));
 
@@ -112,6 +114,8 @@ public class PanelRegistrar extends javax.swing.JPanel {
 
         tfGenero.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         tfGenero.setForeground(new java.awt.Color(255, 255, 255));
+        tfGenero.setToolTipText("Introduce el género al que pertene el juego");
+        tfGenero.setMargin(new java.awt.Insets(2, 12, 2, 6));
         tfGenero.setPreferredSize(new java.awt.Dimension(221, 22));
         panelFondo.add(tfGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 390, 30));
 
@@ -169,6 +173,7 @@ public class PanelRegistrar extends javax.swing.JPanel {
         lblconsola.setText("Consola");
         panelFondo.add(lblconsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, -1, -1));
 
+        jcbConsola.setToolTipText("Selecciona la consola a la que pertene el juego");
         panelFondo.add(jcbConsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 390, 30));
 
         lblfecha.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
@@ -177,7 +182,10 @@ public class PanelRegistrar extends javax.swing.JPanel {
         panelFondo.add(lblfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, -1, -1));
 
         tfFecha.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
-        tfFecha.setForeground(new java.awt.Color(255, 255, 255));
+        tfFecha.setForeground(new java.awt.Color(153, 153, 153));
+        tfFecha.setText("dd/MM/aaaa");
+        tfFecha.setToolTipText("Añade aquí la fecha de lanzamiento con formato <dd/MM/aaaa> del juego que deseas registrar");
+        tfFecha.setMargin(new java.awt.Insets(2, 12, 2, 6));
         tfFecha.setPreferredSize(new java.awt.Dimension(221, 22));
         panelFondo.add(tfFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, 390, 30));
 
@@ -188,6 +196,8 @@ public class PanelRegistrar extends javax.swing.JPanel {
 
         tfEdicion.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         tfEdicion.setForeground(new java.awt.Color(255, 255, 255));
+        tfEdicion.setToolTipText("Inserta aquí la tipo de edición del juego que deseas registrar");
+        tfEdicion.setMargin(new java.awt.Insets(2, 12, 2, 6));
         tfEdicion.setPreferredSize(new java.awt.Dimension(221, 22));
         panelFondo.add(tfEdicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, 390, 30));
 
@@ -212,6 +222,8 @@ public class PanelRegistrar extends javax.swing.JPanel {
         btnLimpiar.setFont(new java.awt.Font("Eras Medium ITC", 1, 12)); // NOI18N
         btnLimpiar.setForeground(new java.awt.Color(234, 164, 28));
         btnLimpiar.setText("LIMPIAR");
+        btnLimpiar.setToolTipText("Vacía todos los campos de texto");
+        btnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLimpiar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -222,7 +234,9 @@ public class PanelRegistrar extends javax.swing.JPanel {
 
         btnAgregarDeseos.setBackground(new java.awt.Color(234, 164, 28));
         btnAgregarDeseos.setFont(new java.awt.Font("Eras Medium ITC", 1, 12)); // NOI18N
-        btnAgregarDeseos.setText("<html><p>AGREGAR A</p><center><p>LISTA DE DESEOS</p></center></html>");
+        btnAgregarDeseos.setText("<html><center>AGREGAR A<br>LISTA DE DESEOS</center></html>");
+        btnAgregarDeseos.setToolTipText("Registra un juego en la base de datos y los agrega a tu lista de deseos");
+        btnAgregarDeseos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgregarDeseos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAgregarDeseos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,7 +247,9 @@ public class PanelRegistrar extends javax.swing.JPanel {
 
         btnAgregarColeccion.setBackground(new java.awt.Color(234, 164, 28));
         btnAgregarColeccion.setFont(new java.awt.Font("Eras Medium ITC", 1, 12)); // NOI18N
-        btnAgregarColeccion.setText("<html><p>AGREGAR A</p><center><p>MI COLECCION</p></center></html>");
+        btnAgregarColeccion.setText("<html><center>AGREGAR A<br>MI COLECCIÓN</center></html>");
+        btnAgregarColeccion.setToolTipText("Registra un juego en la base de datos y lo añade a tu colección");
+        btnAgregarColeccion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgregarColeccion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAgregarColeccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -339,7 +355,90 @@ public class PanelRegistrar extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnAgregarDeseosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarDeseosActionPerformed
-        // TODO add your handling code here:
+        boolean correcto=true;
+        /**
+         * Gestionamos el control de errores evitando campos vacíos en los textfields
+         */
+        try{
+            Videojuegos v=new Videojuegos();
+            if (tfTitulo.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "ERROR, Introduzca el título","Error", JOptionPane.ERROR_MESSAGE);
+            } else if (tfGenero.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "ERROR, Introduzca el género","Error", JOptionPane.ERROR_MESSAGE);
+            } else if (tfFecha.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "ERROR, Formato de fecha incorrecto","Error", JOptionPane.ERROR_MESSAGE);
+            } else if (tfEdicion.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "ERROR, Introduzca la edición","Error", JOptionPane.ERROR_MESSAGE);
+            } else if(!rbNintendo.isSelected() && !rbPlayStation.isSelected() && !rbXbox.isSelected() && !rbPc.isSelected()){
+                JOptionPane.showMessageDialog(null, "ERROR, Seleccione una plataforma","Error", JOptionPane.ERROR_MESSAGE);
+            } else if(jcbConsola.getSelectedItem()==null){
+                JOptionPane.showMessageDialog(null, "ERROR, Seleccione una consola","Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+           
+                v.setTitulo(tfTitulo.getText());
+                v.setGenero(tfGenero.getText());
+
+                /**
+                 * Parsear la fecha si el campo no está vacío
+                 */
+                if(!tfFecha.getText().isEmpty()){
+                    SimpleDateFormat fecha=new SimpleDateFormat("dd/MM/yyyy");
+                    try {
+                        //v.setFechaSalida((Date) fecha.parse(tfFecha.getText()));
+                        java.util.Date utilDate = fecha.parse(tfFecha.getText());
+                        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+                        v.setFechaSalida(sqlDate);
+                    } catch (ParseException ex) {
+                        Logger.getLogger(PanelRegistrar.class.getName()).log(Level.SEVERE, null, ex);
+                        //System.err.println("Error de formato fecha");
+                        JOptionPane.showMessageDialog(null, "ERROR, Formato de fecha incorrecto <dd/MM/yyyy>","Error", JOptionPane.ERROR_MESSAGE);
+                        /**
+                         * ponemos la bandera a false para evitar la inserción de un formato de fecha incorrecto
+                         */
+                        correcto=false;
+                    }
+                }
+                v.setEdicion(tfEdicion.getText());
+                /**
+                 * Obetener la plataforma y la consola
+                 */
+                if(rbNintendo.isSelected()){
+                    v.setPlataforma("Nintendo");
+                    String consola=(String)jcbConsola.getSelectedItem();
+                    v.setConsola(consola);
+                }else if(rbPlayStation.isSelected()){
+                    v.setPlataforma("PlayStation");
+                    String consola=(String)jcbConsola.getSelectedItem();
+                    v.setConsola(consola);
+                }else if(rbXbox.isSelected()){
+                    v.setPlataforma("XBox");
+                    String consola=(String)jcbConsola.getSelectedItem();
+                    v.setConsola(consola);
+                }
+                else if(rbPc.isSelected()){
+                    v.setPlataforma("PC");
+                    String consola=(String)jcbConsola.getSelectedItem();
+                    v.setConsola(consola);
+                }
+
+                v.setValoracion(jsValoracion.getValue());
+                /**
+                 * Si todo es correcto registramos el juego y lo insertamos en la lista de deseos del usuario
+                 */
+                if(correcto){
+                    /**
+                     * Llamamos al método insertarListaDeseos
+                     */
+                    if(HibernateUtil.insertarListaDeseos(v,usuario)){
+                        JOptionPane.showMessageDialog(null, "Videojuego insertado correctamente en la colección");
+                    }else{
+                        JOptionPane.showMessageDialog(null, "ERROR,no se ha podido añadir el videojuego a su colección","Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+        }catch(PropertyValueException e){
+            JOptionPane.showMessageDialog(null, "ERROR,no se ha podido añadir el videojuego a su colección","Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnAgregarDeseosActionPerformed
 
     private void btnAgregarColeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarColeccionActionPerformed

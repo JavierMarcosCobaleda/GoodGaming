@@ -177,7 +177,40 @@ public class HibernateUtil {
             
             c.setUsuarios(u);
             c.setVideojuegos(v);
+            c.setDeseado(false);
             c.setPoseido(true);
+            sesion.save(c);
+
+            tx.commit();
+            return true;
+        }else{
+            return false;
+        }       
+    }
+    
+    public static boolean insertarListaDeseos(Videojuegos v, Usuarios u)throws PropertyValueException{
+        
+        /**
+         * LLamamos al método insertar juego, si es true añadir a la coleccion del usuario
+         */
+        if(HibernateUtil.insertarJuego(v)){
+            Transaction tx=sesion.beginTransaction();
+            
+            if (u.getId() == null) {
+                sesion.save(u);
+            }
+            Coleccion c=new Coleccion();
+            //Claves primarias
+            ColeccionId coleccionId = new ColeccionId();
+            coleccionId.setIdJuego(v.getId());
+            coleccionId.setIdUsuario(u.getId());
+            //Asignar la clave primaria compuesta
+            c.setId(coleccionId);
+            
+            c.setUsuarios(u);
+            c.setVideojuegos(v);
+            c.setDeseado(true);
+            c.setPoseido(false);
             sesion.save(c);
 
             tx.commit();

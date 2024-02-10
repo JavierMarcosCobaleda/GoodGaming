@@ -38,16 +38,22 @@ public class PanelPlayStation extends javax.swing.JPanel {
         //Cargamos la lista de Videjuegos de PlayStation
         model = (DefaultTableModel) tablaNintendo.getModel();
         
+        
         for(int i=0;i<HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").size();i++){
-            model.addRow(new Object[]{
-                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getId(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getTitulo(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getGenero(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getFechaSalida(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getConsola(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getEdicion(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getValoracion()+1} 
-            );
+            /**
+             * Si el juego aparece como poseído lo insertamos en la tabla
+             */
+            if(HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getPoseido()==true){
+                model.addRow(new Object[]{
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getId(),
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getTitulo(),
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getGenero(),
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getFechaSalida(),
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getConsola(),
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getEdicion(),
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getValoracion()+1} 
+                );
+            }
         }
     }
 
@@ -186,8 +192,9 @@ public class PanelPlayStation extends javax.swing.JPanel {
             model.setRowCount(0);
             //Recorremos la lista de juegos nintendo           
             for (int i=0; i<HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").size();i++){
-                //si el título coincide con el introducido lo añadimos a la tabla
-                if(HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getTitulo().equals(tfbuscarN.getText())){
+                //si el título coincide con el introducido y aparece como poseido lo añadimos a la tabla
+                if(HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getTitulo().equals(tfbuscarN.getText()) && 
+                   HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getPoseido()==true){
                     model.addRow(new Object[]{
                         HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getId(),
                         HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getTitulo(),
@@ -220,15 +227,17 @@ public class PanelPlayStation extends javax.swing.JPanel {
          * Mostramos todos los videojuegos de nintendo
          */
         for(int i=0;i<HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").size();i++){
-            model.addRow(new Object[]{
-                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getId(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getTitulo(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getGenero(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getFechaSalida(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getConsola(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getEdicion(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getValoracion()+1} 
-            );
+            if(HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getPoseido()==true){
+                model.addRow(new Object[]{
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getId(),
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getTitulo(),
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getGenero(),
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getFechaSalida(),
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getConsola(),
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getEdicion(),
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getValoracion()+1} 
+                );
+            }
         }
     }//GEN-LAST:event_btnBuscarTodoActionPerformed
 

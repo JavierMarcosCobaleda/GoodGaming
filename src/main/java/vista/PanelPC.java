@@ -39,15 +39,17 @@ public class PanelPC extends javax.swing.JPanel {
         model = (DefaultTableModel) tablaNintendo.getModel();
         
         for(int i=0;i<HibernateUtil.listarJuegosPlataforma(usuario,"PC").size();i++){
-            model.addRow(new Object[]{
-                HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getId(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getTitulo(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getGenero(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getFechaSalida(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getConsola(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getEdicion(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getValoracion()+1} 
-            );
+            if(HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getPoseido()==true){
+                model.addRow(new Object[]{
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getId(),
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getTitulo(),
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getGenero(),
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getFechaSalida(),
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getConsola(),
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getEdicion(),
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getValoracion()+1} 
+                );
+            }
         }
     }
 
@@ -189,7 +191,8 @@ public class PanelPC extends javax.swing.JPanel {
             //Recorremos la lista de juegos nintendo           
             for (int i=0; i<HibernateUtil.listarJuegosPlataforma(usuario,"XBox").size();i++){
                 //si el título coincide con el introducido lo añadimos a la tabla
-                if(HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getTitulo().equals(tfbuscarN.getText())){
+                if(HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getTitulo().equals(tfbuscarN.getText()) && 
+                   (HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getPoseido()==true)){
                     model.addRow(new Object[]{
                         HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getId(),
                         HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getTitulo(),
@@ -222,15 +225,17 @@ public class PanelPC extends javax.swing.JPanel {
          * Mostramos todos los videojuegos de nintendo
          */
         for(int i=0;i<HibernateUtil.listarJuegosPlataforma(usuario,"PC").size();i++){
-            model.addRow(new Object[]{
-                HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getId(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getTitulo(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getGenero(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getFechaSalida(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getConsola(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getEdicion(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getValoracion()+1} 
-            );
+            if(HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getPoseido()==true){
+                model.addRow(new Object[]{
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getId(),
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getTitulo(),
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getGenero(),
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getFechaSalida(),
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getConsola(),
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getEdicion(),
+                    HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getVideojuegos().getValoracion()+1} 
+                );
+            }
         }
     }//GEN-LAST:event_btnBuscarTodoActionPerformed
 
