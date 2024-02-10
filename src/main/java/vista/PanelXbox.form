@@ -103,7 +103,7 @@
                     <Column editable="true" title="Valoraci&#xf3;n" type="java.lang.Object"/>
                   </Table>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Colecci&#xf3;n Nintendo"/>
+                <Property name="toolTipText" type="java.lang.String" value="Colecci&#xf3;n XBox"/>
                 <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="44" green="45" red="46" type="rgb"/>
                 </Property>
@@ -154,7 +154,7 @@
               <Font name="Eras Medium ITC" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="MOSTAR TODO"/>
-            <Property name="toolTipText" type="java.lang.String" value="Muestra todos los juegos de Nintendo"/>
+            <Property name="toolTipText" type="java.lang.String" value="Muestra todos los juegos de XBox"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>

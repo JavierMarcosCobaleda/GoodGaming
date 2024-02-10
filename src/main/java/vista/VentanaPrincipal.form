@@ -141,6 +141,10 @@
                       <Font name="Eras Medium ITC" size="18" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="REGISTRAR JUEGO"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Registra un juego en tu colecci&#xf3;n o en tu lista de deseos"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistrarActionPerformed"/>
@@ -155,6 +159,10 @@
                       <Font name="Eras Medium ITC" size="18" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="GESTIONAR JUEGOS"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Modifica los datos de un juego o elim&#xed;nalo por completo"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGestionarActionPerformed"/>
@@ -169,6 +177,10 @@
                       <Font name="Eras Medium ITC" size="18" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="MI COLECCI&#xd3;N"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Consulta los juegos de tu colecci&#xf3;n"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnColeccionActionPerformed"/>
@@ -183,6 +195,10 @@
                       <Font name="Eras Medium ITC" size="18" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="LISTA DE DESEOS"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Consulta los juegos de tu lista de deseos"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeseosActionPerformed"/>

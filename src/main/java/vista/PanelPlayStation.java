@@ -75,12 +75,14 @@ public class PanelPlayStation extends javax.swing.JPanel {
                 "ID", "Título", "Género", "Fecha Salida", "Consola", "Edición", "Valoración"
             }
         ));
+        tablaNintendo.setToolTipText("Colección PlayStation");
         tablaNintendo.setGridColor(new java.awt.Color(70, 69, 68));
         jScrollPane1.setViewportView(tablaNintendo);
 
         tfbuscarN.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         tfbuscarN.setForeground(new java.awt.Color(153, 153, 153));
         tfbuscarN.setText("Buscar por título");
+        tfbuscarN.setToolTipText("Introduce el título del juego que deseas buscar");
         tfbuscarN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 tfbuscarNMousePressed(evt);
@@ -90,6 +92,7 @@ public class PanelPlayStation extends javax.swing.JPanel {
         btnBuscar.setBackground(new java.awt.Color(234, 164, 28));
         btnBuscar.setFont(new java.awt.Font("Eras Medium ITC", 1, 12)); // NOI18N
         btnBuscar.setText("BUSCAR");
+        btnBuscar.setToolTipText("Muestra un juego por su título");
         btnBuscar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,6 +103,7 @@ public class PanelPlayStation extends javax.swing.JPanel {
         btnBuscarTodo.setBackground(new java.awt.Color(234, 164, 28));
         btnBuscarTodo.setFont(new java.awt.Font("Eras Medium ITC", 1, 12)); // NOI18N
         btnBuscarTodo.setText("MOSTAR TODO");
+        btnBuscarTodo.setToolTipText("Muestra todos los juegos de PlayStation");
         btnBuscarTodo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnBuscarTodo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,13 +221,13 @@ public class PanelPlayStation extends javax.swing.JPanel {
          */
         for(int i=0;i<HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").size();i++){
             model.addRow(new Object[]{
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getId(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getTitulo(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getGenero(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getFechaSalida(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getConsola(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getEdicion(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getValoracion()+1} 
+                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getId(),
+                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getTitulo(),
+                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getGenero(),
+                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getFechaSalida(),
+                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getConsola(),
+                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getEdicion(),
+                HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getVideojuegos().getValoracion()+1} 
             );
         }
     }//GEN-LAST:event_btnBuscarTodoActionPerformed

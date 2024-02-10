@@ -103,6 +103,7 @@
                     <Column editable="true" title="Valoraci&#xf3;n" type="java.lang.Object"/>
                   </Table>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Colecci&#xf3;n PlayStation"/>
                 <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="44" green="45" red="46" type="rgb"/>
                 </Property>
@@ -119,6 +120,7 @@
               <Color blue="99" green="99" red="99" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Buscar por t&#xed;tulo"/>
+            <Property name="toolTipText" type="java.lang.String" value="Introduce el t&#xed;tulo del juego que deseas buscar"/>
           </Properties>
           <Events>
             <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tfbuscarNMousePressed"/>
@@ -133,6 +135,7 @@
               <Font name="Eras Medium ITC" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="BUSCAR"/>
+            <Property name="toolTipText" type="java.lang.String" value="Muestra un juego por su t&#xed;tulo"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
           <Events>
@@ -148,6 +151,7 @@
               <Font name="Eras Medium ITC" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="MOSTAR TODO"/>
+            <Property name="toolTipText" type="java.lang.String" value="Muestra todos los juegos de PlayStation"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
           <Events>

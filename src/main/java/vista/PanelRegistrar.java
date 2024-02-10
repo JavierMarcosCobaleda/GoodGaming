@@ -16,6 +16,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.Usuarios;
 import model.Videojuegos;
+import org.hibernate.PropertyValueException;
 
 /**
  *
@@ -342,55 +343,91 @@ public class PanelRegistrar extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAgregarDeseosActionPerformed
 
     private void btnAgregarColeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarColeccionActionPerformed
-        Videojuegos v=new Videojuegos();
-        v.setTitulo(tfTitulo.getText());
-        v.setGenero(tfGenero.getText());
-        
+        boolean correcto=true;
         /**
-         * Parsear la fecha si el campo no está vacío
+         * Gestionamos el control de errores evitando campos vacíos en los textfields
          */
-        if(!tfFecha.getText().isEmpty()){
-            SimpleDateFormat fecha=new SimpleDateFormat("dd/MM/yyyy");
-            try {
-                //v.setFechaSalida((Date) fecha.parse(tfFecha.getText()));
-                java.util.Date utilDate = fecha.parse(tfFecha.getText());
-                java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-                v.setFechaSalida(sqlDate);
-            } catch (ParseException ex) {
-                Logger.getLogger(PanelRegistrar.class.getName()).log(Level.SEVERE, null, ex);
-                System.err.println("Error de formato fecha");
+        try{
+            Videojuegos v=new Videojuegos();
+            if (tfTitulo.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "ERROR, Introduzca el título","Error", JOptionPane.ERROR_MESSAGE);
+            } else if (tfGenero.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "ERROR, Introduzca el género","Error", JOptionPane.ERROR_MESSAGE);
+            } else if (tfFecha.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "ERROR, Formato de fecha incorrecto","Error", JOptionPane.ERROR_MESSAGE);
+            } else if (tfEdicion.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "ERROR, Introduzca la edición","Error", JOptionPane.ERROR_MESSAGE);
+            } else if(!rbNintendo.isSelected() && !rbPlayStation.isSelected() && !rbXbox.isSelected() && !rbPc.isSelected()){
+                JOptionPane.showMessageDialog(null, "ERROR, Seleccione una plataforma","Error", JOptionPane.ERROR_MESSAGE);
+            } else if(jcbConsola.getSelectedItem()==null){
+                JOptionPane.showMessageDialog(null, "ERROR, Seleccione una consola","Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+           
+                v.setTitulo(tfTitulo.getText());
+                v.setGenero(tfGenero.getText());
+
+                /**
+                 * Parsear la fecha si el campo no está vacío
+                 */
+                if(!tfFecha.getText().isEmpty()){
+                    SimpleDateFormat fecha=new SimpleDateFormat("dd/MM/yyyy");
+                    try {
+                        //v.setFechaSalida((Date) fecha.parse(tfFecha.getText()));
+                        java.util.Date utilDate = fecha.parse(tfFecha.getText());
+                        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+                        v.setFechaSalida(sqlDate);
+                    } catch (ParseException ex) {
+                        Logger.getLogger(PanelRegistrar.class.getName()).log(Level.SEVERE, null, ex);
+                        //System.err.println("Error de formato fecha");
+                        JOptionPane.showMessageDialog(null, "ERROR, Formato de fecha incorrecto <dd/MM/yyyy>","Error", JOptionPane.ERROR_MESSAGE);
+                        /**
+                         * ponemos la bandera a false para evitar la inserción de un formato de fecha incorrecto
+                         */
+                        correcto=false;
+                    }
+                }
+                v.setEdicion(tfEdicion.getText());
+                /**
+                 * Obetener la plataforma y la consola
+                 */
+                if(rbNintendo.isSelected()){
+                    v.setPlataforma("Nintendo");
+                    String consola=(String)jcbConsola.getSelectedItem();
+                    v.setConsola(consola);
+                }else if(rbPlayStation.isSelected()){
+                    v.setPlataforma("PlayStation");
+                    String consola=(String)jcbConsola.getSelectedItem();
+                    v.setConsola(consola);
+                }else if(rbXbox.isSelected()){
+                    v.setPlataforma("XBox");
+                    String consola=(String)jcbConsola.getSelectedItem();
+                    v.setConsola(consola);
+                }
+                else if(rbPc.isSelected()){
+                    v.setPlataforma("PC");
+                    String consola=(String)jcbConsola.getSelectedItem();
+                    v.setConsola(consola);
+                }
+
+                v.setValoracion(jsValoracion.getValue());
+                /**
+                 * Si todo es correcto registramos el juego y lo insertamos en la colección del usuario
+                 */
+                if(correcto){
+                    /**
+                     * Llamamos al método insertarColección
+                     */
+                    if(HibernateUtil.insertarColeccion(v,usuario)){
+                        JOptionPane.showMessageDialog(null, "Videojuego insertado correctamente en la colección");
+                    }else{
+                        JOptionPane.showMessageDialog(null, "ERROR,no se ha podido añadir el videojuego a su colección","Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
             }
-        }
-        v.setEdicion(tfEdicion.getText());
-        /**
-         * Obetener la plataforma y la consola
-         */
-        if(rbNintendo.isSelected()){
-            v.setPlataforma("Nintendo");
-            String consola=(String)jcbConsola.getSelectedItem();
-            v.setConsola(consola);
-        }else if(rbPlayStation.isSelected()){
-            v.setPlataforma("PlayStation");
-            String consola=(String)jcbConsola.getSelectedItem();
-            v.setConsola(consola);
-        }else if(rbXbox.isSelected()){
-            v.setPlataforma("XBox");
-            String consola=(String)jcbConsola.getSelectedItem();
-            v.setConsola(consola);
-        }
-        else if(rbPc.isSelected()){
-            v.setPlataforma("PC");
-            String consola=(String)jcbConsola.getSelectedItem();
-            v.setConsola(consola);
-        }
-        
-        v.setValoracion(jsValoracion.getValue());
-        
-        if(HibernateUtil.insertarColeccion(v,usuario)){
-            JOptionPane.showMessageDialog(null, "Videojuego insertado correctamente en la colección");
-        }else{
+        }catch(PropertyValueException e){
             JOptionPane.showMessageDialog(null, "ERROR,no se ha podido añadir el videojuego a su colección","Error", JOptionPane.ERROR_MESSAGE);
         }
+        
         
     }//GEN-LAST:event_btnAgregarColeccionActionPerformed
 

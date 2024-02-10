@@ -18,13 +18,13 @@ import model.Videojuegos;
  *
  * @author Javier Marcos Cobaleda
  */
-public class PanelNintendo extends javax.swing.JPanel {
+public class PanelXbox extends javax.swing.JPanel {
     private Usuarios usuario;
     DefaultTableModel model;
     /**
-     * Creates new form PanelNintendo
+     * Creates new form PanelPlayStation
      */
-    public PanelNintendo(Usuarios usuario) {
+    public PanelXbox(Usuarios usuario) {
         initComponents();
         this.usuario=usuario;
         
@@ -35,18 +35,18 @@ public class PanelNintendo extends javax.swing.JPanel {
         tfbuscarN.putClientProperty("FlatLaf.style","arc: 40");
         tfbuscarN.setBackground(Color.WHITE);
         
-        //Cargamos la lista de Videjuegos de Nintendo
+        //Cargamos la lista de Videjuegos de PlayStation
         model = (DefaultTableModel) tablaNintendo.getModel();
         
-        for(int i=0;i<HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").size();i++){
+        for(int i=0;i<HibernateUtil.listarJuegosPlataforma(usuario,"XBox").size();i++){
             model.addRow(new Object[]{
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getId(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getTitulo(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getGenero(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getFechaSalida(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getConsola(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getEdicion(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getValoracion()+1} 
+                HibernateUtil.listarJuegosPlataforma(usuario,"XBox").get(i).getVideojuegos().getId(),
+                HibernateUtil.listarJuegosPlataforma(usuario,"XBox").get(i).getVideojuegos().getTitulo(),
+                HibernateUtil.listarJuegosPlataforma(usuario,"XBox").get(i).getVideojuegos().getGenero(),
+                HibernateUtil.listarJuegosPlataforma(usuario,"XBox").get(i).getVideojuegos().getFechaSalida(),
+                HibernateUtil.listarJuegosPlataforma(usuario,"XBox").get(i).getVideojuegos().getConsola(),
+                HibernateUtil.listarJuegosPlataforma(usuario,"XBox").get(i).getVideojuegos().getEdicion(),
+                HibernateUtil.listarJuegosPlataforma(usuario,"XBox").get(i).getVideojuegos().getValoracion()+1} 
             );
         }
     }
@@ -75,7 +75,7 @@ public class PanelNintendo extends javax.swing.JPanel {
                 "ID", "Título", "Género", "Fecha Salida", "Consola", "Edición", "Valoración"
             }
         ));
-        tablaNintendo.setToolTipText("Colección Nintendo");
+        tablaNintendo.setToolTipText("Colección XBox");
         tablaNintendo.setGridColor(new java.awt.Color(70, 69, 68));
         jScrollPane1.setViewportView(tablaNintendo);
 
@@ -104,7 +104,7 @@ public class PanelNintendo extends javax.swing.JPanel {
         btnBuscarTodo.setBackground(new java.awt.Color(234, 164, 28));
         btnBuscarTodo.setFont(new java.awt.Font("Eras Medium ITC", 1, 12)); // NOI18N
         btnBuscarTodo.setText("MOSTAR TODO");
-        btnBuscarTodo.setToolTipText("Muestra todos los juegos de Nintendo");
+        btnBuscarTodo.setToolTipText("Muestra todos los juegos de XBox");
         btnBuscarTodo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBuscarTodo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnBuscarTodo.addActionListener(new java.awt.event.ActionListener() {
@@ -187,17 +187,17 @@ public class PanelNintendo extends javax.swing.JPanel {
             //Vaciamos la tabla
             model.setRowCount(0);
             //Recorremos la lista de juegos nintendo           
-            for (int i=0; i<HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").size();i++){
+            for (int i=0; i<HibernateUtil.listarJuegosPlataforma(usuario,"XBox").size();i++){
                 //si el título coincide con el introducido lo añadimos a la tabla
-                if(HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getTitulo().equals(tfbuscarN.getText())){
+                if(HibernateUtil.listarJuegosPlataforma(usuario,"XBox").get(i).getVideojuegos().getTitulo().equals(tfbuscarN.getText())){
                     model.addRow(new Object[]{
-                        HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getId(),
-                        HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getTitulo(),
-                        HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getGenero(),
-                        HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getFechaSalida(),
-                        HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getConsola(),
-                        HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getEdicion(),
-                        HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getValoracion()+1} 
+                        HibernateUtil.listarJuegosPlataforma(usuario,"XBox").get(i).getVideojuegos().getId(),
+                        HibernateUtil.listarJuegosPlataforma(usuario,"XBox").get(i).getVideojuegos().getTitulo(),
+                        HibernateUtil.listarJuegosPlataforma(usuario,"XBox").get(i).getVideojuegos().getGenero(),
+                        HibernateUtil.listarJuegosPlataforma(usuario,"XBox").get(i).getVideojuegos().getFechaSalida(),
+                        HibernateUtil.listarJuegosPlataforma(usuario,"XBox").get(i).getVideojuegos().getConsola(),
+                        HibernateUtil.listarJuegosPlataforma(usuario,"XBox").get(i).getVideojuegos().getEdicion(),
+                        HibernateUtil.listarJuegosPlataforma(usuario,"XBox").get(i).getVideojuegos().getValoracion()+1} 
                     );
                     
                 }
@@ -221,15 +221,15 @@ public class PanelNintendo extends javax.swing.JPanel {
         /**
          * Mostramos todos los videojuegos de nintendo
          */
-        for(int i=0;i<HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").size();i++){
+        for(int i=0;i<HibernateUtil.listarJuegosPlataforma(usuario,"XBox").size();i++){
             model.addRow(new Object[]{
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getId(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getTitulo(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getGenero(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getFechaSalida(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getConsola(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getEdicion(),
-                HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getValoracion()+1} 
+                HibernateUtil.listarJuegosPlataforma(usuario,"XBox").get(i).getVideojuegos().getId(),
+                HibernateUtil.listarJuegosPlataforma(usuario,"XBox").get(i).getVideojuegos().getTitulo(),
+                HibernateUtil.listarJuegosPlataforma(usuario,"XBox").get(i).getVideojuegos().getGenero(),
+                HibernateUtil.listarJuegosPlataforma(usuario,"XBox").get(i).getVideojuegos().getFechaSalida(),
+                HibernateUtil.listarJuegosPlataforma(usuario,"XBox").get(i).getVideojuegos().getConsola(),
+                HibernateUtil.listarJuegosPlataforma(usuario,"XBox").get(i).getVideojuegos().getEdicion(),
+                HibernateUtil.listarJuegosPlataforma(usuario,"XBox").get(i).getVideojuegos().getValoracion()+1} 
             );
         }
     }//GEN-LAST:event_btnBuscarTodoActionPerformed

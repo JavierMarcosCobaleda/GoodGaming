@@ -80,6 +80,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnRegistrar.setBackground(new java.awt.Color(113, 111, 108));
         btnRegistrar.setFont(new java.awt.Font("Eras Medium ITC", 1, 18)); // NOI18N
         btnRegistrar.setText("REGISTRAR JUEGO");
+        btnRegistrar.setToolTipText("Registra un juego en tu colección o en tu lista de deseos");
+        btnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
@@ -89,6 +91,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnGestionar.setBackground(new java.awt.Color(113, 111, 108));
         btnGestionar.setFont(new java.awt.Font("Eras Medium ITC", 1, 18)); // NOI18N
         btnGestionar.setText("GESTIONAR JUEGOS");
+        btnGestionar.setToolTipText("Modifica los datos de un juego o elimínalo por completo");
+        btnGestionar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGestionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGestionarActionPerformed(evt);
@@ -98,6 +102,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnColeccion.setBackground(new java.awt.Color(113, 111, 108));
         btnColeccion.setFont(new java.awt.Font("Eras Medium ITC", 1, 18)); // NOI18N
         btnColeccion.setText("MI COLECCIÓN");
+        btnColeccion.setToolTipText("Consulta los juegos de tu colección");
+        btnColeccion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnColeccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnColeccionActionPerformed(evt);
@@ -107,6 +113,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnDeseos.setBackground(new java.awt.Color(113, 111, 108));
         btnDeseos.setFont(new java.awt.Font("Eras Medium ITC", 1, 18)); // NOI18N
         btnDeseos.setText("LISTA DE DESEOS");
+        btnDeseos.setToolTipText("Consulta los juegos de tu lista de deseos");
+        btnDeseos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDeseos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeseosActionPerformed(evt);

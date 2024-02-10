@@ -12,6 +12,7 @@ import model.Coleccion;
 import model.ColeccionId;
 import model.Usuarios;
 import model.Videojuegos;
+import org.hibernate.PropertyValueException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -144,7 +145,7 @@ public class HibernateUtil {
      * @param v Objeto Videojuegos
      * @return true si se ha insertado correctamente
      */
-    public static boolean insertarJuego(Videojuegos v){
+    public static boolean insertarJuego(Videojuegos v)throws PropertyValueException{
         Transaction tx=sesion.beginTransaction();       
         sesion.save(v);       
         tx.commit();
@@ -155,7 +156,7 @@ public class HibernateUtil {
         }       
     }
     
-    public static boolean insertarColeccion(Videojuegos v, Usuarios u){
+    public static boolean insertarColeccion(Videojuegos v, Usuarios u)throws PropertyValueException{
         
         /**
          * LLamamos al método insertar juego, si es true añadir a la coleccion del usuario
