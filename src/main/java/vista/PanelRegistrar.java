@@ -391,17 +391,9 @@ public class PanelRegistrar extends javax.swing.JPanel {
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         /**
-         * Vaciar todos los campos
+         * Llamamos al método limpiar
          */
-        tfTitulo.setText("");
-        tfGenero.setText("");
-        tfFecha.setText("");
-        tfEdicion.setText("");
-        rbNintendo.setSelected(false);
-        rbPlayStation.setSelected(false);
-        rbXbox.setSelected(false);
-        rbPc.setSelected(false);
-        jsValoracion.setValue(2);
+        limpiar();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnAgregarDeseosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarDeseosActionPerformed
@@ -480,14 +472,18 @@ public class PanelRegistrar extends javax.swing.JPanel {
                      * Llamamos al método insertarListaDeseos
                      */
                     if(HibernateUtil.insertarListaDeseos(v,usuario)){
-                        JOptionPane.showMessageDialog(null, "Videojuego insertado correctamente en la colección");
+                        JOptionPane.showMessageDialog(null, "Videojuego insertado correctamente en la lista de deseos");
+                        /**
+                         * Llamamos al método limpiar para resetear los textFields
+                         */
+                        limpiar();
                     }else{
-                        JOptionPane.showMessageDialog(null, "ERROR,no se ha podido añadir el videojuego a su colección","Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "ERROR,no se ha podido añadir el videojuego a su lista de deseos","Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
         }catch(PropertyValueException e){
-            JOptionPane.showMessageDialog(null, "ERROR,no se ha podido añadir el videojuego a su colección","Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "ERROR,no se ha podido añadir el videojuego a su lista de deseos","Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnAgregarDeseosActionPerformed
 
@@ -568,6 +564,7 @@ public class PanelRegistrar extends javax.swing.JPanel {
                      */
                     if(HibernateUtil.insertarColeccion(v,usuario)){
                         JOptionPane.showMessageDialog(null, "Videojuego insertado correctamente en la colección");
+                        limpiar();
                     }else{
                         JOptionPane.showMessageDialog(null, "ERROR,no se ha podido añadir el videojuego a su colección","Error", JOptionPane.ERROR_MESSAGE);
                     }
@@ -606,6 +603,7 @@ public class PanelRegistrar extends javax.swing.JPanel {
     private void tfFechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfFechaMouseClicked
         if(tfFecha.getText().equals("dd/MM/aaaa")){
             tfFecha.setText("");
+            tfFecha.setForeground(Color.WHITE);
         }
     }//GEN-LAST:event_tfFechaMouseClicked
 
@@ -613,6 +611,7 @@ public class PanelRegistrar extends javax.swing.JPanel {
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
             tfFecha.setText("dd/MM/aaaa");
+            tfFecha.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_jcbConsolaMouseClicked
 
@@ -620,6 +619,7 @@ public class PanelRegistrar extends javax.swing.JPanel {
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
             tfFecha.setText("dd/MM/aaaa");
+            tfFecha.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_tfEdicionMouseClicked
 
@@ -627,6 +627,7 @@ public class PanelRegistrar extends javax.swing.JPanel {
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
             tfFecha.setText("dd/MM/aaaa");
+            tfFecha.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_tfGeneroMouseClicked
 
@@ -634,6 +635,7 @@ public class PanelRegistrar extends javax.swing.JPanel {
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
             tfFecha.setText("dd/MM/aaaa");
+            tfFecha.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_tfTituloMouseClicked
 
@@ -641,6 +643,7 @@ public class PanelRegistrar extends javax.swing.JPanel {
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
             tfFecha.setText("dd/MM/aaaa");
+            tfFecha.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_jsValoracionMouseClicked
 
@@ -648,6 +651,7 @@ public class PanelRegistrar extends javax.swing.JPanel {
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
             tfFecha.setText("dd/MM/aaaa");
+            tfFecha.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_rbNintendoMouseClicked
 
@@ -655,6 +659,7 @@ public class PanelRegistrar extends javax.swing.JPanel {
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
             tfFecha.setText("dd/MM/aaaa");
+            tfFecha.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_rbPlayStationMouseClicked
 
@@ -662,6 +667,7 @@ public class PanelRegistrar extends javax.swing.JPanel {
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
             tfFecha.setText("dd/MM/aaaa");
+            tfFecha.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_rbXboxMouseClicked
 
@@ -669,6 +675,7 @@ public class PanelRegistrar extends javax.swing.JPanel {
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
             tfFecha.setText("dd/MM/aaaa");
+            tfFecha.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_rbPcMouseClicked
 
@@ -700,4 +707,23 @@ public class PanelRegistrar extends javax.swing.JPanel {
     private javax.swing.JTextField tfGenero;
     private javax.swing.JTextField tfTitulo;
     // End of variables declaration//GEN-END:variables
+    
+    /**
+     * Método que resetea los textfields
+     */
+    public void limpiar(){
+        /**
+         * Vaciar todos los campos
+         */
+        tfTitulo.setText("");
+        tfGenero.setText("");
+        tfFecha.setText("dd/MM/aaaa");
+        tfFecha.setForeground(new Color(153,153,153));
+        tfEdicion.setText("");
+        rbNintendo.setSelected(false);
+        rbPlayStation.setSelected(false);
+        rbXbox.setSelected(false);
+        rbPc.setSelected(false);
+        jsValoracion.setValue(2);
+    }
 }

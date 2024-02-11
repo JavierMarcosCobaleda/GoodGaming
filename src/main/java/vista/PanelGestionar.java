@@ -4,11 +4,19 @@
  */
 package vista;
 
+import controlador.HibernateUtil;
 import java.awt.Color;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Enumeration;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import model.Usuarios;
+import model.Videojuegos;
+import org.hibernate.PropertyValueException;
 
 /**
  *
@@ -16,6 +24,7 @@ import model.Usuarios;
  */
 public class PanelGestionar extends javax.swing.JPanel {
     private Usuarios usuario;
+    int idJuego=0;
     /**
      * Creates new form PanelGestionar
      */
@@ -321,6 +330,11 @@ public class PanelGestionar extends javax.swing.JPanel {
                 tfIDMouseClicked(evt);
             }
         });
+        tfID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfIDActionPerformed(evt);
+            }
+        });
         panelFondo.add(tfID, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 390, 30));
 
         jSeparator1.setForeground(new java.awt.Color(234, 164, 28));
@@ -437,102 +451,313 @@ public class PanelGestionar extends javax.swing.JPanel {
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         /**
-         * Vaciar todos los campos
+         * Llamamos al método limpiar
          */
-        tfTitulo.setText("");
-        tfGenero.setText("");
-        tfFecha.setText("");
-        tfEdicion.setText("");
-        rbNintendo.setSelected(false);
-        rbPlayStation.setSelected(false);
-        rbXbox.setSelected(false);
-        rbPc.setSelected(false);
-        jsValoracion.setValue(2);
-        
+        limpiar();       
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
   
     
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
+        boolean idValido=true;
+        boolean correcto=true;
+        /**
+         * Comprobamos que haya un id en el textfield
+         */
+        if(tfID.getText().isEmpty() || tfID.getText().equals("ID del juego a modificar o borrar")){
+            JOptionPane.showMessageDialog(null, "ERROR, Debe introducir el ID del juego que desea eliminar","Error", JOptionPane.ERROR_MESSAGE);
+        }else {
+            try{
+              idJuego=Integer.parseInt(tfID.getText());
+            }catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null, "ERROR, Debe introducir el ID Válido","Error", JOptionPane.ERROR_MESSAGE);
+                idValido=false;
+            }
+            if(idValido){
+                /**
+                 * Comprobamos que el resto de campos sean válidos
+                 */
+                try{
+                    Videojuegos v=new Videojuegos();
+                    if (tfTitulo.getText().equals("")){
+                        JOptionPane.showMessageDialog(null, "ERROR, Introduzca el nuevo título","Error", JOptionPane.ERROR_MESSAGE);
+                    } else if (tfGenero.getText().equals("")){
+                        JOptionPane.showMessageDialog(null, "ERROR, Introduzca el nuevo género","Error", JOptionPane.ERROR_MESSAGE);
+                    } else if (tfFecha.getText().isEmpty()){
+                        JOptionPane.showMessageDialog(null, "ERROR, Formato de fecha incorrecto","Error", JOptionPane.ERROR_MESSAGE);
+                    } else if (tfEdicion.getText().isEmpty()){
+                        JOptionPane.showMessageDialog(null, "ERROR, Introduzca la nueva edición","Error", JOptionPane.ERROR_MESSAGE);
+                    } else if(!rbNintendo.isSelected() && !rbPlayStation.isSelected() && !rbXbox.isSelected() && !rbPc.isSelected()){
+                        JOptionPane.showMessageDialog(null, "ERROR, Seleccione una plataforma","Error", JOptionPane.ERROR_MESSAGE);
+                    } else if(jcbConsola.getSelectedItem()==null){
+                        JOptionPane.showMessageDialog(null, "ERROR, Seleccione una consola","Error", JOptionPane.ERROR_MESSAGE);
+                    } else {
+
+                        v.setTitulo(tfTitulo.getText());
+                        v.setGenero(tfGenero.getText());
+
+                        /**
+                         * Parsear la fecha si el campo no está vacío
+                         */
+                        if(!tfFecha.getText().isEmpty()){
+                            SimpleDateFormat fecha=new SimpleDateFormat("dd/MM/yyyy");
+                            try {
+                                //v.setFechaSalida((Date) fecha.parse(tfFecha.getText()));
+                                java.util.Date utilDate = fecha.parse(tfFecha.getText());
+                                java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+                                v.setFechaSalida(sqlDate);
+                            } catch (ParseException ex) {
+                                Logger.getLogger(PanelRegistrar.class.getName()).log(Level.SEVERE, null, ex);
+                                //System.err.println("Error de formato fecha");
+                                JOptionPane.showMessageDialog(null, "ERROR, Formato de fecha incorrecto <dd/MM/yyyy>","Error", JOptionPane.ERROR_MESSAGE);
+                                /**
+                                 * ponemos la bandera a false para evitar la inserción de un formato de fecha incorrecto
+                                 */
+                                correcto=false;
+                            }
+                        }
+                        v.setEdicion(tfEdicion.getText());
+                        /**
+                         * Obetener la plataforma y la consola
+                         */
+                        if(rbNintendo.isSelected()){
+                            v.setPlataforma("Nintendo");
+                            String consola=(String)jcbConsola.getSelectedItem();
+                            v.setConsola(consola);
+                        }else if(rbPlayStation.isSelected()){
+                            v.setPlataforma("PlayStation");
+                            String consola=(String)jcbConsola.getSelectedItem();
+                            v.setConsola(consola);
+                        }else if(rbXbox.isSelected()){
+                            v.setPlataforma("XBox");
+                            String consola=(String)jcbConsola.getSelectedItem();
+                            v.setConsola(consola);
+                        }
+                        else if(rbPc.isSelected()){
+                            v.setPlataforma("PC");
+                            String consola=(String)jcbConsola.getSelectedItem();
+                            v.setConsola(consola);
+                        }
+
+                        v.setValoracion(jsValoracion.getValue());
+                        /**
+                         * Si todo es correcto procedemos a modificar el juego
+                         */
+                        if(correcto){
+                            /**
+                             * Llamamos al método modificarJuego
+                             */
+                            if(HibernateUtil.modificarJuego(idJuego,v)){
+                                JOptionPane.showMessageDialog(null, "Videojuego modificado correctamente");
+                                /**
+                                 * Llamamos al método limpiar para resetear los textFields
+                                 */
+                                limpiar();
+                            }else{
+                                JOptionPane.showMessageDialog(null, "ERROR,no se ha podido modificar el videojuego","Error", JOptionPane.ERROR_MESSAGE);
+                            }                           
+                        }
+                    }
+                }catch(PropertyValueException e){
+                    JOptionPane.showMessageDialog(null, "ERROR,no se ha podido añadir el videojuego a su colección","Error", JOptionPane.ERROR_MESSAGE);
+                }
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "ERROR, Debe introducir el ID Válido","Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        
+        Videojuegos v=new Videojuegos();
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+        boolean idValido=true;
+        /**
+         * Comprobamos que haya un id en el textfield
+         */
+        if(tfID.getText().isEmpty() || tfID.getText().equals("ID del juego a modificar o borrar")){
+            JOptionPane.showMessageDialog(null, "ERROR, Debe introducir el ID del juego que desea eliminar","Error", JOptionPane.ERROR_MESSAGE);
+        }else {
+            try{
+              idJuego=Integer.parseInt(tfID.getText());
+            }catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null, "ERROR, Debe introducir el ID Válido","Error", JOptionPane.ERROR_MESSAGE);
+                idValido=false;
+            }
+            if(idValido){
+                /**
+                 * Mostramos el cuadro de diálogo para confirmar el borrado
+                 */
+                confirmarBorrado();
+            }else{
+                JOptionPane.showMessageDialog(null, "ERROR, Debe introducir el ID Válido","Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void tfTituloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfTituloMouseClicked
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
             tfFecha.setText("dd/MM/aaaa");
+            tfFecha.setForeground(new Color(153,153,153));
         }
+        
+        //Si el id está vacía rellenarlo por defecto
+        if(tfID.getText().equals("")){
+            tfID.setText("ID del juego a modificar o borrar");
+            tfID.setForeground(new Color(153,153,153));
+        }
+        
     }//GEN-LAST:event_tfTituloMouseClicked
 
     private void tfGeneroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfGeneroMouseClicked
-        //Si la fecha está vacía rellenarla por defecto
+        /**
+         * Si la fecha está vacía rellenarla por defecto
+         */ 
         if(tfFecha.getText().equals("")){
             tfFecha.setText("dd/MM/aaaa");
+            tfFecha.setForeground(new Color(153,153,153));
         }
+        //Si el id está vacía rellenarlo por defecto
+        if(tfID.getText().equals("")){
+            tfID.setText("ID del juego a modificar o borrar");
+            tfID.setForeground(new Color(153,153,153));
+        }
+
     }//GEN-LAST:event_tfGeneroMouseClicked
 
     private void rbNintendoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbNintendoMouseClicked
-    //Si la fecha está vacía rellenarla por defecto
+        /**
+         * Si la fecha está vacía rellenarla por defecto
+         */ 
         if(tfFecha.getText().equals("")){
             tfFecha.setText("dd/MM/aaaa");
+            tfFecha.setForeground(new Color(153,153,153));
         }
+        /**
+         * Si el id está vacía rellenarlo por defecto
+         */
+        if(tfID.getText().equals("")){
+            tfID.setText("ID del juego a modificar o borrar");
+        }
+        tfID.setForeground(new Color(153,153,153));
     }//GEN-LAST:event_rbNintendoMouseClicked
 
     private void rbPlayStationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbPlayStationMouseClicked
        //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
             tfFecha.setText("dd/MM/aaaa");
+            tfFecha.setForeground(new Color(153,153,153));
         }
+        //Si el id está vacía rellenarlo por defecto
+        if(tfID.getText().equals("")){
+            tfID.setText("ID del juego a modificar o borrar");
+            tfID.setForeground(new Color(153,153,153));
+        }
+
     }//GEN-LAST:event_rbPlayStationMouseClicked
 
     private void rbXboxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbXboxMouseClicked
        //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
             tfFecha.setText("dd/MM/aaaa");
+            tfFecha.setForeground(new Color(153,153,153));
         }
+        //Si el id está vacía rellenarlo por defecto
+        if(tfID.getText().equals("")){
+            tfID.setText("ID del juego a modificar o borrar");
+            tfID.setForeground(new Color(153,153,153));
+        }
+
     }//GEN-LAST:event_rbXboxMouseClicked
 
     private void rbPcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbPcMouseClicked
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
             tfFecha.setText("dd/MM/aaaa");
+            tfFecha.setForeground(new Color(153,153,153));
         }
+        //Si el id está vacía rellenarlo por defecto
+        if(tfID.getText().equals("")){
+            tfID.setText("ID del juego a modificar o borrar");
+            tfID.setForeground(new Color(153,153,153));
+        }
+        
     }//GEN-LAST:event_rbPcMouseClicked
 
     private void jcbConsolaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbConsolaMouseClicked
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
             tfFecha.setText("dd/MM/aaaa");
+            tfFecha.setForeground(new Color(153,153,153));
         }
+        //Si el id está vacía rellenarlo por defecto
+        if(tfID.getText().equals("")){
+            tfID.setText("ID del juego a modificar o borrar");
+            tfID.setForeground(new Color(153,153,153));
+        }
+        
     }//GEN-LAST:event_jcbConsolaMouseClicked
 
     private void tfEdicionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfEdicionMouseClicked
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
             tfFecha.setText("dd/MM/aaaa");
+            tfFecha.setForeground(new Color(153,153,153));
         }
+        //Si el id está vacía rellenarlo por defecto
+        if(tfID.getText().equals("")){
+            tfID.setText("ID del juego a modificar o borrar");
+            tfID.setForeground(new Color(153,153,153));
+        }
+        
     }//GEN-LAST:event_tfEdicionMouseClicked
 
     private void jsValoracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jsValoracionMouseClicked
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
             tfFecha.setText("dd/MM/aaaa");
+            tfFecha.setForeground(new Color(153,153,153));
         }
+        //Si el id está vacía rellenarlo por defecto
+        if(tfID.getText().equals("")){
+            tfID.setText("ID del juego a modificar o borrar");
+            tfID.setForeground(new Color(153,153,153));
+        }
+        
     }//GEN-LAST:event_jsValoracionMouseClicked
 
     private void tfFechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfFechaMouseClicked
         if(tfFecha.getText().equals("dd/MM/aaaa")){
             tfFecha.setText("");
+            tfFecha.setForeground(Color.WHITE);
         }
+        //Si el id está vacía rellenarlo por defecto
+        if(tfID.getText().equals("")){
+            tfID.setText("ID del juego a modificar o borrar");
+            tfID.setForeground(new Color(153,153,153));
+        }
+        
     }//GEN-LAST:event_tfFechaMouseClicked
 
     private void tfIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfIDMouseClicked
-        // TODO add your handling code here:
+        //Vaciar el textField al clickar en él
+        if(tfID.getText().equals("ID del juego a modificar o borrar")){
+            tfID.setText("");
+            tfID.setForeground(Color.WHITE);
+        }
+        
+        //Si la fecha está vacía rellenarla por defecto
+        if(tfFecha.getText().equals("")){
+            tfFecha.setText("dd/MM/aaaa");
+            tfFecha.setForeground(new Color(153,153,153));
+        }
+        
     }//GEN-LAST:event_tfIDMouseClicked
+
+    private void tfIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfIDActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -566,4 +791,69 @@ public class PanelGestionar extends javax.swing.JPanel {
     private javax.swing.JTextField tfID;
     private javax.swing.JTextField tfTitulo;
     // End of variables declaration//GEN-END:variables
+    
+    /**
+     * Método para limpiar los textFields
+     */
+    public void limpiar(){
+        /**
+         * Vaciar todos los campos
+         */
+        tfTitulo.setText("");
+        tfGenero.setText("");
+        tfFecha.setText("dd/MM/aaaa");
+        tfFecha.setForeground(new Color(153,153,153));
+        tfEdicion.setText("");
+        rbNintendo.setSelected(false);
+        rbPlayStation.setSelected(false);
+        rbXbox.setSelected(false);
+        rbPc.setSelected(false);
+        jsValoracion.setValue(2);
+        tfID.setText("ID del juego a modificar o borrar");
+        tfID.setForeground(new Color(153,153,153));
+    }
+    /**
+     * Método para crear ventana de diálogo para confirmar el borrado de un juego de la colección de un usuario
+     */
+    public void confirmarBorrado(){
+        int opcion = JOptionPane.showConfirmDialog( null,"¿Seguro que deseas borrar el juego?","Confirmar Borrado",JOptionPane.YES_NO_OPTION);
+
+        if (opcion == JOptionPane.YES_OPTION) {
+            /**
+            * Llamamos al método borrarJuego, si nos da true el juego se habrá eliminado correctamente
+            */
+            if(HibernateUtil.borrarJuegoColeccion(idJuego)>0){
+                JOptionPane.showMessageDialog(null, "El videojuego ha sido eliminado de su colección");
+                /**
+                 * Le damos la opción al usuario de eliminar el juego completamente de la base de datos
+                 */
+                confirmarBorradoTotal();
+                /**
+                 * limpiamos los textfields
+                 */
+                limpiar();
+            }else{
+                JOptionPane.showMessageDialog(null, "ERROR, No se ha podido elimiar el juego","Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Se ha cancelado la eliminación del juego");
+        }
+    }
+    /**
+     * Método para crear ventana de diálogo para confirmar el borrado de un juego de la base de datos
+     */
+    public void confirmarBorradoTotal(){
+        int opcion = JOptionPane.showConfirmDialog( null,"¿Desea borrar también el juego completamente de la base de datos?","Confirmar Borrado Total",JOptionPane.YES_NO_OPTION);
+
+        if (opcion == JOptionPane.YES_OPTION) {
+            if(HibernateUtil.borrarJuego(idJuego)){
+                JOptionPane.showMessageDialog(null, "El videojuego ha sido eliminado completamente");
+            }else{
+                JOptionPane.showMessageDialog(null, "ERROR, No se ha podido elimiar el juego de la base de datos","Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Se ha cancelado la eliminación del juego");
+        }
+    }
+
 }
