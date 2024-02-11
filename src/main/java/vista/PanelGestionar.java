@@ -67,110 +67,160 @@ public class PanelGestionar extends javax.swing.JPanel {
         btnEliminar = new javax.swing.JButton();
         panelRound1 = new vista.PanelRound();
         lblGestionar = new javax.swing.JLabel();
+        lblID = new javax.swing.JLabel();
+        tfID = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        lbltitulo2 = new javax.swing.JLabel();
 
         panelFondo.setBackground(new java.awt.Color(30, 30, 30));
         panelFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbltitulo.setFont(new java.awt.Font("OCR A Extended", 0, 18)); // NOI18N
-        lbltitulo.setForeground(new java.awt.Color(255, 255, 255));
-        lbltitulo.setText("Título");
-        panelFondo.add(lbltitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, -1));
+        lbltitulo.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
+        lbltitulo.setForeground(new java.awt.Color(234, 164, 28));
+        lbltitulo.setText("DATOS NUEVOS");
+        panelFondo.add(lbltitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, -1, -1));
 
         tfTitulo.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         tfTitulo.setForeground(new java.awt.Color(255, 255, 255));
         tfTitulo.setPreferredSize(new java.awt.Dimension(221, 22));
-        panelFondo.add(tfTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 390, 30));
+        tfTitulo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tfTituloMouseClicked(evt);
+            }
+        });
+        panelFondo.add(tfTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 390, 30));
 
         lblplataforma.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         lblplataforma.setForeground(new java.awt.Color(255, 255, 255));
         lblplataforma.setText("Plataforma");
-        panelFondo.add(lblplataforma, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, -1, -1));
+        panelFondo.add(lblplataforma, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 380, -1, -1));
 
         tfGenero.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         tfGenero.setForeground(new java.awt.Color(255, 255, 255));
         tfGenero.setPreferredSize(new java.awt.Dimension(221, 22));
-        panelFondo.add(tfGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 390, 30));
+        tfGenero.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tfGeneroMouseClicked(evt);
+            }
+        });
+        panelFondo.add(tfGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 390, 30));
 
         lblgenero1.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         lblgenero1.setForeground(new java.awt.Color(255, 255, 255));
         lblgenero1.setText("Género");
-        panelFondo.add(lblgenero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, -1, -1));
+        panelFondo.add(lblgenero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
 
         buttonGroup1.add(rbPlayStation);
         rbPlayStation.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         rbPlayStation.setForeground(new java.awt.Color(255, 255, 255));
         rbPlayStation.setText("PlayStation");
+        rbPlayStation.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbPlayStationMouseClicked(evt);
+            }
+        });
         rbPlayStation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbPlayStationActionPerformed(evt);
             }
         });
-        panelFondo.add(rbPlayStation, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 280, -1, -1));
+        panelFondo.add(rbPlayStation, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 380, -1, -1));
 
         buttonGroup1.add(rbNintendo);
         rbNintendo.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         rbNintendo.setForeground(new java.awt.Color(255, 255, 255));
         rbNintendo.setText("Nintendo");
+        rbNintendo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbNintendoMouseClicked(evt);
+            }
+        });
         rbNintendo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbNintendoActionPerformed(evt);
             }
         });
-        panelFondo.add(rbNintendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, -1, -1));
+        panelFondo.add(rbNintendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 380, -1, -1));
 
         buttonGroup1.add(rbXbox);
         rbXbox.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         rbXbox.setForeground(new java.awt.Color(255, 255, 255));
         rbXbox.setText("Xbox");
+        rbXbox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbXboxMouseClicked(evt);
+            }
+        });
         rbXbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbXboxActionPerformed(evt);
             }
         });
-        panelFondo.add(rbXbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, -1, -1));
+        panelFondo.add(rbXbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, -1, -1));
 
         buttonGroup1.add(rbPc);
         rbPc.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         rbPc.setForeground(new java.awt.Color(255, 255, 255));
         rbPc.setText("PC");
+        rbPc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbPcMouseClicked(evt);
+            }
+        });
         rbPc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbPcActionPerformed(evt);
             }
         });
-        panelFondo.add(rbPc, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, -1, -1));
+        panelFondo.add(rbPc, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, -1, -1));
 
         lblconsola.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         lblconsola.setForeground(new java.awt.Color(255, 255, 255));
         lblconsola.setText("Consola");
-        panelFondo.add(lblconsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, -1, -1));
+        panelFondo.add(lblconsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, -1, -1));
 
-        panelFondo.add(jcbConsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 390, 30));
+        jcbConsola.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jcbConsolaMouseClicked(evt);
+            }
+        });
+        panelFondo.add(jcbConsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, 390, 30));
 
         lblfecha.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         lblfecha.setForeground(new java.awt.Color(255, 255, 255));
         lblfecha.setText("<html><p>Fecha</p><p>de salida</p></html>");
-        panelFondo.add(lblfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, -1, -1));
+        panelFondo.add(lblfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 500, -1, -1));
 
         tfFecha.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
-        tfFecha.setForeground(new java.awt.Color(255, 255, 255));
+        tfFecha.setForeground(new java.awt.Color(153, 153, 153));
+        tfFecha.setText("dd/MM/aaaa");
         tfFecha.setPreferredSize(new java.awt.Dimension(221, 22));
-        panelFondo.add(tfFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, 390, 30));
+        tfFecha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tfFechaMouseClicked(evt);
+            }
+        });
+        panelFondo.add(tfFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 500, 390, 30));
 
         lblgenero4.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         lblgenero4.setForeground(new java.awt.Color(255, 255, 255));
         lblgenero4.setText("Valoración");
-        panelFondo.add(lblgenero4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 510, -1, -1));
+        panelFondo.add(lblgenero4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 610, -1, -1));
 
         tfEdicion.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         tfEdicion.setForeground(new java.awt.Color(255, 255, 255));
         tfEdicion.setPreferredSize(new java.awt.Dimension(221, 22));
-        panelFondo.add(tfEdicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, 390, 30));
+        tfEdicion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tfEdicionMouseClicked(evt);
+            }
+        });
+        panelFondo.add(tfEdicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 550, 390, 30));
 
         lblgenero5.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         lblgenero5.setForeground(new java.awt.Color(255, 255, 255));
         lblgenero5.setText("Edición");
-        panelFondo.add(lblgenero5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, -1, -1));
+        panelFondo.add(lblgenero5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, -1, -1));
 
         jsValoracion.setMaximum(4);
         jsValoracion.setValue(2);
@@ -179,44 +229,54 @@ public class PanelGestionar extends javax.swing.JPanel {
                 jsValoracionStateChanged(evt);
             }
         });
-        panelFondo.add(jsValoracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 580, 530, -1));
+        jsValoracion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jsValoracionMouseClicked(evt);
+            }
+        });
+        panelFondo.add(jsValoracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 670, 530, -1));
 
         estrellas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/3estrellas.png"))); // NOI18N
-        panelFondo.add(estrellas, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 540, -1, -1));
+        panelFondo.add(estrellas, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 630, -1, -1));
 
         btnLimpiar.setBackground(new java.awt.Color(0, 0, 0));
         btnLimpiar.setFont(new java.awt.Font("Eras Medium ITC", 1, 12)); // NOI18N
         btnLimpiar.setForeground(new java.awt.Color(234, 164, 28));
         btnLimpiar.setText("LIMPIAR");
+        btnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLimpiar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimpiarActionPerformed(evt);
             }
         });
-        panelFondo.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 650, 134, 50));
+        panelFondo.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 710, 134, 50));
 
         btnModificar.setBackground(new java.awt.Color(234, 164, 28));
         btnModificar.setFont(new java.awt.Font("Eras Medium ITC", 1, 12)); // NOI18N
         btnModificar.setText("MODIFICAR");
+        btnModificar.setToolTipText("Modifica los datos del juego. Debes introducir todos los datos.");
+        btnModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnModificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarActionPerformed(evt);
             }
         });
-        panelFondo.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 650, 134, 50));
+        panelFondo.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 710, 134, 50));
 
         btnEliminar.setBackground(new java.awt.Color(234, 164, 28));
         btnEliminar.setFont(new java.awt.Font("Eras Medium ITC", 1, 12)); // NOI18N
         btnEliminar.setText("ELIMINAR");
+        btnEliminar.setToolTipText("Elimina el juego de la base de datos. Debes introducir su ID en el campo correspondiente");
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
             }
         });
-        panelFondo.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 650, 134, 50));
+        panelFondo.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 710, 134, 50));
 
         panelRound1.setBackground(new java.awt.Color(234, 164, 28));
         panelRound1.setRoundBottomLeft(20);
@@ -245,6 +305,31 @@ public class PanelGestionar extends javax.swing.JPanel {
         );
 
         panelFondo.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 519, 113));
+
+        lblID.setFont(new java.awt.Font("OCR A Extended", 0, 18)); // NOI18N
+        lblID.setForeground(new java.awt.Color(255, 255, 255));
+        lblID.setText("ID");
+        panelFondo.add(lblID, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, -1));
+
+        tfID.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
+        tfID.setForeground(new java.awt.Color(153, 153, 153));
+        tfID.setText("ID del juego a modificar o borrar");
+        tfID.setToolTipText("Introduce el Id del juego que deseas borrar o modificar");
+        tfID.setPreferredSize(new java.awt.Dimension(221, 22));
+        tfID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tfIDMouseClicked(evt);
+            }
+        });
+        panelFondo.add(tfID, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 390, 30));
+
+        jSeparator1.setForeground(new java.awt.Color(234, 164, 28));
+        panelFondo.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 520, 10));
+
+        lbltitulo2.setFont(new java.awt.Font("OCR A Extended", 0, 18)); // NOI18N
+        lbltitulo2.setForeground(new java.awt.Color(255, 255, 255));
+        lbltitulo2.setText("Título");
+        panelFondo.add(lbltitulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -366,6 +451,8 @@ public class PanelGestionar extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
+  
+    
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnModificarActionPerformed
@@ -374,6 +461,79 @@ public class PanelGestionar extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarActionPerformed
 
+    private void tfTituloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfTituloMouseClicked
+        //Si la fecha está vacía rellenarla por defecto
+        if(tfFecha.getText().equals("")){
+            tfFecha.setText("dd/MM/aaaa");
+        }
+    }//GEN-LAST:event_tfTituloMouseClicked
+
+    private void tfGeneroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfGeneroMouseClicked
+        //Si la fecha está vacía rellenarla por defecto
+        if(tfFecha.getText().equals("")){
+            tfFecha.setText("dd/MM/aaaa");
+        }
+    }//GEN-LAST:event_tfGeneroMouseClicked
+
+    private void rbNintendoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbNintendoMouseClicked
+    //Si la fecha está vacía rellenarla por defecto
+        if(tfFecha.getText().equals("")){
+            tfFecha.setText("dd/MM/aaaa");
+        }
+    }//GEN-LAST:event_rbNintendoMouseClicked
+
+    private void rbPlayStationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbPlayStationMouseClicked
+       //Si la fecha está vacía rellenarla por defecto
+        if(tfFecha.getText().equals("")){
+            tfFecha.setText("dd/MM/aaaa");
+        }
+    }//GEN-LAST:event_rbPlayStationMouseClicked
+
+    private void rbXboxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbXboxMouseClicked
+       //Si la fecha está vacía rellenarla por defecto
+        if(tfFecha.getText().equals("")){
+            tfFecha.setText("dd/MM/aaaa");
+        }
+    }//GEN-LAST:event_rbXboxMouseClicked
+
+    private void rbPcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbPcMouseClicked
+        //Si la fecha está vacía rellenarla por defecto
+        if(tfFecha.getText().equals("")){
+            tfFecha.setText("dd/MM/aaaa");
+        }
+    }//GEN-LAST:event_rbPcMouseClicked
+
+    private void jcbConsolaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbConsolaMouseClicked
+        //Si la fecha está vacía rellenarla por defecto
+        if(tfFecha.getText().equals("")){
+            tfFecha.setText("dd/MM/aaaa");
+        }
+    }//GEN-LAST:event_jcbConsolaMouseClicked
+
+    private void tfEdicionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfEdicionMouseClicked
+        //Si la fecha está vacía rellenarla por defecto
+        if(tfFecha.getText().equals("")){
+            tfFecha.setText("dd/MM/aaaa");
+        }
+    }//GEN-LAST:event_tfEdicionMouseClicked
+
+    private void jsValoracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jsValoracionMouseClicked
+        //Si la fecha está vacía rellenarla por defecto
+        if(tfFecha.getText().equals("")){
+            tfFecha.setText("dd/MM/aaaa");
+        }
+    }//GEN-LAST:event_jsValoracionMouseClicked
+
+    private void tfFechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfFechaMouseClicked
+        if(tfFecha.getText().equals("dd/MM/aaaa")){
+            tfFecha.setText("");
+        }
+    }//GEN-LAST:event_tfFechaMouseClicked
+
+    private void tfIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfIDMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfIDMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminar;
@@ -381,9 +541,11 @@ public class PanelGestionar extends javax.swing.JPanel {
     private javax.swing.JButton btnModificar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel estrellas;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JComboBox<String> jcbConsola;
     private javax.swing.JSlider jsValoracion;
     private javax.swing.JLabel lblGestionar;
+    private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblconsola;
     private javax.swing.JLabel lblfecha;
     private javax.swing.JLabel lblgenero1;
@@ -391,6 +553,7 @@ public class PanelGestionar extends javax.swing.JPanel {
     private javax.swing.JLabel lblgenero5;
     private javax.swing.JLabel lblplataforma;
     private javax.swing.JLabel lbltitulo;
+    private javax.swing.JLabel lbltitulo2;
     private javax.swing.JPanel panelFondo;
     private vista.PanelRound panelRound1;
     private javax.swing.JRadioButton rbNintendo;
@@ -400,6 +563,7 @@ public class PanelGestionar extends javax.swing.JPanel {
     private javax.swing.JTextField tfEdicion;
     private javax.swing.JTextField tfFecha;
     private javax.swing.JTextField tfGenero;
+    private javax.swing.JTextField tfID;
     private javax.swing.JTextField tfTitulo;
     // End of variables declaration//GEN-END:variables
 }

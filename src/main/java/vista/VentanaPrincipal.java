@@ -308,7 +308,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnDeseosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeseosActionPerformed
-        // TODO add your handling code here:
+        /**
+         * Mostramos el paner de la lista de deseos
+         */
+        PanelDeseos deseos=new PanelDeseos(usuario);
+        mostrarPanel(deseos);
         
         //cambiamos los colores de los botones de la barra lateral
         btnRegistrar.setBackground(new Color(113,111,108));

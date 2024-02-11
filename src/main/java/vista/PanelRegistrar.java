@@ -105,6 +105,11 @@ public class PanelRegistrar extends javax.swing.JPanel {
         tfTitulo.setToolTipText("Introduce el título del juego a registrar");
         tfTitulo.setMargin(new java.awt.Insets(2, 12, 2, 6));
         tfTitulo.setPreferredSize(new java.awt.Dimension(221, 22));
+        tfTitulo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tfTituloMouseClicked(evt);
+            }
+        });
         panelFondo.add(tfTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 390, 30));
 
         lblplataforma.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
@@ -117,6 +122,11 @@ public class PanelRegistrar extends javax.swing.JPanel {
         tfGenero.setToolTipText("Introduce el género al que pertene el juego");
         tfGenero.setMargin(new java.awt.Insets(2, 12, 2, 6));
         tfGenero.setPreferredSize(new java.awt.Dimension(221, 22));
+        tfGenero.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tfGeneroMouseClicked(evt);
+            }
+        });
         panelFondo.add(tfGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 390, 30));
 
         lblgenero1.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
@@ -128,6 +138,11 @@ public class PanelRegistrar extends javax.swing.JPanel {
         rbPlayStation.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         rbPlayStation.setForeground(new java.awt.Color(255, 255, 255));
         rbPlayStation.setText("PlayStation");
+        rbPlayStation.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbPlayStationMouseClicked(evt);
+            }
+        });
         rbPlayStation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbPlayStationActionPerformed(evt);
@@ -139,6 +154,11 @@ public class PanelRegistrar extends javax.swing.JPanel {
         rbNintendo.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         rbNintendo.setForeground(new java.awt.Color(255, 255, 255));
         rbNintendo.setText("Nintendo");
+        rbNintendo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbNintendoMouseClicked(evt);
+            }
+        });
         rbNintendo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbNintendoActionPerformed(evt);
@@ -150,6 +170,11 @@ public class PanelRegistrar extends javax.swing.JPanel {
         rbXbox.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         rbXbox.setForeground(new java.awt.Color(255, 255, 255));
         rbXbox.setText("Xbox");
+        rbXbox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbXboxMouseClicked(evt);
+            }
+        });
         rbXbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbXboxActionPerformed(evt);
@@ -161,6 +186,11 @@ public class PanelRegistrar extends javax.swing.JPanel {
         rbPc.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         rbPc.setForeground(new java.awt.Color(255, 255, 255));
         rbPc.setText("PC");
+        rbPc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbPcMouseClicked(evt);
+            }
+        });
         rbPc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbPcActionPerformed(evt);
@@ -174,6 +204,11 @@ public class PanelRegistrar extends javax.swing.JPanel {
         panelFondo.add(lblconsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, -1, -1));
 
         jcbConsola.setToolTipText("Selecciona la consola a la que pertene el juego");
+        jcbConsola.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jcbConsolaMouseClicked(evt);
+            }
+        });
         panelFondo.add(jcbConsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 390, 30));
 
         lblfecha.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
@@ -187,6 +222,11 @@ public class PanelRegistrar extends javax.swing.JPanel {
         tfFecha.setToolTipText("Añade aquí la fecha de lanzamiento con formato <dd/MM/aaaa> del juego que deseas registrar");
         tfFecha.setMargin(new java.awt.Insets(2, 12, 2, 6));
         tfFecha.setPreferredSize(new java.awt.Dimension(221, 22));
+        tfFecha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tfFechaMouseClicked(evt);
+            }
+        });
         panelFondo.add(tfFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, 390, 30));
 
         lblgenero4.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
@@ -199,6 +239,11 @@ public class PanelRegistrar extends javax.swing.JPanel {
         tfEdicion.setToolTipText("Inserta aquí la tipo de edición del juego que deseas registrar");
         tfEdicion.setMargin(new java.awt.Insets(2, 12, 2, 6));
         tfEdicion.setPreferredSize(new java.awt.Dimension(221, 22));
+        tfEdicion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tfEdicionMouseClicked(evt);
+            }
+        });
         panelFondo.add(tfEdicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, 390, 30));
 
         lblgenero5.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
@@ -211,6 +256,11 @@ public class PanelRegistrar extends javax.swing.JPanel {
         jsValoracion.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jsValoracionStateChanged(evt);
+            }
+        });
+        jsValoracion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jsValoracionMouseClicked(evt);
             }
         });
         panelFondo.add(jsValoracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 580, 530, -1));
@@ -552,6 +602,75 @@ public class PanelRegistrar extends javax.swing.JPanel {
                 break;               
         }
     }//GEN-LAST:event_jsValoracionStateChanged
+
+    private void tfFechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfFechaMouseClicked
+        if(tfFecha.getText().equals("dd/MM/aaaa")){
+            tfFecha.setText("");
+        }
+    }//GEN-LAST:event_tfFechaMouseClicked
+
+    private void jcbConsolaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbConsolaMouseClicked
+        //Si la fecha está vacía rellenarla por defecto
+        if(tfFecha.getText().equals("")){
+            tfFecha.setText("dd/MM/aaaa");
+        }
+    }//GEN-LAST:event_jcbConsolaMouseClicked
+
+    private void tfEdicionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfEdicionMouseClicked
+        //Si la fecha está vacía rellenarla por defecto
+        if(tfFecha.getText().equals("")){
+            tfFecha.setText("dd/MM/aaaa");
+        }
+    }//GEN-LAST:event_tfEdicionMouseClicked
+
+    private void tfGeneroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfGeneroMouseClicked
+        //Si la fecha está vacía rellenarla por defecto
+        if(tfFecha.getText().equals("")){
+            tfFecha.setText("dd/MM/aaaa");
+        }
+    }//GEN-LAST:event_tfGeneroMouseClicked
+
+    private void tfTituloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfTituloMouseClicked
+        //Si la fecha está vacía rellenarla por defecto
+        if(tfFecha.getText().equals("")){
+            tfFecha.setText("dd/MM/aaaa");
+        }
+    }//GEN-LAST:event_tfTituloMouseClicked
+
+    private void jsValoracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jsValoracionMouseClicked
+        //Si la fecha está vacía rellenarla por defecto
+        if(tfFecha.getText().equals("")){
+            tfFecha.setText("dd/MM/aaaa");
+        }
+    }//GEN-LAST:event_jsValoracionMouseClicked
+
+    private void rbNintendoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbNintendoMouseClicked
+        //Si la fecha está vacía rellenarla por defecto
+        if(tfFecha.getText().equals("")){
+            tfFecha.setText("dd/MM/aaaa");
+        }
+    }//GEN-LAST:event_rbNintendoMouseClicked
+
+    private void rbPlayStationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbPlayStationMouseClicked
+        //Si la fecha está vacía rellenarla por defecto
+        if(tfFecha.getText().equals("")){
+            tfFecha.setText("dd/MM/aaaa");
+        }
+    }//GEN-LAST:event_rbPlayStationMouseClicked
+
+    private void rbXboxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbXboxMouseClicked
+        //Si la fecha está vacía rellenarla por defecto
+        if(tfFecha.getText().equals("")){
+            tfFecha.setText("dd/MM/aaaa");
+        }
+    }//GEN-LAST:event_rbXboxMouseClicked
+
+    private void rbPcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbPcMouseClicked
+        //Si la fecha está vacía rellenarla por defecto
+        if(tfFecha.getText().equals("")){
+            tfFecha.setText("dd/MM/aaaa");
+        }
+    }//GEN-LAST:event_rbPcMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

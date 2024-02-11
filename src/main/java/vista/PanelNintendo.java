@@ -34,12 +34,18 @@ public class PanelNintendo extends javax.swing.JPanel {
         btnBuscarTodo.setForeground(Color.BLACK);
         tfbuscarN.putClientProperty("FlatLaf.style","arc: 40");
         tfbuscarN.setBackground(Color.WHITE);
-        
+        //Ponemos a 0 la tabla por si se han hecho cambios en otros paneles
+        /*if(model!=null){
+            model.setRowCount(0);
+        }*/
+        //tablaNintendo.setModel(model);
         //Cargamos la lista de Videjuegos de Nintendo
         model = (DefaultTableModel) tablaNintendo.getModel();
+        model.fireTableDataChanged();
+        tablaNintendo.updateUI();
         
         for(int i=0;i<HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").size();i++){
-            if(HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").get(i).getPoseido()==true){
+            if(HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getPoseido()==true){
                 model.addRow(new Object[]{
                     HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getId(),
                     HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getTitulo(),

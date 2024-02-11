@@ -222,9 +222,21 @@ public class HibernateUtil {
     
     public static List<Coleccion> listarJuegosPlataforma(Usuarios u, String plataforma){
        
-    Query q = sesion.createQuery("SELECT c FROM Coleccion c JOIN c.videojuegos v WHERE c.usuarios.id = :uid AND v.plataforma = :plataforma");
+    Query q = sesion.createQuery("SELECT c FROM Coleccion c JOIN c.videojuegos v WHERE c.usuarios.id = :uid AND v.plataforma = :plataforma AND poseido=true");
     q.setParameter("uid", u.getId());
     q.setParameter("plataforma", plataforma);
+
+    List<Coleccion> listaColeccion = q.getResultList();
+
+    return listaColeccion;
+        
+    }
+    
+    public static List<Coleccion> listarJuegosDeseados(Usuarios u){
+       
+    Query q = sesion.createQuery("SELECT c FROM Coleccion c JOIN c.videojuegos v WHERE c.usuarios.id = :uid AND deseado=true");
+    q.setParameter("uid", u.getId());
+    
 
     List<Coleccion> listaColeccion = q.getResultList();
 
@@ -240,5 +252,21 @@ public class HibernateUtil {
         List <Coleccion> listaColeccion=q.getResultList();
         
         return listaColeccion;
+    }
+    
+    public static int pasarDeseadoaColeccion(Usuarios u, int idJuego){
+   
+        Transaction tx=sesion.beginTransaction();
+        
+        String sql="UPDATE Coleccion SET poseido = true, deseado = false WHERE usuarios.id = :idUsuario AND videojuegos.id = :idJuego";
+        Query q=sesion.createQuery(sql);
+        q.setParameter("idUsuario", u.getId());
+        q.setParameter("idJuego", idJuego);
+        
+        int filasAfectadas=q.executeUpdate();
+        
+        tx.commit();
+        
+        return filasAfectadas;
     }
 }

@@ -4,17 +4,77 @@
  */
 package vista;
 
+import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.icons.FlatSearchIcon;
+import controlador.HibernateUtil;
+import java.awt.Color;
+import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+import model.Usuarios;
+import model.Videojuegos;
+
 /**
  *
  * @author lonch
  */
 public class PanelDeseos extends javax.swing.JPanel {
-
+    private Usuarios usuario;
+    DefaultTableModel model;
+    int idJuego;
     /**
      * Creates new form PanelDeseos
      */
-    public PanelDeseos() {
+    public PanelDeseos(Usuarios usuario) {
         initComponents();
+        this.usuario=usuario;
+        lblDeseos.setForeground(Color.BLACK);
+        
+        tfbuscarTitulo.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSearchIcon() );
+        btnBuscar.setForeground(Color.BLACK);
+        btnBuscarTodo.setForeground(Color.BLACK);
+        tfbuscarTitulo.putClientProperty("FlatLaf.style","arc: 40");
+        tfbuscarTitulo.setBackground(Color.WHITE);
+        
+        model = (DefaultTableModel) tablaDeseos.getModel();
+        
+        /**Cargamos la tabla**/
+        for (int i=0; i<HibernateUtil.listarJuegosDeseados(usuario).size();i++){
+            model.addRow(new Object[]{
+                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getId(),
+                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getTitulo(),
+                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getGenero(),
+                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getFechaSalida(),
+                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getConsola(),
+                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getEdicion(),
+                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getValoracion()+1}
+                );       
+        }
+        
+        /**
+         * Hacer seleccionables los elementos de la tabla
+         */
+        tablaDeseos.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    int selectedRow = tablaDeseos.getSelectedRow();
+
+                    // Verificar si se ha seleccionado alguna fila
+                    if (selectedRow != -1) {
+                        // Obtener el objeto asociado a la fila seleccionada
+                        //Object selectedObject = model.getDataVector().elementAt(selectedRow);
+                        //Cogemos el id de la fila seleccionada
+                        Object selectedObject = model.getValueAt(selectedRow, 0);
+                        
+                        //Lo convertimos a entero
+                        idJuego=Integer.parseInt(selectedObject.toString());                      
+                       
+                    }
+                }
+            }
+        });
     }
 
     /**
@@ -28,7 +88,15 @@ public class PanelDeseos extends javax.swing.JPanel {
 
         panelFondo = new javax.swing.JPanel();
         panelRound1 = new vista.PanelRound();
-        lblColeccion = new javax.swing.JLabel();
+        lblDeseos = new javax.swing.JLabel();
+        panelRound2 = new vista.PanelRound();
+        tfbuscarTitulo = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        btnBuscarTodo = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaDeseos = new javax.swing.JTable();
+        btnAgregarColeccion = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         panelFondo.setBackground(new java.awt.Color(30, 30, 30));
         panelFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -39,27 +107,141 @@ public class PanelDeseos extends javax.swing.JPanel {
         panelRound1.setRoundTopLeft(20);
         panelRound1.setRoundTopRight(20);
 
-        lblColeccion.setFont(new java.awt.Font("Eras Bold ITC", 1, 24)); // NOI18N
-        lblColeccion.setText("MI COLECCIÓN");
+        lblDeseos.setFont(new java.awt.Font("Eras Bold ITC", 1, 24)); // NOI18N
+        lblDeseos.setText("LISTA DE DESEOS");
 
         javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
         panelRound1.setLayout(panelRound1Layout);
         panelRound1Layout.setHorizontalGroup(
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createSequentialGroup()
-                .addContainerGap(163, Short.MAX_VALUE)
-                .addComponent(lblColeccion)
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addContainerGap(147, Short.MAX_VALUE)
+                .addComponent(lblDeseos)
+                .addContainerGap(148, Short.MAX_VALUE))
         );
         panelRound1Layout.setVerticalGroup(
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(lblColeccion)
+                .addComponent(lblDeseos)
                 .addContainerGap(45, Short.MAX_VALUE))
         );
 
         panelFondo.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 519, 113));
+
+        panelRound2.setBackground(new java.awt.Color(0, 0, 0));
+        panelRound2.setRoundBottomLeft(20);
+        panelRound2.setRoundBottomRight(20);
+        panelRound2.setRoundTopLeft(20);
+        panelRound2.setRoundTopRight(20);
+
+        tfbuscarTitulo.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
+        tfbuscarTitulo.setForeground(new java.awt.Color(153, 153, 153));
+        tfbuscarTitulo.setText("Buscar por título");
+        tfbuscarTitulo.setToolTipText("Introduce el título del juego que deseas buscar");
+        tfbuscarTitulo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tfbuscarTituloMousePressed(evt);
+            }
+        });
+
+        btnBuscar.setBackground(new java.awt.Color(234, 164, 28));
+        btnBuscar.setFont(new java.awt.Font("Eras Medium ITC", 1, 12)); // NOI18N
+        btnBuscar.setText("BUSCAR");
+        btnBuscar.setToolTipText("Muestra un juego por su título");
+        btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        btnBuscarTodo.setBackground(new java.awt.Color(234, 164, 28));
+        btnBuscarTodo.setFont(new java.awt.Font("Eras Medium ITC", 1, 12)); // NOI18N
+        btnBuscarTodo.setText("MOSTAR TODO");
+        btnBuscarTodo.setToolTipText("Muestra todos los juegos de Nintendo");
+        btnBuscarTodo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscarTodo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnBuscarTodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarTodoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRound2Layout = new javax.swing.GroupLayout(panelRound2);
+        panelRound2.setLayout(panelRound2Layout);
+        panelRound2Layout.setHorizontalGroup(
+            panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 520, Short.MAX_VALUE)
+            .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelRound2Layout.createSequentialGroup()
+                    .addGap(34, 34, 34)
+                    .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(tfbuscarTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelRound2Layout.createSequentialGroup()
+                            .addGap(52, 52, 52)
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(77, 77, 77)
+                            .addComponent(btnBuscarTodo, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(34, Short.MAX_VALUE)))
+        );
+        panelRound2Layout.setVerticalGroup(
+            panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 160, Short.MAX_VALUE)
+            .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelRound2Layout.createSequentialGroup()
+                    .addGap(29, 29, 29)
+                    .addComponent(tfbuscarTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBuscarTodo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(29, Short.MAX_VALUE)))
+        );
+
+        panelFondo.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 520, 160));
+
+        tablaDeseos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Título", "Género", "Fecha Salida", "Consola", "Edición", "Valoración"
+            }
+        ));
+        tablaDeseos.setToolTipText("Colección Nintendo");
+        tablaDeseos.setGridColor(new java.awt.Color(70, 69, 68));
+        jScrollPane1.setViewportView(tablaDeseos);
+
+        panelFondo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 330, 520, 310));
+
+        btnAgregarColeccion.setBackground(new java.awt.Color(234, 164, 28));
+        btnAgregarColeccion.setFont(new java.awt.Font("Eras Medium ITC", 1, 12)); // NOI18N
+        btnAgregarColeccion.setText("<html><center>AGREGAR A<br>MI COLECCIÓN</center></html>");
+        btnAgregarColeccion.setToolTipText("Añade el juego seleccionado a tu colección");
+        btnAgregarColeccion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregarColeccion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAgregarColeccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarColeccionActionPerformed(evt);
+            }
+        });
+        panelFondo.add(btnAgregarColeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 670, 134, 50));
+
+        btnEliminar.setBackground(new java.awt.Color(0, 0, 0));
+        btnEliminar.setFont(new java.awt.Font("Eras Medium ITC", 1, 12)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(234, 164, 28));
+        btnEliminar.setText("<html><center>ELIMINAR<br>DE LA LISTA</center></html>");
+        btnEliminar.setToolTipText("Muestra todos los juegos de Nintendo");
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        panelFondo.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 670, 134, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -75,10 +257,97 @@ public class PanelDeseos extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tfbuscarTituloMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfbuscarTituloMousePressed
+        /**
+        * Limpiar el texto al clickar
+        */
+        if(!tfbuscarTitulo.getText().isEmpty()){
+            tfbuscarTitulo.setText("");
+            tfbuscarTitulo.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_tfbuscarTituloMousePressed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        /**
+        * Si hay algo escrito en textfield que no sea el texto por defecto hacemos la búsqueda por título
+        */
+        if(!tfbuscarTitulo.getText().isEmpty() && !tfbuscarTitulo.getText().equals("Buscar por título")){
+            /*HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo");
+            tfbuscarN.setText(HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(0).getVideojuegos().getTitulo());*/
+            //Vaciamos la tabla
+            model.setRowCount(0);
+            //Recorremos la lista de juegos nintendo
+            for (int i=0; i<HibernateUtil.listarJuegosDeseados(usuario).size();i++){
+                //si el título coincide con el introducido lo añadimos a la tabla
+                if(HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getTitulo().equals(tfbuscarTitulo.getText())){
+                    model.addRow(new Object[]{
+                        HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getId(),
+                        HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getTitulo(),
+                        HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getGenero(),
+                        HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getFechaSalida(),
+                        HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getConsola(),
+                        HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getEdicion(),
+                        HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getValoracion()+1}
+                    );
+
+                }
+            }
+        }
+
+        /*String juegos="";
+        for(int i=0;i<HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").size();i++){
+            juegos+=HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getTitulo()+"-";
+        }
+        tfbuscarN.setText(juegos);*/
+
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnBuscarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarTodoActionPerformed
+
+        //Vaciamos la tabla
+        model.setRowCount(0);
+        /**
+        * Mostramos todos los videojuegos de nintendo
+        */
+        for (int i=0; i<HibernateUtil.listarJuegosDeseados(usuario).size();i++){
+            model.addRow(new Object[]{
+                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getId(),
+                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getTitulo(),
+                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getGenero(),
+                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getFechaSalida(),
+                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getConsola(),
+                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getEdicion(),
+                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getValoracion()+1}
+                );       
+        }           
+    }//GEN-LAST:event_btnBuscarTodoActionPerformed
+
+    private void btnAgregarColeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarColeccionActionPerformed
+        if(HibernateUtil.pasarDeseadoaColeccion(usuario, idJuego)>0){
+            JOptionPane.showMessageDialog(null, "Se ha añadido el juego a tu colección y ha sido eliminado de su lista de deseos");
+        }else{
+            JOptionPane.showMessageDialog(null, "ERROR,no se ha podido añadir el videojuego a su colección","Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnAgregarColeccionActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarActionPerformed
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lblColeccion;
+    private javax.swing.JButton btnAgregarColeccion;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnBuscarTodo;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblDeseos;
     private javax.swing.JPanel panelFondo;
     private vista.PanelRound panelRound1;
+    private vista.PanelRound panelRound2;
+    private javax.swing.JTable tablaDeseos;
+    private javax.swing.JTextField tfbuscarTitulo;
     // End of variables declaration//GEN-END:variables
 }
