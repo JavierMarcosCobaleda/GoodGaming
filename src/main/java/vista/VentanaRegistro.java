@@ -326,12 +326,15 @@ public class VentanaRegistro extends javax.swing.JFrame {
                 Usuarios usuario=new Usuarios();
                 usuario.setUsername(tfRegUsuario.getText());
                 usuario.setEmail(tfCorreoElectronico.getText());
-
-
-                //Comprobamos que no existe el nombre de usuario en la base de datos          
+ 
+                /**
+                 * Comprobamos que no existe el nombre de usuario en la base de datos llamando al método comprobarLogin
+                 */
                 if(hibernate.comprobarLogin(usuario).size()>0){
                     JOptionPane.showMessageDialog(null, "ERROR, Ya existe un usuario con ese nombre","Error", JOptionPane.ERROR_MESSAGE);
-                //Comprobamos que no existe un correo igual en la base de datos
+                /**
+                 * Comprobamos que no existe un correo igual en la base de datos llamando al método comprobarCorreo
+                 */
                 }else if (hibernate.comprobarCorreo(usuario).size()>0){
                     JOptionPane.showMessageDialog(null, "ERROR, Ya existe un usuario con ese correo electrónico","Error", JOptionPane.ERROR_MESSAGE);
                 }else if (String.valueOf(jPFRegPassword.getPassword()).length()<8){

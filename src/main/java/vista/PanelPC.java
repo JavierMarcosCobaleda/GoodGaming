@@ -35,9 +35,11 @@ public class PanelPC extends javax.swing.JPanel {
         tfbuscarN.putClientProperty("FlatLaf.style","arc: 40");
         tfbuscarN.setBackground(Color.WHITE);
         
-        //Cargamos la lista de Videjuegos de PlayStation
-        model = (DefaultTableModel) tablaNintendo.getModel();
-        
+        //Cargamos la lista de Videjuegos de PC
+        model = (DefaultTableModel) tablaPC.getModel();
+        /**
+         * Listamos los juegos de PC llamando al método listarJuegosPlataforma
+         */
         for(int i=0;i<HibernateUtil.listarJuegosPlataforma(usuario,"PC").size();i++){
             if(HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getPoseido()==true){
                 model.addRow(new Object[]{
@@ -64,12 +66,12 @@ public class PanelPC extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaNintendo = new javax.swing.JTable();
+        tablaPC = new javax.swing.JTable();
         tfbuscarN = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         btnBuscarTodo = new javax.swing.JButton();
 
-        tablaNintendo.setModel(new javax.swing.table.DefaultTableModel(
+        tablaPC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -77,9 +79,9 @@ public class PanelPC extends javax.swing.JPanel {
                 "ID", "Título", "Género", "Fecha Salida", "Consola", "Edición", "Valoración"
             }
         ));
-        tablaNintendo.setToolTipText("Colección PC");
-        tablaNintendo.setGridColor(new java.awt.Color(70, 69, 68));
-        jScrollPane1.setViewportView(tablaNintendo);
+        tablaPC.setToolTipText("Colección PC");
+        tablaPC.setGridColor(new java.awt.Color(70, 69, 68));
+        jScrollPane1.setViewportView(tablaPC);
 
         tfbuscarN.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         tfbuscarN.setForeground(new java.awt.Color(153, 153, 153));
@@ -184,8 +186,6 @@ public class PanelPC extends javax.swing.JPanel {
         * Si hay algo escrito en textfield que no sea el texto por defecto hacemos la búsqueda por título
         */
         if(!tfbuscarN.getText().isEmpty() && !tfbuscarN.getText().equals("Buscar por título")){
-            /*HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo");
-            tfbuscarN.setText(HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(0).getVideojuegos().getTitulo());*/
             //Vaciamos la tabla
             model.setRowCount(0);
             //Recorremos la lista de juegos nintendo           
@@ -206,15 +206,7 @@ public class PanelPC extends javax.swing.JPanel {
                 }
             }
         }
-        
-        
-        /*String juegos="";
-        for(int i=0;i<HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").size();i++){
-            juegos+=HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getTitulo()+"-";
-        }
-        tfbuscarN.setText(juegos);*/
-        
-       
+   
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnBuscarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarTodoActionPerformed
@@ -222,7 +214,7 @@ public class PanelPC extends javax.swing.JPanel {
         //Vaciamos la tabla
         model.setRowCount(0);
         /**
-         * Mostramos todos los videojuegos de nintendo
+         * Mostramos todos los videojuegos de pc
          */
         for(int i=0;i<HibernateUtil.listarJuegosPlataforma(usuario,"PC").size();i++){
             if(HibernateUtil.listarJuegosPlataforma(usuario,"PC").get(i).getPoseido()==true){
@@ -245,7 +237,7 @@ public class PanelPC extends javax.swing.JPanel {
     private javax.swing.JButton btnBuscarTodo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaNintendo;
+    private javax.swing.JTable tablaPC;
     private javax.swing.JTextField tfbuscarN;
     // End of variables declaration//GEN-END:variables
 }

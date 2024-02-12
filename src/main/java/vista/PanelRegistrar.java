@@ -141,6 +141,7 @@ public class PanelRegistrar extends javax.swing.JPanel {
         rbPlayStation.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         rbPlayStation.setForeground(new java.awt.Color(255, 255, 255));
         rbPlayStation.setText("PlayStation");
+        rbPlayStation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         rbPlayStation.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 rbPlayStationMouseClicked(evt);
@@ -157,6 +158,7 @@ public class PanelRegistrar extends javax.swing.JPanel {
         rbNintendo.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         rbNintendo.setForeground(new java.awt.Color(255, 255, 255));
         rbNintendo.setText("Nintendo");
+        rbNintendo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         rbNintendo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 rbNintendoMouseClicked(evt);
@@ -173,6 +175,7 @@ public class PanelRegistrar extends javax.swing.JPanel {
         rbXbox.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         rbXbox.setForeground(new java.awt.Color(255, 255, 255));
         rbXbox.setText("Xbox");
+        rbXbox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         rbXbox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 rbXboxMouseClicked(evt);
@@ -189,6 +192,7 @@ public class PanelRegistrar extends javax.swing.JPanel {
         rbPc.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         rbPc.setForeground(new java.awt.Color(255, 255, 255));
         rbPc.setText("PC");
+        rbPc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         rbPc.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 rbPcMouseClicked(evt);

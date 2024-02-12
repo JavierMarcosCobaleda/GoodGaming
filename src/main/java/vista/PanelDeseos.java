@@ -8,7 +8,13 @@ import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.icons.FlatSearchIcon;
 import controlador.HibernateUtil;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import javax.swing.AbstractAction;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JRootPane;
+import javax.swing.KeyStroke;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -29,8 +35,12 @@ public class PanelDeseos extends javax.swing.JPanel {
     public PanelDeseos(Usuarios usuario) {
         initComponents();
         this.usuario=usuario;
-        lblDeseos.setForeground(Color.BLACK);
         
+
+        /**
+         * Definir la estética de los elementos
+         */
+        lblDeseos.setForeground(Color.BLACK);
         tfbuscarTitulo.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSearchIcon() );
         btnAgregarColeccion.setForeground(Color.BLACK);
         btnBuscar.setForeground(Color.BLACK);
@@ -42,17 +52,7 @@ public class PanelDeseos extends javax.swing.JPanel {
         
         /**Cargamos la tabla**/
         rellenarTabla();
-        /*for (int i=0; i<HibernateUtil.listarJuegosDeseados(usuario).size();i++){
-            model.addRow(new Object[]{
-                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getId(),
-                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getTitulo(),
-                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getGenero(),
-                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getFechaSalida(),
-                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getConsola(),
-                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getEdicion(),
-                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getValoracion()+1}
-                );       
-        }*/
+        
         
         /**
          * Hacer seleccionables los elementos de la tabla
@@ -65,7 +65,7 @@ public class PanelDeseos extends javax.swing.JPanel {
 
                     // Verificar si se ha seleccionado alguna fila
                     if (selectedRow != -1) {
-                        // Obtener el objeto asociado a la fila seleccionada
+                        //Obtener el objeto asociado a la fila seleccionada
                         //Object selectedObject = model.getDataVector().elementAt(selectedRow);
                         //Cogemos el id de la fila seleccionada
                         Object selectedObject = model.getValueAt(selectedRow, 0);
@@ -274,8 +274,6 @@ public class PanelDeseos extends javax.swing.JPanel {
         * Si hay algo escrito en textfield que no sea el texto por defecto hacemos la búsqueda por título
         */
         if(!tfbuscarTitulo.getText().isEmpty() && !tfbuscarTitulo.getText().equals("Buscar por título")){
-            /*HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo");
-            tfbuscarN.setText(HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(0).getVideojuegos().getTitulo());*/
             //Vaciamos la tabla
             model.setRowCount(0);
             //Recorremos la lista de juegos nintendo
@@ -295,12 +293,6 @@ public class PanelDeseos extends javax.swing.JPanel {
                 }
             }
         }
-
-        /*String juegos="";
-        for(int i=0;i<HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").size();i++){
-            juegos+=HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getTitulo()+"-";
-        }
-        tfbuscarN.setText(juegos);*/
 
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -404,4 +396,5 @@ public class PanelDeseos extends javax.swing.JPanel {
                 );       
         }           
     }
+
 }

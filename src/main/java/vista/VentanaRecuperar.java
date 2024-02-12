@@ -356,7 +356,6 @@ public class VentanaRecuperar extends javax.swing.JFrame {
             usuario.setEmail(tfCorreoElectronico.getText());
 
             try{
-
                 //if(hibernate.comprobarMail(usuario).get(0).getUsername().equals(tfRecUsuario.getText()) && hibernate.comprobarMail(usuario).get(0).getEmail().equals(tfCorreoElectronico.getText()) ){
                 if(hibernate.comprobarCorreo(usuario).get(0).getEmail().equals(tfCorreoElectronico.getText())){
                     //Generar código de recuperación
@@ -390,8 +389,6 @@ public class VentanaRecuperar extends javax.swing.JFrame {
                     EmailUtil.sendEmail(session, toemail, "Good Gaming password recovery", "Código de recuperación de contraseña:\n"+codigo);
 
                     JOptionPane.showMessageDialog(null, "Código enviado, revise su correo electrónico e introduzca el código para generar una nueva contraseña");
-
-
 
                 }else{
                     JOptionPane.showMessageDialog(null, "ERROR,El correo electrónico no está registrado","Error", JOptionPane.ERROR_MESSAGE);
@@ -459,7 +456,9 @@ public class VentanaRecuperar extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "ERROR, Las contraseñas deben ser iguales","Error", JOptionPane.ERROR_MESSAGE);
         }else{
 
-            //Comprobamos que el codigo insertado es igual al generado       
+            /**
+             * Comprobamos que el codigo insertado es igual al generado
+             */
             if(tfCodigo.getText().equals(codigo)){
 
                 usuario.setPassword(String.valueOf(jPFActualizarPassword.getPassword()));
@@ -486,23 +485,29 @@ public class VentanaRecuperar extends javax.swing.JFrame {
     }//GEN-LAST:event_jPFActualizarPasswordMousePressed
 
     private void jPFRepetirPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPFRepetirPasswordMousePressed
-        // TODO add your handling code here:
+        //vaciar el texto del password
+        if(String.valueOf(jPFRepetirPassword.getPassword()).equals("********")){
+            jPFRepetirPassword.setText("");
+            jPFRepetirPassword.setForeground(Color.white);
+        }
     }//GEN-LAST:event_jPFRepetirPasswordMousePressed
 
     private void lbRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarseMouseClicked
-        // TODO add your handling code here:
+        /**
+         * Abrir la ventana de registro
+         */
         VentanaLogin ventanaLogin=new VentanaLogin();
         ventanaLogin.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_lbRegistrarseMouseClicked
 
     private void lbRegistrarseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarseMouseEntered
-        // TODO add your handling code here:
+        //cambiar color del label al entrar
         lbRegistrarse.setForeground(Color.white);
     }//GEN-LAST:event_lbRegistrarseMouseEntered
 
     private void lbRegistrarseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarseMouseExited
-        // TODO add your handling code here:
+        //cambiar color del label al salir
         lbRegistrarse.setForeground(new Color(244,150,40));
     }//GEN-LAST:event_lbRegistrarseMouseExited
 

@@ -28,11 +28,8 @@ public class PanelColeccion extends javax.swing.JPanel {
         initComponents();
         this.usuario=usuario;
         lblColeccion.setForeground(Color.BLACK);
-        /*tfbuscarN.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSearchIcon() );
-        btnBuscar.setForeground(Color.BLACK);
-        tfbuscarN.putClientProperty("FlatLaf.style","arc: 40");
-        tfbuscarN.setBackground(Color.WHITE);*/
         
+
         /**
          * Añadir los paneles al tabbed pane
          */
@@ -45,73 +42,7 @@ public class PanelColeccion extends javax.swing.JPanel {
          */
         jTabbedPane1.putClientProperty("JTabbedPane.minimumTabWidth", 130);
         
-        
-        /*ImageIcon nintendo=new ImageIcon( "img/nintendo.png");
-        
-        jTabbedPane1.putClientProperty("JTabbedPane.minimumTabWidth", 130);
-        
-        
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 520, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 565, Short.MAX_VALUE)
-        );
-        //jTabbedPane1.addTab("tab1", jPanel1);
-        jTabbedPane1.addTab(null,new FlatSVGIcon( "img/nintendo-1.svg"),jPanel1 );
-        jTabbedPane1.putClientProperty("JTabbedPane.tabAreaAlignment", SwingConstants.CENTER);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 520, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 565, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab(null,new FlatSVGIcon( "img/pslogo.svg"), jPanel2);
-        jTabbedPane1.putClientProperty("JTabbedPane.tabAreaAlignment", SwingConstants.CENTER);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 520, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 565, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab(null,new FlatSVGIcon( "img/logoXbox.svg"), jPanel3);
-
-        
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 950, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(panelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        
-        jTabbedPane1.addTab(null,new FlatSVGIcon( "img/pc.svg"),jPanel4 );
-        jTabbedPane1.putClientProperty("JTabbedPane.tabAreaAlignment", SwingConstants.CENTER);
-
-        panelFondo.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 520, 600));
-       */
     }
 
     /**

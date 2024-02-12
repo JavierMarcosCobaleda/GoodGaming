@@ -37,13 +37,17 @@ public class VentanaLogin extends javax.swing.JFrame {
         //jPFPassword.putClientProperty("FlatLaf.colorClass",Color.white);
         btnIniciarSesion.setForeground(Color.BLACK);
         
-        //Establecer el botón por defecto
+        /**
+         * Establecer el botón por defecto
+         */
         getRootPane().setDefaultButton(btnIniciarSesion);
         
         //alt+s para presionar el botón
         btnIniciarSesion.setMnemonic('s');
         
-        //Conecta a la base de datos
+        /**
+         * Conecta a la base de datos
+         */
         try{
             hibernate=new HibernateUtil();
             hibernate.conectar();
@@ -286,7 +290,9 @@ public class VentanaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jPFPasswordMousePressed
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
-        //comprobar que están rellenos todos los campos
+        /**
+         * comprobar que están rellenos todos los campos
+         */
         try{
             if (tfusuario.getText().isEmpty() || tfusuario.getText().equals("Usuario") || jPFPassword.getPassword().equals("********") ||jPFPassword.getPassword().equals("")){
                 JOptionPane.showMessageDialog(null, "ERROR, Deber rellenar todos los campos","Error", JOptionPane.ERROR_MESSAGE);
@@ -296,9 +302,11 @@ public class VentanaLogin extends javax.swing.JFrame {
                 usuario=new Usuarios();
                 usuario.setUsername(tfusuario.getText());
                 usuario.setPassword(String.valueOf(jPFPassword.getPassword()));
-
+                
                 Usuarios usrEncriptado=hibernate.comprobarLogin(usuario).get(0);
-                //Comprobamos la contraseña encriptada
+                /**
+                 * Comprobamos la contraseña encriptada
+                 */
                 pwdUtil=new PasswordUtil();
                 if(pwdUtil.desencriptar(usuario, usrEncriptado) && usrEncriptado.getUsername().equals(tfusuario.getText())){
                     //JOptionPane.showMessageDialog(null, "Sesión iniciada correctamente");
@@ -317,34 +325,38 @@ public class VentanaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
     private void lbRecuperarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRecuperarMouseEntered
-         // TODO add your handling code here:
+         //cambiar color del label al entrar
          lbRecuperar.setForeground(Color.white);
     }//GEN-LAST:event_lbRecuperarMouseEntered
 
     private void lbRecuperarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRecuperarMouseExited
-        // TODO add your handling code here:
+        //cambiar color del label al salir
         lbRecuperar.setForeground(new Color(244,150,40));
     }//GEN-LAST:event_lbRecuperarMouseExited
 
     private void lbRegistrarseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarseMouseEntered
-        // TODO add your handling code here:
+        //cambiar color del label al entrar
         lbRegistrarse.setForeground(Color.white);
     }//GEN-LAST:event_lbRegistrarseMouseEntered
 
     private void lbRegistrarseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarseMouseExited
-        // TODO add your handling code here:
+        //cambiar color del label al salir
         lbRegistrarse.setForeground(new Color(244,150,40));
     }//GEN-LAST:event_lbRegistrarseMouseExited
 
     private void lbRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarseMouseClicked
-        // TODO add your handling code here:
+        /**
+         * Abrimos la ventana del registro
+         */
         VentanaRegistro ventanaRegistro=new VentanaRegistro();
         ventanaRegistro.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_lbRegistrarseMouseClicked
 
     private void lbRecuperarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRecuperarMouseClicked
-        //Abrimos la ventana de recuperar contraseña
+        /**
+         * Abrimos la ventana de recuperar contraseña
+         */
         VentanaRecuperar vRecuperar=new VentanaRecuperar();
         vRecuperar.setVisible(true);
         this.setVisible(false);

@@ -34,16 +34,13 @@ public class PanelNintendo extends javax.swing.JPanel {
         btnBuscarTodo.setForeground(Color.BLACK);
         tfbuscarN.putClientProperty("FlatLaf.style","arc: 40");
         tfbuscarN.setBackground(Color.WHITE);
-        //Ponemos a 0 la tabla por si se han hecho cambios en otros paneles
-        /*if(model!=null){
-            model.setRowCount(0);
-        }*/
-        //tablaNintendo.setModel(model);
+
         //Cargamos la lista de Videjuegos de Nintendo
         model = (DefaultTableModel) tablaNintendo.getModel();
-        model.fireTableDataChanged();
-        tablaNintendo.updateUI();
         
+        /**
+         * Listamos los juegos de nintendo llamando al método listarJuegosPlataforma
+         */
         for(int i=0;i<HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").size();i++){
             if(HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getPoseido()==true){
                 model.addRow(new Object[]{
@@ -190,11 +187,12 @@ public class PanelNintendo extends javax.swing.JPanel {
         * Si hay algo escrito en textfield que no sea el texto por defecto hacemos la búsqueda por título
         */
         if(!tfbuscarN.getText().isEmpty() && !tfbuscarN.getText().equals("Buscar por título")){
-            /*HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo");
-            tfbuscarN.setText(HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(0).getVideojuegos().getTitulo());*/
+
             //Vaciamos la tabla
             model.setRowCount(0);
-            //Recorremos la lista de juegos nintendo           
+            /**
+             * Recorremos la lista de juegos nintendo 
+             */ 
             for (int i=0; i<HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").size();i++){
                 //si el título coincide con el introducido lo añadimos a la tabla
                 if(HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getTitulo().equals(tfbuscarN.getText()) &&
@@ -212,15 +210,7 @@ public class PanelNintendo extends javax.swing.JPanel {
                 }
             }
         }
-        
-        
-        /*String juegos="";
-        for(int i=0;i<HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").size();i++){
-            juegos+=HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getTitulo()+"-";
-        }
-        tfbuscarN.setText(juegos);*/
-        
-       
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnBuscarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarTodoActionPerformed

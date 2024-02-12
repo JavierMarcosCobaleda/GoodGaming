@@ -6,6 +6,7 @@ package vista;
 
 import java.awt.Color;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import model.Usuarios;
 
 /**
@@ -22,7 +23,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public VentanaPrincipal(Usuarios usuario) {
         initComponents();
         //Iniciar en el centro de la pantalla
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(null);        
         
         /**
          * Recibir el usuario
@@ -35,6 +36,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnDeseos.setForeground(Color.BLACK);
         
         lblsuario.setText(usuario.getUsername());
+        
+
     }
 
     /**

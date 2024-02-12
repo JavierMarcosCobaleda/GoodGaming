@@ -36,9 +36,11 @@ public class PanelPlayStation extends javax.swing.JPanel {
         tfbuscarN.setBackground(Color.WHITE);
         
         //Cargamos la lista de Videjuegos de PlayStation
-        model = (DefaultTableModel) tablaNintendo.getModel();
+        model = (DefaultTableModel) tablaPlayStation.getModel();
         
-        
+        /**
+         * Listamos los juegos de PlayStation llamando al método listarJuegosPlataforma
+         */
         for(int i=0;i<HibernateUtil.listarJuegosPlataforma(usuario,"PlayStation").size();i++){
             /**
              * Si el juego aparece como poseído lo insertamos en la tabla
@@ -68,12 +70,12 @@ public class PanelPlayStation extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaNintendo = new javax.swing.JTable();
+        tablaPlayStation = new javax.swing.JTable();
         tfbuscarN = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         btnBuscarTodo = new javax.swing.JButton();
 
-        tablaNintendo.setModel(new javax.swing.table.DefaultTableModel(
+        tablaPlayStation.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -81,9 +83,9 @@ public class PanelPlayStation extends javax.swing.JPanel {
                 "ID", "Título", "Género", "Fecha Salida", "Consola", "Edición", "Valoración"
             }
         ));
-        tablaNintendo.setToolTipText("Colección PlayStation");
-        tablaNintendo.setGridColor(new java.awt.Color(70, 69, 68));
-        jScrollPane1.setViewportView(tablaNintendo);
+        tablaPlayStation.setToolTipText("Colección PlayStation");
+        tablaPlayStation.setGridColor(new java.awt.Color(70, 69, 68));
+        jScrollPane1.setViewportView(tablaPlayStation);
 
         tfbuscarN.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         tfbuscarN.setForeground(new java.awt.Color(153, 153, 153));
@@ -186,8 +188,6 @@ public class PanelPlayStation extends javax.swing.JPanel {
         * Si hay algo escrito en textfield que no sea el texto por defecto hacemos la búsqueda por título
         */
         if(!tfbuscarN.getText().isEmpty() && !tfbuscarN.getText().equals("Buscar por título")){
-            /*HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo");
-            tfbuscarN.setText(HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(0).getVideojuegos().getTitulo());*/
             //Vaciamos la tabla
             model.setRowCount(0);
             //Recorremos la lista de juegos nintendo           
@@ -208,15 +208,7 @@ public class PanelPlayStation extends javax.swing.JPanel {
                 }
             }
         }
-        
-        
-        /*String juegos="";
-        for(int i=0;i<HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").size();i++){
-            juegos+=HibernateUtil.listarJuegosPlataforma(usuario,"Nintendo").get(i).getVideojuegos().getTitulo()+"-";
-        }
-        tfbuscarN.setText(juegos);*/
-        
-       
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnBuscarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarTodoActionPerformed
@@ -247,7 +239,7 @@ public class PanelPlayStation extends javax.swing.JPanel {
     private javax.swing.JButton btnBuscarTodo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaNintendo;
+    private javax.swing.JTable tablaPlayStation;
     private javax.swing.JTextField tfbuscarN;
     // End of variables declaration//GEN-END:variables
 }
