@@ -296,6 +296,9 @@
               <StringArray count="0"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Selecciona la consola a la que pertene el juego"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jcbConsolaMouseClicked"/>
@@ -411,7 +414,11 @@
         <Component class="javax.swing.JSlider" name="jsValoracion">
           <Properties>
             <Property name="maximum" type="int" value="4"/>
+            <Property name="toolTipText" type="java.lang.String" value="Punt&#xfa;a el juego de 1 a 5 estrellas"/>
             <Property name="value" type="int" value="2"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jsValoracionStateChanged"/>

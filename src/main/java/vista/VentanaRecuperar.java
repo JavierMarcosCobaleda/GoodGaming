@@ -73,13 +73,15 @@ public class VentanaRecuperar extends javax.swing.JFrame {
         tfCorreoElectronico = new javax.swing.JTextField();
         btnEnvio = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        tfRecUsuario = new javax.swing.JTextField();
         tfCodigo = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPFActualizarPassword = new javax.swing.JPasswordField();
         btnActualizar = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jPFRepetirPassword = new javax.swing.JPasswordField();
+        jSeparator1 = new javax.swing.JSeparator();
+        lbRegistrarse = new javax.swing.JLabel();
         xCerrar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         logoGGpeque = new javax.swing.JLabel();
@@ -107,6 +109,7 @@ public class VentanaRecuperar extends javax.swing.JFrame {
         tfCorreoElectronico.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
         tfCorreoElectronico.setForeground(new java.awt.Color(153, 153, 153));
         tfCorreoElectronico.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tfCorreoElectronico.setToolTipText("Introduce el correo electrónico con el que te has registrado");
         tfCorreoElectronico.setMinimumSize(new java.awt.Dimension(64, 22));
         tfCorreoElectronico.setPreferredSize(new java.awt.Dimension(257, 22));
         tfCorreoElectronico.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -123,6 +126,8 @@ public class VentanaRecuperar extends javax.swing.JFrame {
         btnEnvio.setBackground(new java.awt.Color(244, 150, 40));
         btnEnvio.setFont(new java.awt.Font("Eras Medium ITC", 1, 14)); // NOI18N
         btnEnvio.setText("Enviar Código");
+        btnEnvio.setToolTipText("Pulsa aquí para que te enviemos el código de activación a tu correo electrónico");
+        btnEnvio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEnvio.setPreferredSize(new java.awt.Dimension(192, 40));
         btnEnvio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,29 +139,10 @@ public class VentanaRecuperar extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Correo electrónico");
 
-        jLabel4.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Nombre de usuario");
-
-        tfRecUsuario.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
-        tfRecUsuario.setForeground(new java.awt.Color(153, 153, 153));
-        tfRecUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tfRecUsuario.setMinimumSize(new java.awt.Dimension(64, 22));
-        tfRecUsuario.setPreferredSize(new java.awt.Dimension(257, 22));
-        tfRecUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                tfRecUsuarioMousePressed(evt);
-            }
-        });
-        tfRecUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfRecUsuarioActionPerformed(evt);
-            }
-        });
-
         tfCodigo.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
         tfCodigo.setForeground(new java.awt.Color(153, 153, 153));
         tfCodigo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tfCodigo.setToolTipText("Introduce el código de activación que hemos enviado a tu correo");
         tfCodigo.setMinimumSize(new java.awt.Dimension(64, 22));
         tfCodigo.setPreferredSize(new java.awt.Dimension(257, 22));
         tfCodigo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -180,6 +166,7 @@ public class VentanaRecuperar extends javax.swing.JFrame {
 
         jPFActualizarPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPFActualizarPassword.setText("********");
+        jPFActualizarPassword.setToolTipText("Introduce la nueva contraseña");
         jPFActualizarPassword.setMinimumSize(new java.awt.Dimension(257, 22));
         jPFActualizarPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -190,10 +177,45 @@ public class VentanaRecuperar extends javax.swing.JFrame {
         btnActualizar.setBackground(new java.awt.Color(244, 150, 40));
         btnActualizar.setFont(new java.awt.Font("Eras Medium ITC", 1, 14)); // NOI18N
         btnActualizar.setText("Actualizar Contraseña");
+        btnActualizar.setToolTipText("Cambia tu antigua contraseña por la nueva");
+        btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnActualizar.setPreferredSize(new java.awt.Dimension(192, 40));
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Repetir contraseña");
+
+        jPFRepetirPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPFRepetirPassword.setText("********");
+        jPFRepetirPassword.setToolTipText("Introduce nuevamente la nueva contraseña");
+        jPFRepetirPassword.setMinimumSize(new java.awt.Dimension(257, 22));
+        jPFRepetirPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPFRepetirPasswordMousePressed(evt);
+            }
+        });
+
+        jSeparator1.setForeground(new java.awt.Color(244, 150, 40));
+
+        lbRegistrarse.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
+        lbRegistrarse.setForeground(new java.awt.Color(244, 150, 40));
+        lbRegistrarse.setText("Loggin");
+        lbRegistrarse.setToolTipText("Vuelve a la pantalla de loggin");
+        lbRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbRegistrarse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbRegistrarseMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbRegistrarseMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbRegistrarseMouseExited(evt);
             }
         });
 
@@ -204,11 +226,8 @@ public class VentanaRecuperar extends javax.swing.JFrame {
             .addGroup(panelFondoGrisLayout.createSequentialGroup()
                 .addGroup(panelFondoGrisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelFondoGrisLayout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jLabel4))
-                    .addGroup(panelFondoGrisLayout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(tfRecUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(154, 154, 154)
+                        .addComponent(lbRegistrarse))
                     .addGroup(panelFondoGrisLayout.createSequentialGroup()
                         .addGap(60, 60, 60)
                         .addComponent(jLabel3))
@@ -221,29 +240,30 @@ public class VentanaRecuperar extends javax.swing.JFrame {
                             .addComponent(jPFActualizarPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)
                             .addComponent(jLabel5)
-                            .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPFRepetirPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)))
                     .addGroup(panelFondoGrisLayout.createSequentialGroup()
                         .addGap(90, 90, 90)
                         .addComponent(btnEnvio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelFondoGrisLayout.createSequentialGroup()
                         .addGap(90, 90, 90)
-                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(60, 60, 60))
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelFondoGrisLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(37, 37, 37))
         );
         panelFondoGrisLayout.setVerticalGroup(
             panelFondoGrisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFondoGrisLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tfRecUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tfCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEnvio, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -251,8 +271,16 @@ public class VentanaRecuperar extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPFActualizarPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPFRepetirPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbRegistrarse)
                 .addContainerGap())
         );
 
@@ -261,6 +289,7 @@ public class VentanaRecuperar extends javax.swing.JFrame {
         xCerrar.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 24)); // NOI18N
         xCerrar.setForeground(new java.awt.Color(255, 255, 255));
         xCerrar.setText("x");
+        xCerrar.setToolTipText("Cierra la ventana y vuelve a la pantalla de loggin");
         xCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 xCerrarMouseClicked(evt);
@@ -318,17 +347,18 @@ public class VentanaRecuperar extends javax.swing.JFrame {
 
     private void btnEnvioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnvioActionPerformed
         
-        if(tfRecUsuario.getText().isEmpty() || tfCorreoElectronico.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "ERROR, Debe rellenar los campos Usuario y Correo Electrónico","Error", JOptionPane.ERROR_MESSAGE);
+        if(tfCorreoElectronico.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "ERROR, Debe rellenar el campo Correo Electrónico","Error", JOptionPane.ERROR_MESSAGE);
         }else{
             //Comprobar email en la base de datos
             usuario=new Usuarios();
-            usuario.setUsername(tfRecUsuario.getText());
+            //usuario.setUsername(tfRecUsuario.getText());
             usuario.setEmail(tfCorreoElectronico.getText());
 
             try{
 
-                if(hibernate.comprobarMail(usuario).get(0).getUsername().equals(tfRecUsuario.getText()) && hibernate.comprobarMail(usuario).get(0).getEmail().equals(tfCorreoElectronico.getText()) ){
+                //if(hibernate.comprobarMail(usuario).get(0).getUsername().equals(tfRecUsuario.getText()) && hibernate.comprobarMail(usuario).get(0).getEmail().equals(tfCorreoElectronico.getText()) ){
+                if(hibernate.comprobarCorreo(usuario).get(0).getEmail().equals(tfCorreoElectronico.getText())){
                     //Generar código de recuperación
                     codigo=pwdUtil.generarCodigo();                 
 
@@ -364,24 +394,15 @@ public class VentanaRecuperar extends javax.swing.JFrame {
 
 
                 }else{
-                    JOptionPane.showMessageDialog(null, "ERROR, No se ha encontrado ningún usuario con ese correro electrónico","Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "ERROR,El correo electrónico no está registrado","Error", JOptionPane.ERROR_MESSAGE);
                 }
             }catch(NullPointerException e){
                 JOptionPane.showMessageDialog(null, "ERROR, No se ha podido conectar con la base de datos","Error", JOptionPane.ERROR_MESSAGE);
             }catch(IndexOutOfBoundsException e){
-                JOptionPane.showMessageDialog(null, "ERROR,El usuario no tiene registrado ese correo electrónico","Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "ERROR,El correo electrónico no está registrado","Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnEnvioActionPerformed
-
-    private void tfRecUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfRecUsuarioMousePressed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_tfRecUsuarioMousePressed
-
-    private void tfRecUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfRecUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfRecUsuarioActionPerformed
 
     private void xCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xCerrarMouseClicked
         VentanaLogin ventanaLogin=new VentanaLogin();
@@ -428,8 +449,14 @@ public class VentanaRecuperar extends javax.swing.JFrame {
     }//GEN-LAST:event_tfCodigoActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        if(String.valueOf(jPFActualizarPassword.getPassword()).equals("********") || String.valueOf(jPFActualizarPassword.getPassword()).equals("")){
+        /**
+         * Comprobamos que los campos de contraseña no estén vacíos y la contraseña coincida
+         */
+        if(String.valueOf(jPFActualizarPassword.getPassword()).equals("********") || String.valueOf(jPFActualizarPassword.getPassword()).equals("")
+                || String.valueOf(jPFRepetirPassword.getPassword()).equals("********") || String.valueOf(jPFRepetirPassword.getPassword()).equals("")){
             JOptionPane.showMessageDialog(null, "ERROR, Intruduzca una contraseña","Error", JOptionPane.ERROR_MESSAGE);
+        }else if (String.valueOf(jPFActualizarPassword.getPassword()).equals(String.valueOf(jPFRepetirPassword.getPassword()))){
+            JOptionPane.showMessageDialog(null, "ERROR, Las contraseñas deben ser iguales","Error", JOptionPane.ERROR_MESSAGE);
         }else{
 
             //Comprobamos que el codigo insertado es igual al generado       
@@ -457,6 +484,27 @@ public class VentanaRecuperar extends javax.swing.JFrame {
             jPFActualizarPassword.setForeground(Color.white);
         }
     }//GEN-LAST:event_jPFActualizarPasswordMousePressed
+
+    private void jPFRepetirPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPFRepetirPasswordMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPFRepetirPasswordMousePressed
+
+    private void lbRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarseMouseClicked
+        // TODO add your handling code here:
+        VentanaLogin ventanaLogin=new VentanaLogin();
+        ventanaLogin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_lbRegistrarseMouseClicked
+
+    private void lbRegistrarseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarseMouseEntered
+        // TODO add your handling code here:
+        lbRegistrarse.setForeground(Color.white);
+    }//GEN-LAST:event_lbRegistrarseMouseEntered
+
+    private void lbRegistrarseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarseMouseExited
+        // TODO add your handling code here:
+        lbRegistrarse.setForeground(new Color(244,150,40));
+    }//GEN-LAST:event_lbRegistrarseMouseExited
 
     /**
      * @param args the command line arguments
@@ -498,16 +546,18 @@ public class VentanaRecuperar extends javax.swing.JFrame {
     private javax.swing.JButton btnEnvio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPasswordField jPFActualizarPassword;
+    private javax.swing.JPasswordField jPFRepetirPassword;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lbRegistrarse;
     private javax.swing.JLabel logoGGpeque;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JPanel panelFondoGris;
     private javax.swing.JTextField tfCodigo;
     private javax.swing.JTextField tfCorreoElectronico;
-    private javax.swing.JTextField tfRecUsuario;
     private javax.swing.JLabel xCerrar;
     // End of variables declaration//GEN-END:variables
 }

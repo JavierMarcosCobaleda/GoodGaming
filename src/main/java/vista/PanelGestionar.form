@@ -68,6 +68,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Introduce el nuevo t&#xed;tulo"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[221, 22]"/>
             </Property>
@@ -105,6 +106,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Introduce el nuevo g&#xe9;nero"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[221, 22]"/>
             </Property>
@@ -247,6 +249,10 @@
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Selecciona la nueva consola"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jcbConsolaMouseClicked"/>
@@ -285,6 +291,7 @@
               <Color blue="99" green="99" red="99" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="dd/MM/aaaa"/>
+            <Property name="toolTipText" type="java.lang.String" value="Introduce la nueva fecha de salida con formato &lt;dd/MM/aaaa&gt;"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[221, 22]"/>
             </Property>
@@ -322,6 +329,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Introduce el tipo de edici&#xf3;n del juego"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[221, 22]"/>
             </Property>
@@ -354,7 +362,11 @@
         <Component class="javax.swing.JSlider" name="jsValoracion">
           <Properties>
             <Property name="maximum" type="int" value="4"/>
+            <Property name="toolTipText" type="java.lang.String" value="Punt&#xfa;a el juego de 1 a 5 estrellas"/>
             <Property name="value" type="int" value="2"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jsValoracionStateChanged"/>
@@ -390,6 +402,7 @@
               <Color blue="1c" green="a4" red="ea" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="LIMPIAR"/>
+            <Property name="toolTipText" type="java.lang.String" value="Vac&#xed;a todos los campos de texto"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>

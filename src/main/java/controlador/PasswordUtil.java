@@ -14,12 +14,18 @@ import model.Usuarios;
  * @author Javier Marcos Cobaleda
  */
 public class PasswordUtil {
-    /**Constructor**/
+
+    /**
+     * Constructor
+     */
     public PasswordUtil(){
         
     }
     
-    /**Encriptar contraseña**/
+    /**
+     * Encriptar contraseña
+     * @param user usuario
+     */
     public void encriptar(Usuarios user)
     {
         Hash hash = Password.hash(user.getPassword())
@@ -28,15 +34,22 @@ public class PasswordUtil {
                             .withArgon2();        
         
         user.setPassword(hash.getResult());
-    }
-    
-    /**Método desencriptar contraseña**/
-    //usuario sin hashear, usuario hasheado
+    }    
+
+    /**
+     * Método desencriptar contraseña
+     * @param usuario usuario sin hashear
+     * @param user usuario hasheado
+     * @return true sin coinciden
+     */
     public boolean desencriptar(Usuarios usuario,Usuarios user){
         return Password.check(usuario.getPassword(), user.getPassword()).withArgon2();
     }
     
-    /**Método para generar un código de recuperación**/
+    /**
+     * Método para generar un código de recuperación
+     * @return el código aleatorio
+     */
     public String generarCodigo() {
         //array de caracteres con letras mayúsculas, minúsculas y símbolos
         char[] caracteres = new char[93];

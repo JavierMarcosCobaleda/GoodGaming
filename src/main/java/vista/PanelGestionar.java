@@ -4,6 +4,8 @@
  */
 package vista;
 
+import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.extras.FlatSVGIcon;
 import controlador.HibernateUtil;
 import java.awt.Color;
 import java.text.ParseException;
@@ -40,6 +42,7 @@ public class PanelGestionar extends javax.swing.JPanel {
         lblGestionar.setForeground(Color.BLACK);
         btnModificar.setForeground(Color.BLACK);
         btnEliminar.setForeground(Color.BLACK);
+        tfFecha.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/calendario.svg" ) );
     }
 
     /**
@@ -91,6 +94,7 @@ public class PanelGestionar extends javax.swing.JPanel {
 
         tfTitulo.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         tfTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        tfTitulo.setToolTipText("Introduce el nuevo título");
         tfTitulo.setPreferredSize(new java.awt.Dimension(221, 22));
         tfTitulo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -106,6 +110,7 @@ public class PanelGestionar extends javax.swing.JPanel {
 
         tfGenero.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         tfGenero.setForeground(new java.awt.Color(255, 255, 255));
+        tfGenero.setToolTipText("Introduce el nuevo género");
         tfGenero.setPreferredSize(new java.awt.Dimension(221, 22));
         tfGenero.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -188,6 +193,8 @@ public class PanelGestionar extends javax.swing.JPanel {
         lblconsola.setText("Consola");
         panelFondo.add(lblconsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, -1, -1));
 
+        jcbConsola.setToolTipText("Selecciona la nueva consola");
+        jcbConsola.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jcbConsola.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jcbConsolaMouseClicked(evt);
@@ -203,6 +210,7 @@ public class PanelGestionar extends javax.swing.JPanel {
         tfFecha.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         tfFecha.setForeground(new java.awt.Color(153, 153, 153));
         tfFecha.setText("dd/MM/aaaa");
+        tfFecha.setToolTipText("Introduce la nueva fecha de salida con formato <dd/MM/aaaa>");
         tfFecha.setPreferredSize(new java.awt.Dimension(221, 22));
         tfFecha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -218,6 +226,7 @@ public class PanelGestionar extends javax.swing.JPanel {
 
         tfEdicion.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         tfEdicion.setForeground(new java.awt.Color(255, 255, 255));
+        tfEdicion.setToolTipText("Introduce el tipo de edición del juego");
         tfEdicion.setPreferredSize(new java.awt.Dimension(221, 22));
         tfEdicion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -232,7 +241,9 @@ public class PanelGestionar extends javax.swing.JPanel {
         panelFondo.add(lblgenero5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, -1, -1));
 
         jsValoracion.setMaximum(4);
+        jsValoracion.setToolTipText("Puntúa el juego de 1 a 5 estrellas");
         jsValoracion.setValue(2);
+        jsValoracion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jsValoracion.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jsValoracionStateChanged(evt);
@@ -252,6 +263,7 @@ public class PanelGestionar extends javax.swing.JPanel {
         btnLimpiar.setFont(new java.awt.Font("Eras Medium ITC", 1, 12)); // NOI18N
         btnLimpiar.setForeground(new java.awt.Color(234, 164, 28));
         btnLimpiar.setText("LIMPIAR");
+        btnLimpiar.setToolTipText("Vacía todos los campos de texto");
         btnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLimpiar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {

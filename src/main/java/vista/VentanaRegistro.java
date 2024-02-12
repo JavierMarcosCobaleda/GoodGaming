@@ -71,6 +71,8 @@ public class VentanaRegistro extends javax.swing.JFrame {
         jPFRegPassword = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
         tfRegUsuario = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        lbRegistrarse = new javax.swing.JLabel();
         xCerrar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         logoGGpeque = new javax.swing.JLabel();
@@ -99,6 +101,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
         tfCorreoElectronico.setForeground(new java.awt.Color(153, 153, 153));
         tfCorreoElectronico.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tfCorreoElectronico.setText("Correo electrónico");
+        tfCorreoElectronico.setToolTipText("Introduce un correo electrónico que no haya sido registrado previamente");
         tfCorreoElectronico.setMinimumSize(new java.awt.Dimension(64, 22));
         tfCorreoElectronico.setPreferredSize(new java.awt.Dimension(257, 22));
         tfCorreoElectronico.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -110,6 +113,8 @@ public class VentanaRegistro extends javax.swing.JFrame {
         btnRegistro.setBackground(new java.awt.Color(244, 150, 40));
         btnRegistro.setFont(new java.awt.Font("Eras Medium ITC", 1, 14)); // NOI18N
         btnRegistro.setText("Registrarse");
+        btnRegistro.setToolTipText("Registra un nuevo usuario");
+        btnRegistro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegistro.setPreferredSize(new java.awt.Dimension(192, 40));
         btnRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,6 +125,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
         jPFRepetirPassword.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jPFRepetirPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPFRepetirPassword.setText("********");
+        jPFRepetirPassword.setToolTipText("Repite la contraseña nuevamente");
         jPFRepetirPassword.setPreferredSize(new java.awt.Dimension(257, 54));
         jPFRepetirPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -142,6 +148,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
         jPFRegPassword.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jPFRegPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPFRegPassword.setText("********");
+        jPFRegPassword.setToolTipText("Escribe la contraseña que deseas");
         jPFRegPassword.setPreferredSize(new java.awt.Dimension(257, 54));
         jPFRegPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -157,6 +164,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
         tfRegUsuario.setForeground(new java.awt.Color(153, 153, 153));
         tfRegUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tfRegUsuario.setText("Usuario");
+        tfRegUsuario.setToolTipText("Introduce un nombre de usuario");
         tfRegUsuario.setMinimumSize(new java.awt.Dimension(64, 22));
         tfRegUsuario.setPreferredSize(new java.awt.Dimension(257, 22));
         tfRegUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -165,14 +173,33 @@ public class VentanaRegistro extends javax.swing.JFrame {
             }
         });
 
+        jSeparator1.setForeground(new java.awt.Color(244, 150, 40));
+
+        lbRegistrarse.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
+        lbRegistrarse.setForeground(new java.awt.Color(244, 150, 40));
+        lbRegistrarse.setText("Loggin");
+        lbRegistrarse.setToolTipText("Vuelve a la pantalla de loggin");
+        lbRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbRegistrarse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbRegistrarseMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbRegistrarseMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbRegistrarseMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelFondoGrisLayout = new javax.swing.GroupLayout(panelFondoGris);
         panelFondoGris.setLayout(panelFondoGrisLayout);
         panelFondoGrisLayout.setHorizontalGroup(
             panelFondoGrisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFondoGrisLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
                 .addGroup(panelFondoGrisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelFondoGrisLayout.createSequentialGroup()
-                        .addGap(60, 60, 60)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoGrisLayout.createSequentialGroup()
                         .addGroup(panelFondoGrisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(tfRegUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -181,16 +208,21 @@ public class VentanaRegistro extends javax.swing.JFrame {
                             .addComponent(jLabel6)
                             .addComponent(jPFRepetirPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
-                            .addComponent(tfCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelFondoGrisLayout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(btnRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(60, 60, 60))
+                            .addComponent(tfCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoGrisLayout.createSequentialGroup()
+                        .addComponent(btnRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 57, 57))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoGrisLayout.createSequentialGroup()
+                        .addComponent(lbRegistrarse)
+                        .addGap(118, 118, 118)))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         panelFondoGrisLayout.setVerticalGroup(
             panelFondoGrisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFondoGrisLayout.createSequentialGroup()
-                .addGap(62, 62, 62)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel4)
                 .addGap(5, 5, 5)
                 .addComponent(tfRegUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -206,9 +238,13 @@ public class VentanaRegistro extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(5, 5, 5)
                 .addComponent(tfCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
+                .addGap(27, 27, 27)
                 .addComponent(btnRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(27, 27, 27)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbRegistrarse)
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         panelFondo.add(panelFondoGris, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 377, 480));
@@ -216,6 +252,8 @@ public class VentanaRegistro extends javax.swing.JFrame {
         xCerrar.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 24)); // NOI18N
         xCerrar.setForeground(new java.awt.Color(255, 255, 255));
         xCerrar.setText("x");
+        xCerrar.setToolTipText("Cierra la ventana y vuelve a la pantalla de loggin");
+        xCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         xCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 xCerrarMouseClicked(evt);
@@ -436,6 +474,23 @@ public class VentanaRegistro extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tfRegUsuarioMousePressed
 
+    private void lbRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarseMouseClicked
+        // TODO add your handling code here:
+        VentanaLogin ventanaLogin=new VentanaLogin();
+        ventanaLogin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_lbRegistrarseMouseClicked
+
+    private void lbRegistrarseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarseMouseEntered
+        // TODO add your handling code here:
+        lbRegistrarse.setForeground(Color.white);
+    }//GEN-LAST:event_lbRegistrarseMouseEntered
+
+    private void lbRegistrarseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarseMouseExited
+        // TODO add your handling code here:
+        lbRegistrarse.setForeground(new Color(244,150,40));
+    }//GEN-LAST:event_lbRegistrarseMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -480,6 +535,8 @@ public class VentanaRegistro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPasswordField jPFRegPassword;
     private javax.swing.JPasswordField jPFRepetirPassword;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lbRegistrarse;
     private javax.swing.JLabel logoGGpeque;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JPanel panelFondoGris;

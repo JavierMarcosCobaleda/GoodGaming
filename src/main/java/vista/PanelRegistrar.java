@@ -4,6 +4,8 @@
  */
 package vista;
 
+import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.extras.FlatSVGIcon;
 import controlador.HibernateUtil;
 import java.awt.Color;
 import java.sql.Date;
@@ -39,6 +41,7 @@ public class PanelRegistrar extends javax.swing.JPanel {
         lblRegistrar.setForeground(Color.BLACK);
         btnAgregarDeseos.setForeground(Color.BLACK);
         btnAgregarColeccion.setForeground(Color.BLACK);
+        tfFecha.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/calendario.svg" ) );
        
     }
 
@@ -204,6 +207,7 @@ public class PanelRegistrar extends javax.swing.JPanel {
         panelFondo.add(lblconsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, -1, -1));
 
         jcbConsola.setToolTipText("Selecciona la consola a la que pertene el juego");
+        jcbConsola.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jcbConsola.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jcbConsolaMouseClicked(evt);
@@ -252,7 +256,9 @@ public class PanelRegistrar extends javax.swing.JPanel {
         panelFondo.add(lblgenero5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, -1, -1));
 
         jsValoracion.setMaximum(4);
+        jsValoracion.setToolTipText("Puntúa el juego de 1 a 5 estrellas");
         jsValoracion.setValue(2);
+        jsValoracion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jsValoracion.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jsValoracionStateChanged(evt);

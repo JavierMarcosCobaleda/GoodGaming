@@ -17,7 +17,7 @@ import model.Videojuegos;
 
 /**
  *
- * @author lonch
+ * @author Javier Marcos Cobaleda
  */
 public class PanelDeseos extends javax.swing.JPanel {
     private Usuarios usuario;
@@ -32,6 +32,7 @@ public class PanelDeseos extends javax.swing.JPanel {
         lblDeseos.setForeground(Color.BLACK);
         
         tfbuscarTitulo.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSearchIcon() );
+        btnAgregarColeccion.setForeground(Color.BLACK);
         btnBuscar.setForeground(Color.BLACK);
         btnBuscarTodo.setForeground(Color.BLACK);
         tfbuscarTitulo.putClientProperty("FlatLaf.style","arc: 40");
@@ -40,7 +41,8 @@ public class PanelDeseos extends javax.swing.JPanel {
         model = (DefaultTableModel) tablaDeseos.getModel();
         
         /**Cargamos la tabla**/
-        for (int i=0; i<HibernateUtil.listarJuegosDeseados(usuario).size();i++){
+        rellenarTabla();
+        /*for (int i=0; i<HibernateUtil.listarJuegosDeseados(usuario).size();i++){
             model.addRow(new Object[]{
                 HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getId(),
                 HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getTitulo(),
@@ -50,7 +52,7 @@ public class PanelDeseos extends javax.swing.JPanel {
                 HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getEdicion(),
                 HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getValoracion()+1}
                 );       
-        }
+        }*/
         
         /**
          * Hacer seleccionables los elementos de la tabla
@@ -233,7 +235,7 @@ public class PanelDeseos extends javax.swing.JPanel {
         btnEliminar.setFont(new java.awt.Font("Eras Medium ITC", 1, 12)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(234, 164, 28));
         btnEliminar.setText("<html><center>ELIMINAR<br>DE LA LISTA</center></html>");
-        btnEliminar.setToolTipText("Muestra todos los juegos de Nintendo");
+        btnEliminar.setToolTipText("Elimina un juego de la lista de deseos");
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -303,28 +305,23 @@ public class PanelDeseos extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnBuscarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarTodoActionPerformed
-
-        //Vaciamos la tabla
-        model.setRowCount(0);
         /**
-        * Mostramos todos los videojuegos de nintendo
-        */
-        for (int i=0; i<HibernateUtil.listarJuegosDeseados(usuario).size();i++){
-            model.addRow(new Object[]{
-                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getId(),
-                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getTitulo(),
-                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getGenero(),
-                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getFechaSalida(),
-                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getConsola(),
-                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getEdicion(),
-                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getValoracion()+1}
-                );       
-        }           
+         * Llamaos al método rellenar tabla
+         */
+        rellenarTabla();
+        
     }//GEN-LAST:event_btnBuscarTodoActionPerformed
 
     private void btnAgregarColeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarColeccionActionPerformed
+        /**
+         * Llamamos al método pasarDeseadoaColeccion para pasar el juego a la coleccion del usuario
+         */
         if(HibernateUtil.pasarDeseadoaColeccion(usuario, idJuego)>0){
-            JOptionPane.showMessageDialog(null, "Se ha añadido el juego a tu colección y ha sido eliminado de su lista de deseos");
+            JOptionPane.showMessageDialog(null, "Se ha añadido el juego a tu colección y ha sido eliminado de su lista de deseos\nPodrás verlo en tu colección la próxima vez que inicies el programa");
+            /**
+             * Actualizamos la tabla
+             */
+            rellenarTabla();
         }else{
             JOptionPane.showMessageDialog(null, "ERROR,no se ha podido añadir el videojuego a su colección","Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -332,7 +329,23 @@ public class PanelDeseos extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAgregarColeccionActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+        /**
+         * Llamamos al método eliminarDeseado para borrar el juego de la lista de deseos
+         */
+        if(HibernateUtil.eliminarDeseado(usuario, idJuego)>0){
+            JOptionPane.showMessageDialog(null, "El juego ha sido eliminado de su lista de deseos");
+            /**
+             * Ofrecemos la opción al usuario de borrarlo también de la base de datos
+             */
+            confirmarBorradoTotal();
+            /**
+             * Actualizamos la tabla
+             */
+            rellenarTabla();
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "ERROR,no se ha podido eliminar el juego de tu lista de deseos","Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
     
     
@@ -350,4 +363,45 @@ public class PanelDeseos extends javax.swing.JPanel {
     private javax.swing.JTable tablaDeseos;
     private javax.swing.JTextField tfbuscarTitulo;
     // End of variables declaration//GEN-END:variables
+    
+    /**
+     * Método para mostrar ventana de diálogo y eliminar un juego de la base de datos
+     */
+    public void confirmarBorradoTotal(){
+            int opcion = JOptionPane.showConfirmDialog( null,"¿Desea borrar también el juego completamente de la base de datos?","Confirmar Borrado Total",JOptionPane.YES_NO_OPTION);
+
+            if (opcion == JOptionPane.YES_OPTION) {
+                /**
+                 * Borramos el juego de la colección y de la base de datos
+                 */
+                if(HibernateUtil.borrarJuegoColeccion(idJuego)>0 && HibernateUtil.borrarJuego(idJuego)){
+                    JOptionPane.showMessageDialog(null, "El videojuego ha sido eliminado completamente");
+                }else{
+                    JOptionPane.showMessageDialog(null, "ERROR, No se ha podido elimiar el juego de la base de datos","Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Se ha cancelado la eliminación del juego");
+            }
+    }
+    /**
+     * Método para rellenar la tabla con todos los juegos deseados
+     */
+    public void rellenarTabla(){
+        //Vaciamos la tabla
+        model.setRowCount(0);
+        /**
+        * Mostramos todos los videojuegos de nintendo
+        */
+        for (int i=0; i<HibernateUtil.listarJuegosDeseados(usuario).size();i++){
+            model.addRow(new Object[]{
+                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getId(),
+                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getTitulo(),
+                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getGenero(),
+                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getFechaSalida(),
+                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getConsola(),
+                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getEdicion(),
+                HibernateUtil.listarJuegosDeseados(usuario).get(i).getVideojuegos().getValoracion()+1}
+                );       
+        }           
+    }
 }

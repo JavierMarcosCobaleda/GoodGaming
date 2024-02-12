@@ -160,6 +160,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelFondo.add(panelLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 276, 960));
 
         panelSuperior.setBackground(new java.awt.Color(113, 111, 108));
+        panelSuperior.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
         panelSuperior.setPreferredSize(new java.awt.Dimension(1440, 87));
         panelSuperior.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -181,6 +182,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         xCerrar.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 24)); // NOI18N
         xCerrar.setForeground(new java.awt.Color(255, 255, 255));
         xCerrar.setText("x");
+        xCerrar.setToolTipText("Salir del programa");
+        xCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         xCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 xCerrarMouseClicked(evt);

@@ -100,6 +100,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         tfusuario.setForeground(new java.awt.Color(153, 153, 153));
         tfusuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tfusuario.setText("Usuario");
+        tfusuario.setToolTipText("Introduce tu nombre de usuario");
         tfusuario.setPreferredSize(new java.awt.Dimension(257, 54));
         tfusuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -111,6 +112,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         btnIniciarSesion.setBackground(new java.awt.Color(244, 150, 40));
         btnIniciarSesion.setFont(new java.awt.Font("Eras Medium ITC", 1, 14)); // NOI18N
         btnIniciarSesion.setText("Iniciar Sesión");
+        btnIniciarSesion.setToolTipText("Incia sesión con tu usuario y contraseña");
         btnIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnIniciarSesion.setPreferredSize(new java.awt.Dimension(192, 40));
         btnIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -123,6 +125,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         jPFPassword.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
         jPFPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPFPassword.setText("********");
+        jPFPassword.setToolTipText("Introduce tu contraseña");
         jPFPassword.setPreferredSize(new java.awt.Dimension(257, 54));
         jPFPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -134,6 +137,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         lbRecuperar.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
         lbRecuperar.setForeground(new java.awt.Color(244, 150, 40));
         lbRecuperar.setText("Recuperar contraseña");
+        lbRecuperar.setToolTipText("Pulsa aquí si has olvidado tu contraseña o deseas cambiarla");
         lbRecuperar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbRecuperar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -162,6 +166,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         lbRegistrarse.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
         lbRegistrarse.setForeground(new java.awt.Color(244, 150, 40));
         lbRegistrarse.setText("Registrarse");
+        lbRegistrarse.setToolTipText("Registra un nuevo usuario");
         lbRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbRegistrarse.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -181,6 +186,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         xCerrar.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 24)); // NOI18N
         xCerrar.setForeground(new java.awt.Color(255, 255, 255));
         xCerrar.setText("x");
+        xCerrar.setToolTipText("Salir del programa");
         xCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         xCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

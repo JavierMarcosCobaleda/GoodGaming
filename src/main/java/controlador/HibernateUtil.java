@@ -112,7 +112,7 @@ public class HibernateUtil {
     
     /**Método select de usuario y contraseña**/
     /**
-     * Método para comprobar el mail de un usuario y su username
+     * Método para comprobar el mail de un usuario concreto
      * @param usuario Objeto de la clase Usuarios
      * @return Una lista con los usuarios de la consulta
      */
@@ -310,6 +310,28 @@ public class HibernateUtil {
         
         return filasAfectadas;
     }
+    /**
+     * Método para eliminar un juego de la lista de deseos de un usuario
+     * @param u
+     * @param idJuego
+     * @return 
+     */
+    public static int eliminarDeseado(Usuarios u, int idJuego){
+   
+        Transaction tx=sesion.beginTransaction();
+        
+        String sql="UPDATE Coleccion SET deseado = false WHERE usuarios.id = :idUsuario AND videojuegos.id = :idJuego";
+        Query q=sesion.createQuery(sql);
+        q.setParameter("idUsuario", u.getId());
+        q.setParameter("idJuego", idJuego);
+        
+        int filasAfectadas=q.executeUpdate();
+        
+        tx.commit();
+        
+        return filasAfectadas;
+    }
+    
     /**
      * Método para borrar un juego de la base de datos
      * @param idJuego

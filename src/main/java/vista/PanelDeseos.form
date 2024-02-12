@@ -267,7 +267,7 @@
               <Color blue="1c" green="a4" red="ea" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;ELIMINAR&lt;br&gt;DE LA LISTA&lt;/center&gt;&lt;/html&gt;"/>
-            <Property name="toolTipText" type="java.lang.String" value="Muestra todos los juegos de Nintendo"/>
+            <Property name="toolTipText" type="java.lang.String" value="Elimina un juego de la lista de deseos"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>

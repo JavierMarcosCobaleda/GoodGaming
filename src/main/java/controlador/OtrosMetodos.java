@@ -14,7 +14,12 @@ public class OtrosMetodos {
     public OtrosMetodos(){
         
     }
-    /**Método para comprobar que un mail tiene @ y al menos un punto tras el arroba**/
+
+    /**
+     * Método para comprobar que un mail tiene @ y al menos un punto tras el arroba
+     * @param usuario
+     * @return true si cumple las condiciones
+     */
     public boolean mailSintaxis(Usuarios usuario){
             String email=usuario.getEmail();
             
