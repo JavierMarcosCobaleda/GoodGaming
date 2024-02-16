@@ -30,25 +30,39 @@ public class VentanaRecuperar extends javax.swing.JFrame {
     String codigo;
     Usuarios usuario;
    
-    
+    /**
+     * Constructor
+     */
     public VentanaRecuperar() {
         initComponents();
-        //Iniciar en el centro de la pantalla
+        /**
+         * Iniciar en el centro de la pantalla
+         */
         setLocationRelativeTo(null);
         
-        //Cambiar color de textos de botones
+        /**
+         * Cambiar color de textos de botones
+         */
         btnEnvio.setForeground(Color.BLACK);
         btnActualizar.setForeground(Color.BLACK);
         
-        //Establecer el botón por defecto
+        /**
+         * Establecer el botón por defecto
+         */
         getRootPane().setDefaultButton(btnEnvio);
         
-        //alt+e para presionar el boton de enviar
+        /**
+         * alt+e para presionar el boton de enviar
+         */
         btnEnvio.setMnemonic('e');
-        //alt+a para presionar el boton de actualizar contraseña
+        /**
+         * alt+a para presionar el boton de actualizar contraseña
+         */
         btnActualizar.setMnemonic('a');
         
-        //Conecta a la base de datos
+        /**
+         * Conecta a la base de datos
+         */
         try{
             hibernate=new HibernateUtil();
             hibernate.conectar();
@@ -81,7 +95,7 @@ public class VentanaRecuperar extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jPFRepetirPassword = new javax.swing.JPasswordField();
         jSeparator1 = new javax.swing.JSeparator();
-        lbRegistrarse = new javax.swing.JLabel();
+        lbLoggin = new javax.swing.JLabel();
         xCerrar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         logoGGpeque = new javax.swing.JLabel();
@@ -117,11 +131,6 @@ public class VentanaRecuperar extends javax.swing.JFrame {
                 tfCorreoElectronicoMousePressed(evt);
             }
         });
-        tfCorreoElectronico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfCorreoElectronicoActionPerformed(evt);
-            }
-        });
 
         btnEnvio.setBackground(new java.awt.Color(244, 150, 40));
         btnEnvio.setFont(new java.awt.Font("Eras Medium ITC", 1, 14)); // NOI18N
@@ -145,16 +154,6 @@ public class VentanaRecuperar extends javax.swing.JFrame {
         tfCodigo.setToolTipText("Introduce el código de activación que hemos enviado a tu correo");
         tfCodigo.setMinimumSize(new java.awt.Dimension(64, 22));
         tfCodigo.setPreferredSize(new java.awt.Dimension(257, 22));
-        tfCodigo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                tfCodigoMousePressed(evt);
-            }
-        });
-        tfCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfCodigoActionPerformed(evt);
-            }
-        });
 
         jLabel5.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -202,20 +201,20 @@ public class VentanaRecuperar extends javax.swing.JFrame {
 
         jSeparator1.setForeground(new java.awt.Color(244, 150, 40));
 
-        lbRegistrarse.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
-        lbRegistrarse.setForeground(new java.awt.Color(244, 150, 40));
-        lbRegistrarse.setText("Loggin");
-        lbRegistrarse.setToolTipText("Vuelve a la pantalla de loggin");
-        lbRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lbRegistrarse.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbLoggin.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
+        lbLoggin.setForeground(new java.awt.Color(244, 150, 40));
+        lbLoggin.setText("Loggin");
+        lbLoggin.setToolTipText("Vuelve a la pantalla de loggin");
+        lbLoggin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbLoggin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbRegistrarseMouseClicked(evt);
+                lbLogginMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lbRegistrarseMouseEntered(evt);
+                lbLogginMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                lbRegistrarseMouseExited(evt);
+                lbLogginMouseExited(evt);
             }
         });
 
@@ -227,7 +226,7 @@ public class VentanaRecuperar extends javax.swing.JFrame {
                 .addGroup(panelFondoGrisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelFondoGrisLayout.createSequentialGroup()
                         .addGap(154, 154, 154)
-                        .addComponent(lbRegistrarse))
+                        .addComponent(lbLoggin))
                     .addGroup(panelFondoGrisLayout.createSequentialGroup()
                         .addGap(60, 60, 60)
                         .addComponent(jLabel3))
@@ -280,7 +279,7 @@ public class VentanaRecuperar extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbRegistrarse)
+                .addComponent(lbLoggin)
                 .addContainerGap())
         );
 
@@ -327,7 +326,10 @@ public class VentanaRecuperar extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Método para quitar el texto del correo electrónico al clickar
+     * @param evt 
+     */
     private void tfCorreoElectronicoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfCorreoElectronicoMousePressed
         //Quitar el texto Usuario al entrar
         if(tfCorreoElectronico.getText().equals("Usuario")){
@@ -340,11 +342,10 @@ public class VentanaRecuperar extends javax.swing.JFrame {
             jPFRepetirPassword.setForeground(Color.gray);
         }*/
     }//GEN-LAST:event_tfCorreoElectronicoMousePressed
-
-    private void tfCorreoElectronicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCorreoElectronicoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfCorreoElectronicoActionPerformed
-
+    /**
+     * Método para dar funcionalidad al botón de envío
+     * @param evt 
+     */
     private void btnEnvioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnvioActionPerformed
         
         if(tfCorreoElectronico.getText().isEmpty()){
@@ -400,7 +401,10 @@ public class VentanaRecuperar extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnEnvioActionPerformed
-
+    /**
+     * Método para volver al loggin al cerrar la ventana
+     * @param evt 
+     */
     private void xCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xCerrarMouseClicked
         VentanaLogin ventanaLogin=new VentanaLogin();
         ventanaLogin.setVisible(true);
@@ -408,43 +412,53 @@ public class VentanaRecuperar extends javax.swing.JFrame {
         dispose();
 
     }//GEN-LAST:event_xCerrarMouseClicked
-
+    /**
+     * Método para cambiar el color de la x al entrar con el ratón
+     * @param evt 
+     */
     private void xCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xCerrarMouseEntered
         //Cambiar color al entrar
         xCerrar.setForeground(new Color(244,150,40));
     }//GEN-LAST:event_xCerrarMouseEntered
-
+    /**
+     * Método para cambiar el color de la x al salir con el ratón
+     * @param evt 
+     */
     private void xCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xCerrarMouseExited
         //Cambiar a blanco al salir
         xCerrar.setForeground(Color.white);
     }//GEN-LAST:event_xCerrarMouseExited
-
+    /**
+     * Método para cambiar el botón de la x al pulsar
+     * @param evt 
+     */
     private void xCerrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xCerrarMousePressed
         //Cambiar color al pulsar
         xCerrar.setForeground(Color.red);
     }//GEN-LAST:event_xCerrarMousePressed
-
+    /**
+     * Método para mover la ventana
+     * @param evt 
+     */
     private void panelFondoMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelFondoMouseDragged
         // Mover la ventana
         int x=evt.getXOnScreen();
         int y=evt.getYOnScreen();
         this.setLocation(x-xMouse,y-yMouse);
     }//GEN-LAST:event_panelFondoMouseDragged
-
+    /**
+     * Método para obtener las coordenadas de la ventana
+     * @param evt 
+     */
     private void panelFondoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelFondoMousePressed
         // Obtener x e y para mover la ventana
         xMouse=evt.getX();
         yMouse=evt.getY();
     }//GEN-LAST:event_panelFondoMousePressed
-
-    private void tfCodigoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfCodigoMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfCodigoMousePressed
-
-    private void tfCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfCodigoActionPerformed
-
+    /**
+     * Método para dar funcionalidad al botón actualizar
+     * @param evt 
+     */
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         /**
          * Comprobamos que los campos de contraseña no estén vacíos y la contraseña coincida
@@ -475,7 +489,10 @@ public class VentanaRecuperar extends javax.swing.JFrame {
             }
         }    
     }//GEN-LAST:event_btnActualizarActionPerformed
-
+    /**
+     * Método para vaciar el texto del password
+     * @param evt 
+     */
     private void jPFActualizarPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPFActualizarPasswordMousePressed
         //vaciar el texto del password
         if(String.valueOf(jPFActualizarPassword.getPassword()).equals("********")){
@@ -483,7 +500,10 @@ public class VentanaRecuperar extends javax.swing.JFrame {
             jPFActualizarPassword.setForeground(Color.white);
         }
     }//GEN-LAST:event_jPFActualizarPasswordMousePressed
-
+    /**
+     * Método para vaciar el texto de repetir password
+     * @param evt 
+     */
     private void jPFRepetirPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPFRepetirPasswordMousePressed
         //vaciar el texto del password
         if(String.valueOf(jPFRepetirPassword.getPassword()).equals("********")){
@@ -491,25 +511,34 @@ public class VentanaRecuperar extends javax.swing.JFrame {
             jPFRepetirPassword.setForeground(Color.white);
         }
     }//GEN-LAST:event_jPFRepetirPasswordMousePressed
-
-    private void lbRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarseMouseClicked
+    /**
+     * Método para abrir la ventana del loggin
+     * @param evt 
+     */
+    private void lbLogginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbLogginMouseClicked
         /**
-         * Abrir la ventana de registro
+         * Abrir la ventana del loggin
          */
         VentanaLogin ventanaLogin=new VentanaLogin();
         ventanaLogin.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_lbRegistrarseMouseClicked
-
-    private void lbRegistrarseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarseMouseEntered
+    }//GEN-LAST:event_lbLogginMouseClicked
+    /**
+     * Método para cambiar el color del label del loggin al entrar
+     * @param evt 
+     */
+    private void lbLogginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbLogginMouseEntered
         //cambiar color del label al entrar
-        lbRegistrarse.setForeground(Color.white);
-    }//GEN-LAST:event_lbRegistrarseMouseEntered
-
-    private void lbRegistrarseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarseMouseExited
+        lbLoggin.setForeground(Color.white);
+    }//GEN-LAST:event_lbLogginMouseEntered
+    /**
+     * Método para cambiar el color del label del loggin al salir
+     * @param evt 
+     */
+    private void lbLogginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbLogginMouseExited
         //cambiar color del label al salir
-        lbRegistrarse.setForeground(new Color(244,150,40));
-    }//GEN-LAST:event_lbRegistrarseMouseExited
+        lbLoggin.setForeground(new Color(244,150,40));
+    }//GEN-LAST:event_lbLogginMouseExited
 
     /**
      * @param args the command line arguments
@@ -557,7 +586,7 @@ public class VentanaRecuperar extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPFActualizarPassword;
     private javax.swing.JPasswordField jPFRepetirPassword;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel lbRegistrarse;
+    private javax.swing.JLabel lbLoggin;
     private javax.swing.JLabel logoGGpeque;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JPanel panelFondoGris;

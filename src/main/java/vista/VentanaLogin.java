@@ -17,15 +17,21 @@ import model.Usuarios;
  */
 public class VentanaLogin extends javax.swing.JFrame {
 
-    //Variables para mover la ventana
+    /**
+     * Variables para mover la ventana
+     */
     int xMouse,yMouse;
-    //Variables de los controladores
+    /**
+     * Variables de los controladores
+     */
     HibernateUtil hibernate;
     PasswordUtil pwdUtil;
     
     VentanaPrincipal principal;
     Usuarios usuario;
-    
+    /**
+     * Constructor
+     */
     public VentanaLogin() {
         initComponents();
         //Iniciar en el centro de la pantalla
@@ -227,40 +233,61 @@ public class VentanaLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Método para cerrar la ventana
+     * @param evt 
+     */
     private void xCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xCerrarMouseClicked
         //Cerrar ventana
         System.exit(0);
     }//GEN-LAST:event_xCerrarMouseClicked
-
+    /**
+     * Método para cambiar el color de la x al entrar el ratón
+     * @param evt 
+     */
     private void xCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xCerrarMouseEntered
         //Cambiar color al entrar
         xCerrar.setForeground(new Color(244,150,40));
     }//GEN-LAST:event_xCerrarMouseEntered
-
+    /**
+     * Método para cambiar el color a la x al salir el ratón
+     * @param evt 
+     */
     private void xCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xCerrarMouseExited
         //Cambiar a blanco al salir
         xCerrar.setForeground(Color.white);
     }//GEN-LAST:event_xCerrarMouseExited
-
+    /**
+     * Método para cambiar el color al pulsar sobre la x
+     * @param evt 
+     */
     private void xCerrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xCerrarMousePressed
         //Cambiar color al pulsar
         xCerrar.setForeground(Color.red);
     }//GEN-LAST:event_xCerrarMousePressed
-
+    /**
+     * Método para obtener las coordenadas de la ventana para moverla
+     * @param evt 
+     */
     private void panelFondoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelFondoMousePressed
         // Obtener x e y para mover la ventana
         xMouse=evt.getX();
         yMouse=evt.getY();
     }//GEN-LAST:event_panelFondoMousePressed
-
+    /**
+     * método para mover la ventana
+     * @param evt 
+     */
     private void panelFondoMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelFondoMouseDragged
         // Mover la ventana
        int x=evt.getXOnScreen();
        int y=evt.getYOnScreen();
        this.setLocation(x-xMouse,y-yMouse);
     }//GEN-LAST:event_panelFondoMouseDragged
-
+    /**
+     * Método para vaciar el texto del textfield del usuario
+     * @param evt 
+     */
     private void tfusuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfusuarioMousePressed
         // Vaciar el texto Usuario
         if(tfusuario.getText().equals("Usuario")){
@@ -274,7 +301,10 @@ public class VentanaLogin extends javax.swing.JFrame {
         }
                                
     }//GEN-LAST:event_tfusuarioMousePressed
-
+    /**
+     * Método para vaciar el texto del password
+     * @param evt 
+     */
     private void jPFPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPFPasswordMousePressed
         //vaciar el texto del password
         if(String.valueOf(jPFPassword.getPassword()).equals("********")){
@@ -288,7 +318,10 @@ public class VentanaLogin extends javax.swing.JFrame {
             tfusuario.setForeground(Color.gray);
         }
     }//GEN-LAST:event_jPFPasswordMousePressed
-
+    /**
+     * Método de funcionalidad del botón de iniciar sesión
+     * @param evt 
+     */
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
         /**
          * comprobar que están rellenos todos los campos
@@ -323,27 +356,42 @@ public class VentanaLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "ERROR, No se ha podido conectar con la base de datos","Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
-
+    /**
+     * Método para cambiar el color del label recuperar al entrar con el ratón
+     * @param evt 
+     */
     private void lbRecuperarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRecuperarMouseEntered
          //cambiar color del label al entrar
          lbRecuperar.setForeground(Color.white);
     }//GEN-LAST:event_lbRecuperarMouseEntered
-
+    /**
+     * Método para cambiar el color del label recuperar al salir con el ratón
+     * @param evt 
+     */
     private void lbRecuperarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRecuperarMouseExited
         //cambiar color del label al salir
         lbRecuperar.setForeground(new Color(244,150,40));
     }//GEN-LAST:event_lbRecuperarMouseExited
-
+    /**
+     * Método para cambiar el color del label registrar al entrar con el ratón
+     * @param evt 
+     */
     private void lbRegistrarseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarseMouseEntered
         //cambiar color del label al entrar
         lbRegistrarse.setForeground(Color.white);
     }//GEN-LAST:event_lbRegistrarseMouseEntered
-
+    /**
+     * Método para cambiar el color del label registrar al salir con el ratón
+     * @param evt 
+     */
     private void lbRegistrarseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarseMouseExited
         //cambiar color del label al salir
         lbRegistrarse.setForeground(new Color(244,150,40));
     }//GEN-LAST:event_lbRegistrarseMouseExited
-
+    /**
+     * Método para abrir la ventana de registro
+     * @param evt 
+     */
     private void lbRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarseMouseClicked
         /**
          * Abrimos la ventana del registro
@@ -352,7 +400,10 @@ public class VentanaLogin extends javax.swing.JFrame {
         ventanaRegistro.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_lbRegistrarseMouseClicked
-
+    /**
+     * Método para abrir la ventana de recuperar contraseña
+     * @param evt 
+     */
     private void lbRecuperarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRecuperarMouseClicked
         /**
          * Abrimos la ventana de recuperar contraseña

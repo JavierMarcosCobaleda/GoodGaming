@@ -15,11 +15,16 @@ import model.Usuarios;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 
-    //Variables para mover la ventana
+    /**
+     * Variables para mover la ventana
+     */
     int xMouse,yMouse;
     
     static Usuarios usuario;
-    
+    /**
+     * Constructor
+     * @param usuario 
+     */
     public VentanaPrincipal(Usuarios usuario) {
         initComponents();
         //Iniciar en el centro de la pantalla
@@ -278,27 +283,42 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Método para cerrar la ventana
+     * @param evt 
+     */
     private void xCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xCerrarMouseClicked
         //Cerrar ventana
         System.exit(0);
     }//GEN-LAST:event_xCerrarMouseClicked
-
+    /**
+     * Método para cambiar el color al entrar en la x con el ratón
+     * @param evt 
+     */
     private void xCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xCerrarMouseEntered
         //Cambiar color al entrar
         xCerrar.setForeground(new Color(244,150,40));
     }//GEN-LAST:event_xCerrarMouseEntered
-
+    /**
+     * Método para cambiar el color de la x al salir con el ratón
+     * @param evt 
+     */
     private void xCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xCerrarMouseExited
         //Cambiar a blanco al salir
         xCerrar.setForeground(Color.white);
     }//GEN-LAST:event_xCerrarMouseExited
-
+    /**
+     * Método para cambiar el color de la x cuando se haga click en él
+     * @param evt 
+     */
     private void xCerrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xCerrarMousePressed
         //Cambiar color al pulsar
         xCerrar.setForeground(Color.red);
     }//GEN-LAST:event_xCerrarMousePressed
-
+    /**
+     * Método de funcionalidad del botón registrar
+     * @param evt 
+     */
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         /**
          *  Mostramos el panel de registrar juegos
@@ -306,13 +326,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         PanelRegistrar preg=new PanelRegistrar(usuario);
         mostrarPanel(preg);
         
-        //cambiamos los colores de los botones de la barra lateral
+        /**
+         * cambiamos los colores de los botones de la barra lateral
+         */
         btnRegistrar.setBackground(new Color(234,164,28));
         btnGestionar.setBackground(new Color(113,111,108));
         btnColeccion.setBackground(new Color(113,111,108));
         btnDeseos.setBackground(new Color(113,111,108));
     }//GEN-LAST:event_btnRegistrarActionPerformed
-
+    /**
+     * Método para dar funcionalidad al botón deseos
+     * @param evt 
+     */
     private void btnDeseosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeseosActionPerformed
         /**
          * Mostramos el paner de la lista de deseos
@@ -320,26 +345,37 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         PanelDeseos deseos=new PanelDeseos(usuario);
         mostrarPanel(deseos);
         
-        //cambiamos los colores de los botones de la barra lateral
+        /**
+         * cambiamos los colores de los botones de la barra lateral
+         */
         btnRegistrar.setBackground(new Color(113,111,108));
         btnGestionar.setBackground(new Color(113,111,108));
         btnColeccion.setBackground(new Color(113,111,108));
         btnDeseos.setBackground(new Color(234,164,28));
     }//GEN-LAST:event_btnDeseosActionPerformed
-
+    /**
+     * Método para mover la ventana
+     * @param evt 
+     */
     private void panelSuperiorMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelSuperiorMouseDragged
         // Mover la ventana
        int x=evt.getXOnScreen();
        int y=evt.getYOnScreen();
        this.setLocation(x-xMouse,y-yMouse);
     }//GEN-LAST:event_panelSuperiorMouseDragged
-
+    /**
+     * Método para obtener las coordenadas de la ventana
+     * @param evt 
+     */
     private void panelSuperiorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelSuperiorMousePressed
         // Obtener x e y para mover la ventana
         xMouse=evt.getX();
         yMouse=evt.getY();
     }//GEN-LAST:event_panelSuperiorMousePressed
-
+    /**
+     * Método para dar funcionalidad al botón Gestionar
+     * @param evt 
+     */
     private void btnGestionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarActionPerformed
         /**
          *  Mostramos el panel de registrar juegos
@@ -353,7 +389,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnColeccion.setBackground(new Color(113,111,108));
         btnDeseos.setBackground(new Color(113,111,108));
     }//GEN-LAST:event_btnGestionarActionPerformed
-
+    /**
+     * Método para dar funcionalidad al botón colección
+     * @param evt 
+     */
     private void btnColeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColeccionActionPerformed
         /**
          *  Mostramos el panel de registrar juegos
@@ -422,7 +461,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel xCerrar;
     // End of variables declaration//GEN-END:variables
 
-    /**Método para mostrar paneles**/
+    /**
+     * Método para mostrar paneles
+     * @param p 
+     */
     public void mostrarPanel(JPanel p){
         p.setSize(1100,810);
         p.setLocation(0,0);   
