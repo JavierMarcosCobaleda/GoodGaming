@@ -8,6 +8,7 @@ import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import controlador.HibernateUtil;
 import java.awt.Color;
+import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Enumeration;
@@ -39,6 +40,7 @@ public class PanelGestionar extends javax.swing.JPanel {
         /**
          * Modificaciones esteticas de los elementos graficos
          */
+        btnTraerDatos.setForeground(Color.BLACK);
         lblGestionar.setForeground(Color.BLACK);
         btnModificar.setForeground(Color.BLACK);
         btnEliminar.setForeground(Color.BLACK);
@@ -75,6 +77,7 @@ public class PanelGestionar extends javax.swing.JPanel {
         jsValoracion = new javax.swing.JSlider();
         estrellas = new javax.swing.JLabel();
         btnLimpiar = new javax.swing.JButton();
+        btnTraerDatos = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         panelRound1 = new vista.PanelRound();
@@ -83,6 +86,7 @@ public class PanelGestionar extends javax.swing.JPanel {
         tfID = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         lbltitulo2 = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
 
         panelFondo.setBackground(new java.awt.Color(30, 30, 30));
         panelFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -90,7 +94,7 @@ public class PanelGestionar extends javax.swing.JPanel {
         lbltitulo.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
         lbltitulo.setForeground(new java.awt.Color(234, 164, 28));
         lbltitulo.setText("DATOS NUEVOS");
-        panelFondo.add(lbltitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, -1, -1));
+        panelFondo.add(lbltitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 270, -1, -1));
 
         tfTitulo.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         tfTitulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -101,12 +105,12 @@ public class PanelGestionar extends javax.swing.JPanel {
                 tfTituloMouseClicked(evt);
             }
         });
-        panelFondo.add(tfTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 390, 30));
+        panelFondo.add(tfTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 390, 30));
 
         lblplataforma.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         lblplataforma.setForeground(new java.awt.Color(255, 255, 255));
         lblplataforma.setText("Plataforma");
-        panelFondo.add(lblplataforma, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 380, -1, -1));
+        panelFondo.add(lblplataforma, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 410, -1, -1));
 
         tfGenero.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         tfGenero.setForeground(new java.awt.Color(255, 255, 255));
@@ -117,12 +121,12 @@ public class PanelGestionar extends javax.swing.JPanel {
                 tfGeneroMouseClicked(evt);
             }
         });
-        panelFondo.add(tfGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 390, 30));
+        panelFondo.add(tfGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 360, 390, 30));
 
         lblgenero1.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         lblgenero1.setForeground(new java.awt.Color(255, 255, 255));
         lblgenero1.setText("Género");
-        panelFondo.add(lblgenero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
+        panelFondo.add(lblgenero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, -1, -1));
 
         buttonGroup1.add(rbPlayStation);
         rbPlayStation.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
@@ -139,7 +143,7 @@ public class PanelGestionar extends javax.swing.JPanel {
                 rbPlayStationActionPerformed(evt);
             }
         });
-        panelFondo.add(rbPlayStation, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 380, -1, -1));
+        panelFondo.add(rbPlayStation, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, -1, -1));
 
         buttonGroup1.add(rbNintendo);
         rbNintendo.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
@@ -156,7 +160,7 @@ public class PanelGestionar extends javax.swing.JPanel {
                 rbNintendoActionPerformed(evt);
             }
         });
-        panelFondo.add(rbNintendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 380, -1, -1));
+        panelFondo.add(rbNintendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, -1, -1));
 
         buttonGroup1.add(rbXbox);
         rbXbox.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
@@ -173,7 +177,7 @@ public class PanelGestionar extends javax.swing.JPanel {
                 rbXboxActionPerformed(evt);
             }
         });
-        panelFondo.add(rbXbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, -1, -1));
+        panelFondo.add(rbXbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 440, -1, -1));
 
         buttonGroup1.add(rbPc);
         rbPc.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
@@ -190,12 +194,12 @@ public class PanelGestionar extends javax.swing.JPanel {
                 rbPcActionPerformed(evt);
             }
         });
-        panelFondo.add(rbPc, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, -1, -1));
+        panelFondo.add(rbPc, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, -1, -1));
 
         lblconsola.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         lblconsola.setForeground(new java.awt.Color(255, 255, 255));
         lblconsola.setText("Consola");
-        panelFondo.add(lblconsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, -1, -1));
+        panelFondo.add(lblconsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 490, -1, -1));
 
         jcbConsola.setToolTipText("Selecciona la nueva consola");
         jcbConsola.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -204,12 +208,12 @@ public class PanelGestionar extends javax.swing.JPanel {
                 jcbConsolaMouseClicked(evt);
             }
         });
-        panelFondo.add(jcbConsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, 390, 30));
+        panelFondo.add(jcbConsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 480, 390, 30));
 
         lblfecha.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         lblfecha.setForeground(new java.awt.Color(255, 255, 255));
         lblfecha.setText("<html><p>Fecha</p><p>de salida</p></html>");
-        panelFondo.add(lblfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 500, -1, -1));
+        panelFondo.add(lblfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 530, -1, -1));
 
         tfFecha.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         tfFecha.setForeground(new java.awt.Color(153, 153, 153));
@@ -221,12 +225,12 @@ public class PanelGestionar extends javax.swing.JPanel {
                 tfFechaMouseClicked(evt);
             }
         });
-        panelFondo.add(tfFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 500, 390, 30));
+        panelFondo.add(tfFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 530, 390, 30));
 
         lblgenero4.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         lblgenero4.setForeground(new java.awt.Color(255, 255, 255));
         lblgenero4.setText("Valoración");
-        panelFondo.add(lblgenero4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 610, -1, -1));
+        panelFondo.add(lblgenero4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 630, -1, -1));
 
         tfEdicion.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         tfEdicion.setForeground(new java.awt.Color(255, 255, 255));
@@ -237,12 +241,12 @@ public class PanelGestionar extends javax.swing.JPanel {
                 tfEdicionMouseClicked(evt);
             }
         });
-        panelFondo.add(tfEdicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 550, 390, 30));
+        panelFondo.add(tfEdicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 580, 390, 30));
 
         lblgenero5.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         lblgenero5.setForeground(new java.awt.Color(255, 255, 255));
         lblgenero5.setText("Edición");
-        panelFondo.add(lblgenero5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, -1, -1));
+        panelFondo.add(lblgenero5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 590, -1, -1));
 
         jsValoracion.setMaximum(4);
         jsValoracion.setToolTipText("Puntúa el juego de 1 a 5 estrellas");
@@ -276,6 +280,19 @@ public class PanelGestionar extends javax.swing.JPanel {
             }
         });
         panelFondo.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 710, 134, 50));
+
+        btnTraerDatos.setBackground(new java.awt.Color(234, 164, 28));
+        btnTraerDatos.setFont(new java.awt.Font("Eras Medium ITC", 1, 12)); // NOI18N
+        btnTraerDatos.setText("TRAER DATOS");
+        btnTraerDatos.setToolTipText("Carga los datos del juego a partir de su ID");
+        btnTraerDatos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTraerDatos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnTraerDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTraerDatosActionPerformed(evt);
+            }
+        });
+        panelFondo.add(btnTraerDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 220, 140, 40));
 
         btnModificar.setBackground(new java.awt.Color(234, 164, 28));
         btnModificar.setFont(new java.awt.Font("Eras Medium ITC", 1, 12)); // NOI18N
@@ -354,12 +371,15 @@ public class PanelGestionar extends javax.swing.JPanel {
         panelFondo.add(tfID, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 390, 30));
 
         jSeparator1.setForeground(new java.awt.Color(234, 164, 28));
-        panelFondo.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 520, 10));
+        panelFondo.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 280, 140, 10));
 
         lbltitulo2.setFont(new java.awt.Font("OCR A Extended", 0, 18)); // NOI18N
         lbltitulo2.setForeground(new java.awt.Color(255, 255, 255));
         lbltitulo2.setText("Título");
-        panelFondo.add(lbltitulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, -1, -1));
+        panelFondo.add(lbltitulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, -1, -1));
+
+        jSeparator4.setForeground(new java.awt.Color(234, 164, 28));
+        panelFondo.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, 140, 10));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -831,15 +851,132 @@ public class PanelGestionar extends javax.swing.JPanel {
     private void tfIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfIDActionPerformed
+    /**
+     * Método de funcionaliad del botón traer datos
+     * @param evt 
+     */
+    private void btnTraerDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraerDatosActionPerformed
+        if(!tfID.getText().isEmpty() && !tfID.getText().equals("ID del juego a modificar o borrar")){
+            int id=0;
+            try{           
+                id=Integer.parseInt(tfID.getText());
+                /**
+                 * Llamamos al método datosJuego para traer los datos del juego e insertarlos en los diferentes campos
+                 */
+                Videojuegos v=HibernateUtil.datosJuego(id);
+                if(v!=null){
+                    tfTitulo.setText(v.getTitulo());
+                    tfGenero.setText(v.getGenero());
+                    tfEdicion.setText(v.getEdicion());
+                    jsValoracion.setValue(v.getValoracion());
+                    //tfFecha.setText(String.valueOf(v.getFechaSalida()));
+                    /**
+                     * Reajustar el formato de la fecha
+                     */
+                    SimpleDateFormat formatoFecha=new SimpleDateFormat("dd/MM/yyyy");
+                    String fechaNueva=formatoFecha.format(v.getFechaSalida());
+                    tfFecha.setText(fechaNueva);
+                    
+                    switch(v.getPlataforma()){
+                        case "Nintendo":
+                            rbNintendo.setSelected(true);
+                            /**
+                            * Vaciar la lista del comboBox
+                            */
+                            jcbConsola.removeAllItems();
+                            /**
+                             * Rellenar la lista del comboBox
+                             */
+                            jcbConsola.addItem("Switch");
+                            jcbConsola.addItem("Wii U");
+                            jcbConsola.addItem("Wii");
+                            jcbConsola.addItem("GameCube");
+                            jcbConsola.addItem("Nintendo 64");
+                            jcbConsola.addItem("Supernintendo");
+                            jcbConsola.addItem("NES");
+                            jcbConsola.addItem("DS/3ds");
+                            jcbConsola.addItem("GBA");
+                            jcbConsola.addItem("GBColor");
+                            jcbConsola.addItem("GameBoy");
+                                                        
+                            break;
+                            
+                        case "PlayStation":
+                            rbPlayStation.setSelected(true);
+                            /**
+                            * Vaciar la lista del comboBox
+                            */
+                            jcbConsola.removeAllItems();
+                            /**
+                             * Rellenar la lista del comboBox
+                             */
+                            jcbConsola.addItem("PS 5");
+                            jcbConsola.addItem("PS 4");
+                            jcbConsola.addItem("PS 3");
+                            jcbConsola.addItem("PS 2");
+                            jcbConsola.addItem("PlayStation");
+                            jcbConsola.addItem("PS Vita");
+                            jcbConsola.addItem("PSP");
+                            break;
+                            
+                        case "XBox":
+                            rbXbox.setSelected(true);
+                            /**
+                            * Vaciar la lista del comboBox
+                            */
+                            jcbConsola.removeAllItems();
+                            /**
+                             * Rellenar la lista del comboBox
+                             */
+                            jcbConsola.addItem("Xbox series X-S");
+                            jcbConsola.addItem("Xbox one");
+                            jcbConsola.addItem("Xbox 360");
+                            jcbConsola.addItem("Xbox");    
+                            break;
+                            
+                        case "PC":
+                            rbPc.setSelected(true);
+                            /**
+                            * Vaciar la lista del comboBox
+                            */
+                            jcbConsola.removeAllItems();
+                            /**
+                            * Rellenar la lista del comboBox
+                            */
+                            jcbConsola.addItem("Steam");
+                            jcbConsola.addItem("Epic Games");
+                            jcbConsola.addItem("Origin");
+                            jcbConsola.addItem("Ubisoft");
+                            jcbConsola.addItem("Otros");
+                            break;
+                    }
+                    /**
+                    * Seleccionar la consola concreta
+                    */
+                    jcbConsola.setSelectedItem(v.getConsola());
+                    
+                }else{
+                    JOptionPane.showMessageDialog(null, "ERROR, El juego que está buscando no existe en la base de datos");
+                }
+                
+            }catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null, "ERROR, Inserte un id correcto");
+            }
+            
+        }
+        
+    }//GEN-LAST:event_btnTraerDatosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnTraerDatos;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel estrellas;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JComboBox<String> jcbConsola;
     private javax.swing.JSlider jsValoracion;
     private javax.swing.JLabel lblGestionar;

@@ -12,6 +12,7 @@ import model.Coleccion;
 import model.ColeccionId;
 import model.Usuarios;
 import model.Videojuegos;
+import org.hibernate.ObjectNotFoundException;
 import org.hibernate.PropertyValueException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -398,5 +399,16 @@ public class HibernateUtil {
         }else{
             return false;
         }
+    }
+    
+    public static Videojuegos datosJuego (int id){
+        Videojuegos v=null;
+        try{
+            v=(Videojuegos)sesion.get(Videojuegos.class,(int)id);
+        }catch(ObjectNotFoundException e){
+            v=null;
+            return v;
+        }
+        return v;
     }
 }
