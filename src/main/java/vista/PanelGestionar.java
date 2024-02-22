@@ -374,7 +374,10 @@ public class PanelGestionar extends javax.swing.JPanel {
                 .addComponent(panelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Método para rellenar el combobox al clickar en PlayStation
+     * @param evt 
+     */
     private void rbPlayStationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPlayStationActionPerformed
         /**
          * Vaciar la lista del comboBox
@@ -391,7 +394,10 @@ public class PanelGestionar extends javax.swing.JPanel {
         jcbConsola.addItem("PS Vita");
         jcbConsola.addItem("PSP");
     }//GEN-LAST:event_rbPlayStationActionPerformed
-
+    /**
+     * Método para rellenar el combobox al clickar en Nintendo
+     * @param evt 
+     */
     private void rbNintendoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNintendoActionPerformed
         /**
          * Vaciar la lista del comboBox
@@ -412,7 +418,10 @@ public class PanelGestionar extends javax.swing.JPanel {
         jcbConsola.addItem("GBColor");
         jcbConsola.addItem("GameBoy");
     }//GEN-LAST:event_rbNintendoActionPerformed
-
+    /**
+     * Método para rellenar el combobox al clickar en XBox
+     * @param evt 
+     */
     private void rbXboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbXboxActionPerformed
         /**
          * Vaciar la lista del comboBox
@@ -426,7 +435,10 @@ public class PanelGestionar extends javax.swing.JPanel {
         jcbConsola.addItem("Xbox 360");
         jcbConsola.addItem("Xbox");
     }//GEN-LAST:event_rbXboxActionPerformed
-
+    /**
+     * Método para rellenar el combobox al clickar en PC
+     * @param evt 
+     */
     private void rbPcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPcActionPerformed
         /**
          * Vaciar la lista del comboBox
@@ -441,7 +453,10 @@ public class PanelGestionar extends javax.swing.JPanel {
         jcbConsola.addItem("Ubisoft");
         jcbConsola.addItem("Otros");
     }//GEN-LAST:event_rbPcActionPerformed
-
+    /**
+     * Método para rellenar las estrellas a partir del slider
+     * @param evt 
+     */
     private void jsValoracionStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jsValoracionStateChanged
         /**
          * Rellenar las estrellas en funcion de la valoracion
@@ -464,7 +479,10 @@ public class PanelGestionar extends javax.swing.JPanel {
             break;
         }
     }//GEN-LAST:event_jsValoracionStateChanged
-
+    /**
+     * Método de funcionalidad del botón limpiar
+     * @param evt 
+     */
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         /**
          * Llamamos al método limpiar
@@ -473,7 +491,10 @@ public class PanelGestionar extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
   
-    
+    /**
+     * Método de funcionalidad del botón modificar
+     * @param evt 
+     */
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         boolean idValido=true;
         boolean correcto=true;
@@ -585,7 +606,10 @@ public class PanelGestionar extends javax.swing.JPanel {
         
         Videojuegos v=new Videojuegos();
     }//GEN-LAST:event_btnModificarActionPerformed
-
+    /**
+     * Método de funcionalidad del botón eliminar
+     * @param evt 
+     */
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         boolean idValido=true;
         /**
@@ -610,7 +634,10 @@ public class PanelGestionar extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
-
+    /**
+     * Método para rellenar la fecha y el id al clickar en título
+     * @param evt 
+     */
     private void tfTituloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfTituloMouseClicked
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
@@ -625,7 +652,10 @@ public class PanelGestionar extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_tfTituloMouseClicked
-
+    /**
+     * Método para rellenar la fecha y el id al clickar en género
+     * @param evt 
+     */
     private void tfGeneroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfGeneroMouseClicked
         /**
          * Si la fecha está vacía rellenarla por defecto
@@ -641,7 +671,10 @@ public class PanelGestionar extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_tfGeneroMouseClicked
-
+    /**
+     * Método para rellenar la fecha y el id al clickar en Nintendo
+     * @param evt 
+     */
     private void rbNintendoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbNintendoMouseClicked
         /**
          * Si la fecha está vacía rellenarla por defecto
@@ -658,7 +691,10 @@ public class PanelGestionar extends javax.swing.JPanel {
         }
         tfID.setForeground(new Color(153,153,153));
     }//GEN-LAST:event_rbNintendoMouseClicked
-
+    /**
+     * Método para rellenar la fecha y el id al clickar en PlayStation
+     * @param evt 
+     */
     private void rbPlayStationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbPlayStationMouseClicked
        //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
@@ -672,7 +708,10 @@ public class PanelGestionar extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_rbPlayStationMouseClicked
-
+    /**
+     * Método para rellenar la fecha y el id al clickar en XBox
+     * @param evt 
+     */
     private void rbXboxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbXboxMouseClicked
        //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
@@ -686,7 +725,10 @@ public class PanelGestionar extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_rbXboxMouseClicked
-
+    /**
+     * Método para rellenar la fecha y el id al clickar en PC
+     * @param evt 
+     */
     private void rbPcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbPcMouseClicked
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
@@ -700,7 +742,10 @@ public class PanelGestionar extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_rbPcMouseClicked
-
+    /**
+     * Método para rellenar la fecha y el id al clickar en Consola
+     * @param evt 
+     */
     private void jcbConsolaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbConsolaMouseClicked
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
@@ -714,7 +759,10 @@ public class PanelGestionar extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_jcbConsolaMouseClicked
-
+    /**
+     * Método para rellenar la fecha y el id al clickar en Edición
+     * @param evt 
+     */
     private void tfEdicionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfEdicionMouseClicked
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
@@ -728,7 +776,10 @@ public class PanelGestionar extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_tfEdicionMouseClicked
-
+    /**
+     * Método para rellenar la fecha y el id al clickar en Valoración
+     * @param evt 
+     */
     private void jsValoracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jsValoracionMouseClicked
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
@@ -742,7 +793,10 @@ public class PanelGestionar extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_jsValoracionMouseClicked
-
+    /**
+     * Método para vaciar la fecha y rellenar el id al clickar en fecha
+     * @param evt 
+     */
     private void tfFechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfFechaMouseClicked
         if(tfFecha.getText().equals("dd/MM/aaaa")){
             tfFecha.setText("");
@@ -755,7 +809,10 @@ public class PanelGestionar extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_tfFechaMouseClicked
-
+/**
+     * Método para rellenar la fecha y vaciar el id al clickar en id
+     * @param evt 
+     */
     private void tfIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfIDMouseClicked
         //Vaciar el textField al clickar en él
         if(tfID.getText().equals("ID del juego a modificar o borrar")){

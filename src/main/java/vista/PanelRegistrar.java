@@ -331,7 +331,10 @@ public class PanelRegistrar extends javax.swing.JPanel {
                 .addComponent(panelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Método para rellenar el combobox al clickar en el radioButton PlayStation
+     * @param evt 
+     */
     private void rbPlayStationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPlayStationActionPerformed
         /**
          * Vaciar la lista del comboBox
@@ -348,7 +351,10 @@ public class PanelRegistrar extends javax.swing.JPanel {
         jcbConsola.addItem("PS Vita");
         jcbConsola.addItem("PSP");
     }//GEN-LAST:event_rbPlayStationActionPerformed
-
+    /**
+     * Método para rellenar el combobox al clickar en el radioButton Nintendo
+     * @param evt 
+     */
     private void rbNintendoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNintendoActionPerformed
         /**
          * Vaciar la lista del comboBox
@@ -369,7 +375,10 @@ public class PanelRegistrar extends javax.swing.JPanel {
         jcbConsola.addItem("GBColor");
         jcbConsola.addItem("GameBoy");
     }//GEN-LAST:event_rbNintendoActionPerformed
-
+    /**
+     * Método para rellenar el combobox al clickar en el radioButton XBox
+     * @param evt 
+     */
     private void rbXboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbXboxActionPerformed
         /**
          * Vaciar la lista del comboBox
@@ -383,7 +392,10 @@ public class PanelRegistrar extends javax.swing.JPanel {
         jcbConsola.addItem("Xbox 360");
         jcbConsola.addItem("Xbox");    
     }//GEN-LAST:event_rbXboxActionPerformed
-
+    /**
+     * Método para rellenar el combobox al clickar en el radioButton PC
+     * @param evt 
+     */
     private void rbPcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPcActionPerformed
         /**
          * Vaciar la lista del comboBox
@@ -398,14 +410,20 @@ public class PanelRegistrar extends javax.swing.JPanel {
         jcbConsola.addItem("Ubisoft");
         jcbConsola.addItem("Otros");
     }//GEN-LAST:event_rbPcActionPerformed
-
+    /**
+     * Método de funcionalidad del botón limpiar
+     * @param evt 
+     */
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         /**
          * Llamamos al método limpiar
          */
         limpiar();
     }//GEN-LAST:event_btnLimpiarActionPerformed
-
+    /**
+     * Método de funcionalidad del botón deseos
+     * @param evt 
+     */
     private void btnAgregarDeseosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarDeseosActionPerformed
         boolean correcto=true;
         /**
@@ -496,7 +514,10 @@ public class PanelRegistrar extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "ERROR,no se ha podido añadir el videojuego a su lista de deseos","Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnAgregarDeseosActionPerformed
-
+    /**
+     * Método de funcionalidad del botón agregar colección
+     * @param evt 
+     */
     private void btnAgregarColeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarColeccionActionPerformed
         boolean correcto=true;
         /**
@@ -586,7 +607,10 @@ public class PanelRegistrar extends javax.swing.JPanel {
         
         
     }//GEN-LAST:event_btnAgregarColeccionActionPerformed
-
+    /**
+     * Método para rellenar las estrellas a partir del slider
+     * @param evt 
+     */
     private void jsValoracionStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jsValoracionStateChanged
         /**
          * Rellenar las estrellas en funcion de la valoracion
@@ -609,14 +633,20 @@ public class PanelRegistrar extends javax.swing.JPanel {
                 break;               
         }
     }//GEN-LAST:event_jsValoracionStateChanged
-
+    /**
+     * Método para vaciar el texto de la Fecha al clickar en ella
+     * @param evt 
+     */
     private void tfFechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfFechaMouseClicked
         if(tfFecha.getText().equals("dd/MM/aaaa")){
             tfFecha.setText("");
             tfFecha.setForeground(Color.WHITE);
         }
     }//GEN-LAST:event_tfFechaMouseClicked
-
+    /**
+     * Método para rellenar el texto de la Fecha al clickar en consola
+     * @param evt 
+     */
     private void jcbConsolaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbConsolaMouseClicked
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
@@ -624,7 +654,10 @@ public class PanelRegistrar extends javax.swing.JPanel {
             tfFecha.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_jcbConsolaMouseClicked
-
+    /**
+     * Método para rellenar el texto de la Fecha al clickar en edicion
+     * @param evt 
+     */
     private void tfEdicionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfEdicionMouseClicked
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
@@ -632,7 +665,10 @@ public class PanelRegistrar extends javax.swing.JPanel {
             tfFecha.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_tfEdicionMouseClicked
-
+    /**
+     * Método para rellenar el texto de la Fecha al clickar en genero
+     * @param evt 
+     */
     private void tfGeneroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfGeneroMouseClicked
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
@@ -640,7 +676,10 @@ public class PanelRegistrar extends javax.swing.JPanel {
             tfFecha.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_tfGeneroMouseClicked
-
+    /**
+     * Método para rellenar el texto de la Fecha al clickar en titulo
+     * @param evt 
+     */
     private void tfTituloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfTituloMouseClicked
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
@@ -648,7 +687,10 @@ public class PanelRegistrar extends javax.swing.JPanel {
             tfFecha.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_tfTituloMouseClicked
-
+    /**
+     * Método para rellenar el texto de la Fecha al clickar en valoración
+     * @param evt 
+     */
     private void jsValoracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jsValoracionMouseClicked
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
@@ -656,7 +698,10 @@ public class PanelRegistrar extends javax.swing.JPanel {
             tfFecha.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_jsValoracionMouseClicked
-
+    /**
+     * Método para rellenar el texto de la Fecha al clickar en Nintendo
+     * @param evt 
+     */
     private void rbNintendoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbNintendoMouseClicked
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
@@ -664,7 +709,10 @@ public class PanelRegistrar extends javax.swing.JPanel {
             tfFecha.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_rbNintendoMouseClicked
-
+    /**
+     * Método para rellenar el texto de la Fecha al clickar en PlayStation
+     * @param evt 
+     */
     private void rbPlayStationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbPlayStationMouseClicked
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
@@ -672,7 +720,10 @@ public class PanelRegistrar extends javax.swing.JPanel {
             tfFecha.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_rbPlayStationMouseClicked
-
+    /**
+     * Método para rellenar el texto de la Fecha al clickar en XBox
+     * @param evt 
+     */
     private void rbXboxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbXboxMouseClicked
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){
@@ -680,7 +731,10 @@ public class PanelRegistrar extends javax.swing.JPanel {
             tfFecha.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_rbXboxMouseClicked
-
+    /**
+     * Método para rellenar el texto de la Fecha al clickar en PC
+     * @param evt 
+     */
     private void rbPcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbPcMouseClicked
         //Si la fecha está vacía rellenarla por defecto
         if(tfFecha.getText().equals("")){

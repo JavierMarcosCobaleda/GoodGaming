@@ -170,7 +170,10 @@ public class PanelPC extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Método para limpiar el texto del textfield buscar
+     * @param evt 
+     */
     private void tfbuscarNMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfbuscarNMousePressed
         /**
         * Limpiar el texto al clickar
@@ -180,7 +183,10 @@ public class PanelPC extends javax.swing.JPanel {
             tfbuscarN.setForeground(Color.BLACK);
         }
     }//GEN-LAST:event_tfbuscarNMousePressed
-
+    /**
+     * Método de funcionalidad del botón buscar
+     * @param evt 
+     */
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         /**
         * Si hay algo escrito en textfield que no sea el texto por defecto hacemos la búsqueda por título
@@ -208,7 +214,10 @@ public class PanelPC extends javax.swing.JPanel {
         }
    
     }//GEN-LAST:event_btnBuscarActionPerformed
-
+    /**
+     * Método de funcionalidad del botón buscar todo
+     * @param evt 
+     */
     private void btnBuscarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarTodoActionPerformed
         
         //Vaciamos la tabla

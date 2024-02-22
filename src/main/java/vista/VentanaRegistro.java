@@ -27,7 +27,9 @@ public class VentanaRegistro extends javax.swing.JFrame {
     int xMouse,yMouse;
     HibernateUtil hibernate;
     OtrosMetodos metodos;
-    
+    /**
+     * Constructor
+     */
     public VentanaRegistro() {
         initComponents();
         
@@ -72,7 +74,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         tfRegUsuario = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        lbRegistrarse = new javax.swing.JLabel();
+        lbLoggin = new javax.swing.JLabel();
         xCerrar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         logoGGpeque = new javax.swing.JLabel();
@@ -175,20 +177,20 @@ public class VentanaRegistro extends javax.swing.JFrame {
 
         jSeparator1.setForeground(new java.awt.Color(244, 150, 40));
 
-        lbRegistrarse.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
-        lbRegistrarse.setForeground(new java.awt.Color(244, 150, 40));
-        lbRegistrarse.setText("Loggin");
-        lbRegistrarse.setToolTipText("Vuelve a la pantalla de loggin");
-        lbRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lbRegistrarse.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbLoggin.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
+        lbLoggin.setForeground(new java.awt.Color(244, 150, 40));
+        lbLoggin.setText("Loggin");
+        lbLoggin.setToolTipText("Vuelve a la pantalla de loggin");
+        lbLoggin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbLoggin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbRegistrarseMouseClicked(evt);
+                lbLogginMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lbRegistrarseMouseEntered(evt);
+                lbLogginMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                lbRegistrarseMouseExited(evt);
+                lbLogginMouseExited(evt);
             }
         });
 
@@ -215,7 +217,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
                         .addGap(57, 57, 57))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoGrisLayout.createSequentialGroup()
-                        .addComponent(lbRegistrarse)
+                        .addComponent(lbLoggin)
                         .addGap(118, 118, 118)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
@@ -243,7 +245,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbRegistrarse)
+                .addComponent(lbLoggin)
                 .addContainerGap(94, Short.MAX_VALUE))
         );
 
@@ -291,7 +293,10 @@ public class VentanaRegistro extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Método para vaciar el texto del correo electrónico
+     * @param evt 
+     */
     private void tfCorreoElectronicoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfCorreoElectronicoMousePressed
         //Quitar el texto Usuario al entrar
         if(tfCorreoElectronico.getText().equals("Correo electrónico")){
@@ -315,7 +320,10 @@ public class VentanaRegistro extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_tfCorreoElectronicoMousePressed
-
+    /**
+     * Método para dar funcionalidad al botón de registro
+     * @param evt 
+     */
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
         //Registrar nuevo usuario
                
@@ -368,7 +376,10 @@ public class VentanaRegistro extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnRegistroActionPerformed
-
+    /**
+     * Método para vaciar el texto del campo repetir password
+     * @param evt 
+     */
     private void jPFRepetirPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPFRepetirPasswordMousePressed
         //Quitar el texto al entrar por primera vez en password
         if(String.valueOf(jPFRepetirPassword.getPassword()).equals("********")){
@@ -392,7 +403,10 @@ public class VentanaRegistro extends javax.swing.JFrame {
             tfCorreoElectronico.setForeground(Color.gray);
         }
     }//GEN-LAST:event_jPFRepetirPasswordMousePressed
-
+    /**
+     * Método para cerrar la ventana y volver al loggin
+     * @param evt 
+     */
     private void xCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xCerrarMouseClicked
         VentanaLogin ventanaLogin=new VentanaLogin();
         ventanaLogin.setVisible(true);
@@ -400,35 +414,53 @@ public class VentanaRegistro extends javax.swing.JFrame {
         dispose();
         
     }//GEN-LAST:event_xCerrarMouseClicked
-
+    /**
+     * Método para cambiar el color de la X al entrar con el ratón
+     * @param evt 
+     */
     private void xCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xCerrarMouseEntered
         //Cambiar color al entrar
         xCerrar.setForeground(new Color(244,150,40));
     }//GEN-LAST:event_xCerrarMouseEntered
-
+    /**
+     * Método para cambiar el color de la X al salir
+     * @param evt 
+     */
     private void xCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xCerrarMouseExited
         //Cambiar a blanco al salir
         xCerrar.setForeground(Color.white);
     }//GEN-LAST:event_xCerrarMouseExited
-
+    /**
+     * Método para cambiar el color de la X al pulsar
+     * @param evt 
+     */
     private void xCerrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xCerrarMousePressed
         //Cambiar color al pulsar
         xCerrar.setForeground(Color.red);
     }//GEN-LAST:event_xCerrarMousePressed
-
+    /**
+     * Método para mover la ventana
+     * @param evt 
+     */
     private void panelFondoMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelFondoMouseDragged
         // Mover la ventana
         int x=evt.getXOnScreen();
         int y=evt.getYOnScreen();
         this.setLocation(x-xMouse,y-yMouse);
     }//GEN-LAST:event_panelFondoMouseDragged
-
+    /**
+     * Método para obtener las coordenadas de la ventana
+     * @param evt 
+     */
     private void panelFondoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelFondoMousePressed
         // Obtener x e y para mover la ventana
         xMouse=evt.getX();
         yMouse=evt.getY();
     }//GEN-LAST:event_panelFondoMousePressed
-
+    /**
+     * Método para vaciar el campo password
+     * @param evt 
+     */
     private void jPFRegPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPFRegPasswordMousePressed
         // Vaciar el password por defecto
         if(String.valueOf(jPFRegPassword.getPassword()).equals("********")){
@@ -452,7 +484,10 @@ public class VentanaRegistro extends javax.swing.JFrame {
             tfCorreoElectronico.setForeground(Color.gray);
         }
     }//GEN-LAST:event_jPFRegPasswordMousePressed
-
+    /**
+     * Método para vaciar el texto del campo usuario
+     * @param evt 
+     */
     private void tfRegUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfRegUsuarioMousePressed
         // Vaciar el texto Usuario
         if(tfRegUsuario.getText().equals("Usuario")){
@@ -476,23 +511,32 @@ public class VentanaRegistro extends javax.swing.JFrame {
             tfCorreoElectronico.setForeground(Color.gray);
         }
     }//GEN-LAST:event_tfRegUsuarioMousePressed
-
-    private void lbRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarseMouseClicked
+    /**
+     * Método para volver al loggin
+     * @param evt 
+     */
+    private void lbLogginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbLogginMouseClicked
         // TODO add your handling code here:
         VentanaLogin ventanaLogin=new VentanaLogin();
         ventanaLogin.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_lbRegistrarseMouseClicked
-
-    private void lbRegistrarseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarseMouseEntered
+    }//GEN-LAST:event_lbLogginMouseClicked
+    /**
+     * Método para cambiar el color al entrar en el label loggin
+     * @param evt 
+     */
+    private void lbLogginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbLogginMouseEntered
         // TODO add your handling code here:
-        lbRegistrarse.setForeground(Color.white);
-    }//GEN-LAST:event_lbRegistrarseMouseEntered
-
-    private void lbRegistrarseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarseMouseExited
+        lbLoggin.setForeground(Color.white);
+    }//GEN-LAST:event_lbLogginMouseEntered
+    /**
+     * Método para cambiar el color al salir del label loggin
+     * @param evt 
+     */
+    private void lbLogginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbLogginMouseExited
         // TODO add your handling code here:
-        lbRegistrarse.setForeground(new Color(244,150,40));
-    }//GEN-LAST:event_lbRegistrarseMouseExited
+        lbLoggin.setForeground(new Color(244,150,40));
+    }//GEN-LAST:event_lbLogginMouseExited
 
     /**
      * @param args the command line arguments
@@ -539,7 +583,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPFRegPassword;
     private javax.swing.JPasswordField jPFRepetirPassword;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel lbRegistrarse;
+    private javax.swing.JLabel lbLoggin;
     private javax.swing.JLabel logoGGpeque;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JPanel panelFondoGris;

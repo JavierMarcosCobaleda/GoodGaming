@@ -258,7 +258,10 @@ public class PanelDeseos extends javax.swing.JPanel {
                 .addComponent(panelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Método para limpiar el texto del textfield buscar
+     * @param evt 
+     */
     private void tfbuscarTituloMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfbuscarTituloMousePressed
         /**
         * Limpiar el texto al clickar
@@ -268,7 +271,10 @@ public class PanelDeseos extends javax.swing.JPanel {
             tfbuscarTitulo.setForeground(Color.BLACK);
         }
     }//GEN-LAST:event_tfbuscarTituloMousePressed
-
+    /**
+     * Método de funcionalidad del botón buscar
+     * @param evt 
+     */
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         /**
         * Si hay algo escrito en textfield que no sea el texto por defecto hacemos la búsqueda por título
@@ -295,7 +301,10 @@ public class PanelDeseos extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_btnBuscarActionPerformed
-
+    /**
+     * Método de funcionalidad del botón buscar todo
+     * @param evt 
+     */
     private void btnBuscarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarTodoActionPerformed
         /**
          * Llamaos al método rellenar tabla
@@ -303,7 +312,10 @@ public class PanelDeseos extends javax.swing.JPanel {
         rellenarTabla();
         
     }//GEN-LAST:event_btnBuscarTodoActionPerformed
-
+    /**
+     * Método de funcionalidad del botón agregar a colección
+     * @param evt 
+     */
     private void btnAgregarColeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarColeccionActionPerformed
         /**
          * Llamamos al método pasarDeseadoaColeccion para pasar el juego a la coleccion del usuario
@@ -319,7 +331,10 @@ public class PanelDeseos extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_btnAgregarColeccionActionPerformed
-
+    /**
+     * Método de funcionalidad del botón Eliminar
+     * @param evt 
+     */
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         /**
          * Llamamos al método eliminarDeseado para borrar el juego de la lista de deseos
