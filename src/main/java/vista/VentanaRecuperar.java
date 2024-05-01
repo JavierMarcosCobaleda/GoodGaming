@@ -466,7 +466,7 @@ public class VentanaRecuperar extends javax.swing.JFrame {
         if(String.valueOf(jPFActualizarPassword.getPassword()).equals("********") || String.valueOf(jPFActualizarPassword.getPassword()).equals("")
                 || String.valueOf(jPFRepetirPassword.getPassword()).equals("********") || String.valueOf(jPFRepetirPassword.getPassword()).equals("")){
             JOptionPane.showMessageDialog(null, "ERROR, Intruduzca una contraseña","Error", JOptionPane.ERROR_MESSAGE);
-        }else if (String.valueOf(jPFActualizarPassword.getPassword()).equals(String.valueOf(jPFRepetirPassword.getPassword()))){
+        }else if (!String.valueOf(jPFActualizarPassword.getPassword()).equals(String.valueOf(jPFRepetirPassword.getPassword()))){
             JOptionPane.showMessageDialog(null, "ERROR, Las contraseñas deben ser iguales","Error", JOptionPane.ERROR_MESSAGE);
         }else{
 
@@ -477,7 +477,7 @@ public class VentanaRecuperar extends javax.swing.JFrame {
 
                 usuario.setPassword(String.valueOf(jPFActualizarPassword.getPassword()));
                 pwdUtil.encriptar(usuario);
-
+                
                 if(hibernate.modificarPassword(usuario)==1){
                     JOptionPane.showMessageDialog(null, "Contraseña cambiada con éxito");
                 }else{

@@ -461,7 +461,8 @@ public class PanelRegistrar extends javax.swing.JPanel {
                     } catch (ParseException ex) {
                         Logger.getLogger(PanelRegistrar.class.getName()).log(Level.SEVERE, null, ex);
                         //System.err.println("Error de formato fecha");
-                        JOptionPane.showMessageDialog(null, "ERROR, Formato de fecha incorrecto <dd/MM/yyyy>","Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, 
+                                "ERROR, Formato de fecha incorrecto <dd/MM/yyyy>","Error", JOptionPane.ERROR_MESSAGE);
                         /**
                          * ponemos la bandera a false para evitar la inserción de un formato de fecha incorrecto
                          */

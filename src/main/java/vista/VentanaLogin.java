@@ -354,6 +354,8 @@ public class VentanaLogin extends javax.swing.JFrame {
             }
         }catch(NullPointerException e){
             JOptionPane.showMessageDialog(null, "ERROR, No se ha podido conectar con la base de datos","Error", JOptionPane.ERROR_MESSAGE);
+        }catch(IndexOutOfBoundsException e){
+            JOptionPane.showMessageDialog(null, "ERROR, El usuario no existe","Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
     /**

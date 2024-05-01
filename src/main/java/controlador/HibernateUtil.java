@@ -85,7 +85,7 @@ public class HibernateUtil {
      * @param usuario
      * @return lista de usuarios con el username
      */
-    public static List<Usuarios> comprobarLogin(Usuarios usuario){
+    public static List<Usuarios> comprobarLogin(Usuarios usuario)throws IndexOutOfBoundsException{
 
         Query q=sesion.createQuery("FROM Usuarios WHERE username = :username");
         q.setParameter("username",usuario.getUsername());
@@ -137,13 +137,14 @@ public class HibernateUtil {
      * @return un entero con el numero de filas afectadas
      */
     public int modificarPassword (Usuarios usuario){
-        Transaction tx=sesion.beginTransaction();
-			
-	String sentencia= "update Usuarios set password= :pwd where username= :username";
-			
-	Query q=sesion.createQuery(sentencia);
+        Transaction tx=sesion.beginTransaction();		
+        
+	//String sentencia= "update Usuarios set password= :pwd where username= :username";
+	String sentencia= "update Usuarios set password= :pwd where email= :mail";		
+	
+        Query q=sesion.createQuery(sentencia);
 	q.setParameter("pwd", usuario.getPassword());
-	q.setParameter("username", usuario.getUsername());
+	q.setParameter("mail", usuario.getEmail());
         
         int filasAfectadas=q.executeUpdate();
         
